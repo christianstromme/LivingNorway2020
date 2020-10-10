@@ -9,78 +9,7 @@ data_raw <- read_csv2(file = "Data/dataset.csv", skip_empty_rows = TRUE)
 questions <- read_csv2(file = "Data/complete.csv", n_max = 1, col_names = FALSE)
 
 
-
-
-data_raw %>%
-  rename(Shared_data=s_3, 
-         Shared_code=s_4,
-         Shared_methods=s_45,
-         Used_open_data=s_5,
-         Used_codes=s_6,
-         Published_open=s_7,
-         Edu_tools=s_8,
-         Read_papers=s_9,
-         Open_review=s_10,
-         Outreach=s_11,
-         OOther=s_12,
-         Research=s_46_1,
-         Teaching=s_46_2,
-         Supervision=s_46_3,
-         RData_sharing=s_16,
-         RCode_sharing=s_17,
-         RMethod_sharing=s_50,
-         RPublish_open=s_18,
-         RComm_science=s_19,
-         RReproducib=s_20,
-         RTransparency=s_21,
-         TData_sharing=s_22,
-         TCode_sharing=s_23,
-         TMethod_sharing=s_51,
-         TPublish_open=s_24,
-         TComm_science=s_25,
-         TReproducib=s_26,
-         TTransparency=s_27,
-         SData_sharing=s_28,
-         SCode_sharing=s_29,
-         SMethod_sharing=s_52,
-         SPublish_open=s_30,
-         SComm_science=s_31,
-         SReproducib=s_32,
-         STransparency=s_33,
-         University=s_36_1,
-         Institute=s_36_2,
-         Gov_agency=s_36_3,
-         Private_comp=s_36_4,
-         Other=s_36_5,
-         Norway=s_37_1,
-         EU=s_37_2,
-         Non_EU=s_37_3,
-         Position=s_38,
-         Degree=s_39,
-         Year=s_40,
-         Undergrad_classes=s_41_1,
-         Grad_classes=s_41_2,
-         Superv_undergrad=s_41_3,
-         Superv_grad=s_41_4,
-         Superv_postdoc=s_41_5,
-         TPublic_outreach=s_41_6,
-         TOther=s_41_7,
-         Prim_research=s_49_1,
-         Synthesis=s_49_2,
-         Assessment=s_49_3,
-         Policy_interf=s_49_4,
-         APublic_outreach=s_49_5,
-         AOther=s_49_6,
-         Gender=s_42,
-         Day1=s_43_1,
-         An_worskshop=s_43_2,
-         Ed_workshop=s_43_3,
-         Attending=s_44) %>% 
-  pivot_longer(cols = c(Shared_data:Outreach, RData_sharing:RTransparency, TData_sharing:TTransparency, SData_sharing:STransparency), names_to = "Question", values_to = "Value")
-  
-
-t(questions)  
-
+# clean and 
 data <- data_raw %>%
   # make long table
   pivot_longer(cols = c(s_3:s_11, s_46_1:s_46_4, s_16:s_21, s_22:s_27, s_28:s_33), names_to = "Question", values_to = "Value") %>% 
