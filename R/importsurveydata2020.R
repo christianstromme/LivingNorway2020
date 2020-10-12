@@ -9,6 +9,8 @@ data_raw <- read_csv2(file = "Data/dataset.csv", skip_empty_rows = TRUE)
 questions <- read_csv2(file = "Data/complete.csv", n_max = 1, col_names = FALSE)
 
 
+
+
 # clean and 
 data <- data_raw %>%
   # make long table
