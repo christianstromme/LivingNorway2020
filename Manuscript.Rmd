@@ -1,0 +1,62 @@
+---
+title: Open and reproducible science
+
+author: |
+  | Strømme, C. ^[Corresponding author: christian.stromme@uib.no] $^1$, ...
+address: |
+  | $^1$University of Bergen
+abstract: |
+  to be added
+date: "`r format(Sys.Date(), '%d %B %Y')`"
+
+# These are LaTex settings to take care of floating figures/tables, line spacing, etc
+header-includes:
+  #- \usepackage{endfloat} put figs at the end
+  - \usepackage{setspace}\doublespacing
+  - \usepackage{lineno}
+  - \linenumbers
+  
+output:
+  #word_document
+  bookdown::pdf_book:
+    toc: no
+  fig_caption: yes
+  
+documentclass: article
+classoption: a4paper
+bibliography: Paperpile - Nov 02 BibTeX Export.bib
+#csl: journal-of-ecology.csl
+
+ #always_allow_html: yes
+
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+source("Rscripts/importsurveydata2020.R")
+knitr::read_chunk("Rscripts/importsurveydata2020.R")
+
+```
+
+## INTRODUCTION
+
+
+
+
+## METHODS
+
+
+
+
+## RESULTS
+
+``` {r Fig1, fig_height = 20}
+
+```
+
+
+## DISCUSSION
+
+
+## REFERENCES
