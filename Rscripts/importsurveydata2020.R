@@ -5,8 +5,8 @@ library("tidyverse")
 library("wesanderson")
 
 # read in files
-data_raw <- read_csv2(file = "Data/1dataset_clean.csv", skip_empty_rows = TRUE)
-questions <- read_csv2(file = "Data/1complete_clean.csv", n_max = 1, col_names = FALSE)
+data_raw <- read_csv2(file = "data/1dataset_clean.csv", skip_empty_rows = TRUE)
+questions <- read_csv2(file = "data/1complete_clean.csv", n_max = 1, col_names = FALSE)
 
 
 
