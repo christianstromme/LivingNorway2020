@@ -41,3 +41,10 @@ vignettes/*.pdf
 # Data
 *.csv
 *.xlsx
+*.xls
+*.txt
+
+# Output
+*.png
+*.jpeg
+*.jpg
