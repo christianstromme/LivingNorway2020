@@ -1,6 +1,4 @@
-# Living Norway 2020: Attitudes to OS
-
-  Retrieved from [original content] (https://docs.google.com/document/d/1_24DQGPrbvieNBiJuvlq-pVkl6zY41YwVgYR_LGJW3s/edit#heading=h.326vmlhraij0) 
+# Retrieved from [original content] (https://docs.google.com/document/d/1_24DQGPrbvieNBiJuvlq-pVkl6zY41YwVgYR_LGJW3s/edit#heading=h.326vmlhraij0) 
 
 ## Study aims
 
@@ -15,4 +13,17 @@
   + What should be taught (in class/supervision of ECRs)
 4. What are their projections for OS in applied ecology in the future?
 
+
+# Living Norway 2020: Attitudes to OS
+
+
+
+
 ## Hypotheses
+
+1. Researchers who teach are more likely to include open science-related practices in their teaching if they also frequently engage in those practices as researchers.
+2. Colloquium participants having less experience with open science-related practices are more likely to modify their definitions of open science after the colloquium.
+3. Colloquium participants having less experience with open science-related practices are more likely to change ore adapt their open science related practices in research, teching and/or supervision after the colloquium.
+4. Researchers with academic affiliation have engaged more in open science-related practices compared to other researchers, and more so for early-career researchers.
+
+5. 

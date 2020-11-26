@@ -1,4 +1,4 @@
-#### IMPORT DATA PREPARE FOR ANALYSIY ####
+#### IMPORT DATA PREPARE FOR ANALYSIS ####
 
 # load libraries
 library("tidyverse")
