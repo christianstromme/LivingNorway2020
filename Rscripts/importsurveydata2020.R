@@ -5,8 +5,8 @@ library("tidyverse")
 library("wesanderson")
 
 # read in files
-data_raw <- read_csv2(file = "data/preLN_dataset2.csv", skip_empty_rows = TRUE)
-questions <- read_csv2(file = "data/preLN_complete2.csv", n_max = 1, col_names = FALSE)
+data_raw <- read_csv2(file = "Data/1dataset_clean.csv", skip_empty_rows = TRUE)
+questions <- read_csv2(file = "Data/1complete_clean.csv", n_max = 1, col_names = FALSE)
 
 
 
@@ -50,7 +50,10 @@ data <- data_raw %>%
   
   #reorder questions
   mutate(Question = factor( Question, levels = c("Shared_data","Shared_code", "Shared_methods","Used_open_data","Used_codes","Published_open","Edu_tools", "Read_papers","Open_review","Outreach","Research","Teaching","Supervision","None","Data_sharing","Code_sharing","Method_sharing","Publish_open","Comm_science","Reproducib","Transparency"))) %>% 
-  select(Category, Question, Value, s_2:s_44)
+  
+  
+
+select(Category, Question, Value, s_2:stato_5)
 
 
 scale1 <- tibble(numeric_scale = c(1, 2, 3, 4, 5, 6),
@@ -62,39 +65,38 @@ scale2 <- tibble(numeric_scale = c(1, 2, 3, 4, 5),
 
 
 # rename co-variables 
-# mutate(Question = case_when(Question == "s_36_1" ~ "University",
-#                             "s_36_2" ~ "Institute",
-#                             "s_36_3" ~ "Gov_agency",
-#                             "s_36_4" ~ "Private_comp",
-#                             "s_36_5" ~ "Other",
-#                             "s_37_1" ~ "Norway",
-#                             "s_37_2" ~ "EU",
-#                             "s_37_3" ~ "Non_EU",
-#                             "s_38" ~ "Position",
-#                             "s_39" ~ "Degree",
-#                             "s_40" ~ "Year",
-#                             "s_41_1" ~ "Undergrad_classes",
-#                             "s_41_2" ~ "Grad_classes",
-#                             "s_41_3" ~ "Superv_undergrad",
-#                             "s_41_4" ~ "Superv_grad",
-#                             "s_41_5" ~ "Superv_postdoc",
-#                             "s_41_6" ~ "TPublic_outreach",
-#                             "s_41_7" ~ "TOther",
-#                             "s_49_1" ~ "Prim_research",
-#                             "s_49_2" ~ "Synthesis",
-#                             "s_49_3" ~ "Assessment",
-#                             "s_49_4" ~ "Policy_interf",
-#                             "s_49_5" ~ "APublic_outreach",
-#                             "s_49_6" ~ "AOther",
-#                             "s_42" ~ "Gender",
-#                             "s_43_1" ~ "Day1",
-#                             "s_43_2" ~ "An_worskshop",
-#                             "s_43_3" ~ "Ed_workshop",
-#                             "s_44" ~ "Attending")) %>% 
+mutate(Question = case_when(Question == "s_36_1" ~ "University",
+                            "s_36_2" ~ "Institute",
+                            "s_36_3" ~ "Gov_agency",
+                            "s_36_4" ~ "Private_comp",
+                            "s_36_5" ~ "Other",
+                            "s_37_1" ~ "Norway",
+                            "s_37_2" ~ "EU",
+                            "s_37_3" ~ "Non_EU",
+                            "s_38" ~ "Position",
+                            "s_39" ~ "Degree",
+                            "s_40" ~ "Year",
+                            "s_41_1" ~ "Undergrad_classes",
+                            "s_41_2" ~ "Grad_classes",
+                            "s_41_3" ~ "Superv_undergrad",
+                            "s_41_4" ~ "Superv_grad",
+                            "s_41_5" ~ "Superv_postdoc",
+                            "s_41_6" ~ "TPublic_outreach",
+                            "s_41_7" ~ "TOther",
+                            "s_49_1" ~ "Prim_research",
+                            "s_49_2" ~ "Synthesis",
+                            "s_49_3" ~ "Assessment",
+                            "s_49_4" ~ "Policy_interf",
+                            "s_49_5" ~ "APublic_outreach",
+                            "s_49_6" ~ "AOther",
+                            "s_42" ~ "Gender",
+                            "s_43_1" ~ "Day1",
+                            "s_43_2" ~ "An_worskshop",
+                            "s_43_3" ~ "Ed_workshop",
+                            "s_44" ~ "Attending")) %>% 
 
 
 ### Figures
-## ----Fig1
 data %>% 
   filter(Category == "OS_activity") %>% 
   ggplot(aes(x = Value, fill = factor(Value), group = Value)) +
@@ -106,8 +108,7 @@ data %>%
   facet_wrap(~ Question, ncol = 1) +
   theme_bw()
 
-## ----
-#ggsave(filename = "General.png", device = "png", width = 9, height = 9, dpi = 300)
+ggsave(filename = "General.png", device = "png", width = 9, height = 9, dpi = 300)
 
 #Research
 
@@ -122,7 +123,7 @@ data %>%
   facet_wrap(~ Question, ncol = 1) +
   theme_bw()
 
-#ggsave(filename = "Research.png", device = "png", width = 9, height = 9, dpi = 300)
+ggsave(filename = "Research.png", device = "png", width = 9, height = 9, dpi = 300)
 
 #Teaching
 data %>% 
@@ -136,7 +137,7 @@ data %>%
   facet_wrap(~ Question, ncol = 1) +
   theme_bw()
 
-#ggsave(filename = "Teaching.png", device = "png", width = 9, height = 9, dpi = 300)
+ggsave(filename = "Teaching.png", device = "png", width = 9, height = 9, dpi = 300)
 
 #Supervision
 data %>% 
@@ -150,4 +151,4 @@ data %>%
   facet_wrap(~ Question, ncol = 1) +
   theme_bw()
 
-#ggsave(filename = "Supervision.png", device = "png", width = 9, height = 9, dpi = 300)
+ggsave(filename = "Supervision.png", device = "png", width = 9, height = 9, dpi = 300)

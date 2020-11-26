@@ -2,7 +2,10 @@
 title: Open and reproducible science
 
 author: |
-  | Strømme, C. ^[Corresponding author: christian.stromme@uib.no] $^1$, ...
+  | Cotner S, Halbritter A., Law E., Nater C., 
+  | Strømme C. ^[Corresponding author: christian.stromme@uib.no] $^1$,
+  | Telford R.,
+  | Vigdis V.
 address: |
   | $^1$University of Bergen
 abstract: |
