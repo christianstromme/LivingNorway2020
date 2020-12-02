@@ -2,12 +2,14 @@
 title: Open and reproducible science
 
 author: |
-  | Cotner S, Halbritter A., Law E., Nater C., 
-  | Strømme C. ^[Corresponding author: christian.stromme@uib.no] $^1$,
-  | Telford R.,
-  | Vigdis V.
+  | Cotner S, Egelkraut DD $^1$, Halbritter A $^1$, Law E, Lane AK, Nater CR, 
+  | Nilsen EB, 
+  | Strømme CB ^[Corresponding author: christian.stromme@uib.no] $^1$,
+  | Telford R $^1$,
+  | Vigdis V $^1$
 address: |
   | $^1$University of Bergen
+  add your affiliation here
 abstract: |
   to be added
 date: "`r format(Sys.Date(), '%d %B %Y')`"

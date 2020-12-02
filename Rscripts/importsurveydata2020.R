@@ -50,10 +50,7 @@ data <- data_raw %>%
   
   #reorder questions
   mutate(Question = factor( Question, levels = c("Shared_data","Shared_code", "Shared_methods","Used_open_data","Used_codes","Published_open","Edu_tools", "Read_papers","Open_review","Outreach","Research","Teaching","Supervision","None","Data_sharing","Code_sharing","Method_sharing","Publish_open","Comm_science","Reproducib","Transparency"))) %>% 
-  
-  
-
-select(Category, Question, Value, s_2:stato_5)
+  select(Category, Question, Value, s_2:s_44)
 
 
 scale1 <- tibble(numeric_scale = c(1, 2, 3, 4, 5, 6),
@@ -97,9 +94,10 @@ mutate(Question = case_when(Question == "s_36_1" ~ "University",
 
 
 ### Figures
-data %>% 
-  filter(Category == "OS_activity") %>% 
-  ggplot(aes(x = Value, fill = factor(Value), group = Value)) +
+  ## ----Fig1
+  data %>% 
+    filter(Category == "OS_activity") %>% 
+    ggplot(aes(x = Value, fill = factor(Value), group = Value)) +
   geom_bar(show.legend = FALSE) +
   #scale_fill_manual(values = wes_palette("Zissou1")[c(1,4,3,2,5, 6)]) +
   scale_x_continuous(breaks = 1:6, labels = scale1$text_scale) +
@@ -108,7 +106,8 @@ data %>%
   facet_wrap(~ Question, ncol = 1) +
   theme_bw()
 
-ggsave(filename = "General.png", device = "png", width = 9, height = 9, dpi = 300)
+## ----
+#ggsave(filename = "General.png", device = "png", width = 9, height = 9, dpi = 300)
 
 #Research
 
@@ -123,7 +122,7 @@ data %>%
   facet_wrap(~ Question, ncol = 1) +
   theme_bw()
 
-ggsave(filename = "Research.png", device = "png", width = 9, height = 9, dpi = 300)
+#ggsave(filename = "Research.png", device = "png", width = 9, height = 9, dpi = 300)
 
 #Teaching
 data %>% 
@@ -137,7 +136,7 @@ data %>%
   facet_wrap(~ Question, ncol = 1) +
   theme_bw()
 
-ggsave(filename = "Teaching.png", device = "png", width = 9, height = 9, dpi = 300)
+#ggsave(filename = "Teaching.png", device = "png", width = 9, height = 9, dpi = 300)
 
 #Supervision
 data %>% 
@@ -151,4 +150,4 @@ data %>%
   facet_wrap(~ Question, ncol = 1) +
   theme_bw()
 
-ggsave(filename = "Supervision.png", device = "png", width = 9, height = 9, dpi = 300)
+#ggsave(filename = "Supervision.png", device = "png", width = 9, height = 9, dpi = 300)
