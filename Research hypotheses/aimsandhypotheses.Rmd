@@ -27,4 +27,4 @@
 4. Researchers with academic affiliation have engaged more in open science-related practices compared to other researchers, and more so for early-career researchers.
 
 5. Colloqium participants "think" OS practices are more important in their research compared to teaching and supervision.
-6. OS practices are perseived to be more important in data, methods and publishing than educational tools and code.
+6. OS practices are perceived to be more important in data, methods and publishing than educational tools and code.
