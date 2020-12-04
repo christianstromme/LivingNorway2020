@@ -50,7 +50,7 @@ data <- data_raw %>%
   
   #reorder questions
   mutate(Question = factor( Question, levels = c("Shared_data","Shared_code", "Shared_methods","Used_open_data","Used_codes","Published_open","Edu_tools", "Read_papers","Open_review","Outreach","Research","Teaching","Supervision","None","Data_sharing","Code_sharing","Method_sharing","Publish_open","Comm_science","Reproducib","Transparency"))) %>% 
-  select(Category, Question, Value, s_2:s_44)
+  select(Category, Question, Value, NO:s_44)
 
 
 scale1 <- tibble(numeric_scale = c(1, 2, 3, 4, 5, 6),
