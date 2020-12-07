@@ -21,10 +21,23 @@
 
 ## Hypotheses
 
+We could possibly group these under some subheadings, e.g. 
+
+1. Experience should help - in terms of both recognising the need for and the uptake of OS practices in, and as a subject of, teaching
+2. Workshops such as ours can give people experience - both in terms of concepts and practical
+3. Current experience/emphases are uneven between OS in e.g. data, code, publication - showing success in some aspects, but less in others. Are these the bits that are easiest/least controversial? 
+
+More detailed questions:
+
 1. Researchers who teach are more likely to include open science-related practices in their teaching if they also frequently engage in those practices as researchers.
 2. Colloquium participants having less experience with open science-related practices are more likely to modify their definitions of open science after the colloquium.
-3. Colloquium participants having less experience with open science-related practices are more likely to change ore adapt their open science related practices in research, teching and/or supervision after the colloquium.
+3. Colloquium participants having less experience with open science-related practices are more likely to change or adapt their open science related practices in research, teching and/or supervision after the colloquium.
 4. Researchers with academic affiliation have engaged more in open science-related practices compared to other researchers, and more so for early-career researchers.
 
 5. Colloqium participants "think" OS practices are more important in their research compared to teaching and supervision.
-6. OS practices are perceived to be more important in data, methods and publishing than educational tools and code.
+6. OS practices are perceived to be more important in data, methods and publishing than educational tools and code. BUT...
+7. Most people have used open data and code, but have not contributed to open data and code. 
+
+Gender patterns - perhaps can be more 'exploratory' in nature?
+
+
