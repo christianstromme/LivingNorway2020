@@ -1,9 +1,9 @@
 ---
-title: Open and reproducible science
+title: Harry Potter and open and reproducible science
 
 author: |
   | Cotner S, Egelkraut DD $^1$, Halbritter A $^1$, Law E, Lane AK, Nater CR, 
-  | Nilsen EB, 
+  | Nilsen EB, Grace
   | Strømme CB ^[Corresponding author: christian.stromme@uib.no] $^1$,
   | Telford R $^1$,
   | Vigdis V $^1$
