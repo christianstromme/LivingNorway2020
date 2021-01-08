@@ -19,8 +19,8 @@ part<- c(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 3, 3, 3,
 #add variable type column
 
 nodes<- data.frame(question_number, part, questions, levels) %>%
-  mutate(Type = case_when( question_number %in% c("q1", "q3", "q4", "q5", "q7", "q8", "q9", "q22", "q23", "q24", "q25") ~ "Qualitative",
-  question_number %in% c("q2", "q6", "q10", "q11", "q12", "q13", "q14", "q15", "q16", "q17", "q18", "q19", "q20", "q21", "q26", "q27") ~ "Numerical"))
+  mutate(Type = case_when( question_number %in% c("q1", "q3", "q4", "q5", "q22", "q23", "q24", "q25") ~ "Qualitative",
+  question_number %in% c("q2", "q6", "q7", "q8", "q9", "q10", "q11", "q12", "q13", "q14", "q15", "q16", "q17", "q18", "q19", "q20", "q21", "q26", "q27") ~ "Numerical"))
 
 
 from<-sprintf("q%s", c(10, 10, 12, 2, 2, 2, 6, 6, 6, 16, 16, 16, 1, 2, 2, 2, 19, 20, 21, 23, 26, 27, 2, 7, 10, 12, 2, 7, 10, 12, 21, 21, 2, 10, 17, 2, 10, 17, 3, 4, 7, 8, 9, 3, 4, 7, 8, 9))
@@ -51,8 +51,8 @@ E(overview)$edge.color <- "gray80"
 
 graph_attr(overview, "layout") <- layout_with_lgl
 
-plot(overview, edge.curved = .1, edge.arrow.size = 0.5, edge.arrow.width = 0.5,  edge.width = 1, vertex.label=V(overview)$questions, vertex.label.dist = 1.5, vertex.size = 5, vertex.label.cex = 1,  asp = 1.1)
-legend(x=-1.5, y=-1.1, c("Qualitative","Numerical"), pch=21,
+plot(overview, edge.curved = .1, edge.arrow.size = 0.5, edge.arrow.width = 0.5,  edge.width = 1, vertex.label=V(overview)$questions, vertex.label.dist = 1.5, vertex.size = 5, vertex.label.cex = 0.8,  asp = 0.6)
+legend(x=-1, y=-1, c("Qualitative","Numerical"), pch=21,
        col="#777777", pt.bg= c("darkorchid1", "cyan"), pt.cex=2, cex=.8, bty="n", ncol=1)
 
 
