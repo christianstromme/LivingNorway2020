@@ -50,7 +50,38 @@ data <- data_raw %>%
   
   #reorder questions
   mutate(Question = factor( Question, levels = c("Shared_data","Shared_code", "Shared_methods","Used_open_data","Used_codes","Published_open","Edu_tools", "Read_papers","Open_review","Outreach","Research","Teaching","Supervision","None","Data_sharing","Code_sharing","Method_sharing","Publish_open","Comm_science","Reproducib","Transparency"))) %>% 
-  select(Category, Question, Value, NO:s_44)
+  select(Category, Question, Value, NO:s_44) %>%
+  
+  # rename co-variables 
+  mutate(Question = case_when(Question == "s_36_1" ~ "University",
+                              Question == "s_36_2" ~ "Institute",
+                              Question == "s_36_3" ~ "Gov_agency",
+                              Question == "s_36_4" ~ "Private_comp",
+                              Question == "s_36_5" ~ "Other",
+                              Question == "s_37_1" ~ "Norway",
+                              Question == "s_37_2" ~ "EU",
+                              Question == "s_37_3" ~ "Non_EU",
+                              Question == "s_38" ~ "Position",
+                              Question == "s_39" ~ "Degree",
+                              Question == "s_40" ~ "Year",
+                              Question == "s_41_1" ~ "Undergrad_classes",
+                              Question == "s_41_2" ~ "Grad_classes",
+                              Question == "s_41_3" ~ "Superv_undergrad",
+                              Question == "s_41_4" ~ "Superv_grad",
+                              Question == "s_41_5" ~ "Superv_postdoc",
+                              Question == "s_41_6" ~ "TPublic_outreach",
+                              Question == "s_41_7" ~ "TOther",
+                              Question == "s_49_1" ~ "Prim_research",
+                              Question == "s_49_2" ~ "Synthesis",
+                              Question == "s_49_3" ~ "Assessment",
+                              Question == "s_49_4" ~ "Policy_interf",
+                              Question == "s_49_5" ~ "APublic_outreach",
+                              Question == "s_49_6" ~ "AOther",
+                              Question == "s_42" ~ "Gender",
+                              Question == "s_43_1" ~ "Day1",
+                              Question == "s_43_2" ~ "An_worskshop",
+                              Question == "s_43_3" ~ "Ed_workshop",
+                              Question == "s_44" ~ "Attending"))
 
 
 scale1 <- tibble(numeric_scale = c(1, 2, 3, 4, 5, 6),
@@ -61,36 +92,7 @@ scale2 <- tibble(numeric_scale = c(1, 2, 3, 4, 5),
 
 
 
-# rename co-variables 
-mutate(Question = case_when(Question == "s_36_1" ~ "University",
-                            "s_36_2" ~ "Institute",
-                            "s_36_3" ~ "Gov_agency",
-                            "s_36_4" ~ "Private_comp",
-                            "s_36_5" ~ "Other",
-                            "s_37_1" ~ "Norway",
-                            "s_37_2" ~ "EU",
-                            "s_37_3" ~ "Non_EU",
-                            "s_38" ~ "Position",
-                            "s_39" ~ "Degree",
-                            "s_40" ~ "Year",
-                            "s_41_1" ~ "Undergrad_classes",
-                            "s_41_2" ~ "Grad_classes",
-                            "s_41_3" ~ "Superv_undergrad",
-                            "s_41_4" ~ "Superv_grad",
-                            "s_41_5" ~ "Superv_postdoc",
-                            "s_41_6" ~ "TPublic_outreach",
-                            "s_41_7" ~ "TOther",
-                            "s_49_1" ~ "Prim_research",
-                            "s_49_2" ~ "Synthesis",
-                            "s_49_3" ~ "Assessment",
-                            "s_49_4" ~ "Policy_interf",
-                            "s_49_5" ~ "APublic_outreach",
-                            "s_49_6" ~ "AOther",
-                            "s_42" ~ "Gender",
-                            "s_43_1" ~ "Day1",
-                            "s_43_2" ~ "An_worskshop",
-                            "s_43_3" ~ "Ed_workshop",
-                            "s_44" ~ "Attending")) %>% 
+
 
 
 ### Figures
