@@ -2,20 +2,29 @@
 
 library("tidyverse")
 
-data_raw1 <- read_csv2(file = "data/1dataset_clean.csv", skip_empty_rows = TRUE)
-data_raw2 <- read_csv2(file = "data/2dataset_clean.csv", skip_empty_rows = TRUE)
-data_raw3 <- read_csv2(file = "data/3dataset_clean.csv", skip_empty_rows = TRUE)
+### I would add a column to each dataset that defines which survey it is.
+data_raw1 <- read_csv2(file = "data/1dataset_clean.csv", skip_empty_rows = TRUE) %>% 
+  mutate(survey = 1) 
+data_raw2 <- read_csv2(file = "data/2dataset_clean.csv", skip_empty_rows = TRUE) %>% 
+  mutate(survey = 2) 
+data_raw3 <- read_csv2(file = "data/3dataset_clean.csv", skip_empty_rows = TRUE) %>% 
+  mutate(survey = 3)
 
 dim(data_raw1)
 dim(data_raw2)
 dim(data_raw3)
 
+### I would use this instead of next lines, then you will not have s_3.x etc. will make code below easier
+data_raw <- data_raw1 %>% 
+  bind_rows(data_raw2, data_raw3)
+
 data_raw12<-full_join(data_raw1, data_raw2, by="NO")
 data_raw_full<-full_join(data_raw12, data_raw3, by="NO")
 
-dim(data_raw_full)
+dim(data_raw)
 
 
+### If the data sets are all the same, then you should only need question 1!!!
 questions1 <- read_csv2(file = "data/1complete_clean.csv", n_max = 1, col_names = FALSE)
 questions2 <- read_csv2(file = "data/2complete_clean.csv", n_max = 1, col_names = FALSE)
 questions3 <- read_csv2(file = "data/3complete_clean.csv", n_max = 1, col_names = FALSE)
