@@ -173,7 +173,7 @@ import_plan <- drake_plan(
                               
                               Question %in% c( "Lectures", "Discuss_1", "Model_workshop", "Edu_workshop", "Discuss_2", "Surveys", "Use_research", "Use_teaching", "Use_supervision", "Use_edu") ~ "Workshop_utility",
          
-                              Question %in% c("Undergrad_classes", "Grad_classes", "Superv_undergrad", "Superv_grad", "Superv_postdoc", "TPublic_outreach", "TOther") ~ "Teaching_types"),
+                              Question %in% c("Undergrad_classes", "Grad_classes", "Superv_undergrad", "Superv_grad", "Superv_postdoc", "TPublic_outreach", "TOther") ~ "Teaching_types")),
   
 # BN data -------------------
   
@@ -199,8 +199,8 @@ import_plan <- drake_plan(
       does.S.pg = Superv_grad, 
       does.S.pd = Superv_postdoc, 
       # versions from (part 2) 1:2 - we may need these if people are not all same
-      does.T = Teaches,           
-      does.S = Supervises,  
+      does.T.teaching = Teaches,           
+      does.S.supervision = Supervises,  
       
       # engagement in research, synthesis or policy/public 0:1  (part1)
       does.R.primary = Prim_research,                         
@@ -211,7 +211,7 @@ import_plan <- drake_plan(
       does.R.other = AOther,                                  
       
       # learnt OS in own education   (part 2) most 0:1, except learnt.OS
-      learnt.OS = OS_own_edu,                  # 1:3  what are the three codes here?
+      learnt.principle.OS = OS_own_edu,                  # 1:3  what are the three codes here?
       
       learnt.use.Data = Used_open_data2,
       learnt.use.Code = Used_codes2,
@@ -222,11 +222,11 @@ import_plan <- drake_plan(
       learnt.share.Publish = Published_open2,
       
       learnt.use.EduTool = Edu_tools2,
-      learnt.Review = Open_review2,
-      learnt.Outreach = Outreach2,
+      learnt.do.Review = Open_review2,
+      learnt.do.Outreach = Outreach2,
       
-      learnt.Transparency = Transparency2,
-      learnt.Reproducibility = Reproducib2,
+      learnt.principle.Transparency = Transparency2,
+      learnt.principle.Reproducibility = Reproducib2,
       
       # then we also have relevance?importance? to 0:1   (part1) 
       # suggest we remove this it seems, be reading the associated comments, that people did not really understand it, it was too vague 
@@ -264,19 +264,19 @@ import_plan <- drake_plan(
       imp.T.Transparency = Transparency_T,
       
       # use and sharing (in research?) of OS 0:1  (part1)
-      use.Data = Used_open_data,
-      use.Code = Used_codes,
-      use.Publsh = Read_papers,
+      use.engage.Data = Used_open_data,
+      use.engage.Code = Used_codes,
+      use.engage.Publsh = Read_papers,
       
-      use.EduTool = Edu_tools,
-      use.Review = Open_review,
-      use.Outreach = Outreach,
-      use.Other = Other_act,
+      use.engage.EduTool = Edu_tools,
+      does.engage.Review = Open_review,
+      does.engage.Outreach = Outreach,
+      does.engage.Other = Other_act,
       
-      share.Data = Shared_data,
-      share.Code = Shared_code,
-      share.Publish = Published_open,
-      share.Methods = Shared_methods,
+      share.engage.Data = Shared_data,
+      share.engage.Code = Shared_code,
+      share.engage.Publish = Published_open,
+      share.engage.Methods = Shared_methods,
       
       # prior use in teaching (1:2)(part 2)
       usein.T.prior = OS_in_teaching,  

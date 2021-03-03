@@ -37,8 +37,8 @@ manuscript_plan <- drake_plan(
 #### combine plans ####
 living_norway_plan <- bind_plans(import_plan,
                          # analysis_plan,
-                         plot_plan,
-                         manuscript_plan)
+                         plot_plan)
+                         #manuscript_plan)
 #quick plot
 plot(living_norway_plan)
 
