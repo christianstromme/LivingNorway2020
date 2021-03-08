@@ -280,7 +280,10 @@ import_plan <- drake_plan(
       
       # prior use in teaching (1:2)(part 2)
       usein.T.prior = OS_in_teaching,  
-      usein.S.prior = OS_in_supervision
+      usein.S.prior = OS_in_supervision,
+      useinTprior = OS_in_teaching,
+      useinSprior = OS_in_supervision
+      # made non-splittable cols for analysis 1.4
       
       ## As stated future use is long answer, none of these workshop participation/value questions are predictors for the current BBN.
       ## We could include them as responses if we want to go there, or code the future intentions and then include these as predictors.

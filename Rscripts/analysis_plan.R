@@ -44,17 +44,72 @@ summary(eng.clm.f),
 
 #1.2 OS practices are perceived to be more important in data-, code-, methods-sharing and publishing than educational tools, depending on activities engaged in.
 
-ana.data.1.2 <- ana.data %>% 
-  filter(Action == "imp",!is.na(fValues)) ,
+##1.2 OS practices are perceived to be more important in data-, code-, methods-sharing and publishing than educational tools, depending on activities engaged in.
 
-imp.clm.g <- clm(fValues ~ Domain + Aspect + Gender, data = ana.data.1.2),
+#data sharing
 
-dredge(imp.clm.g),
+ana.data.1.2a <- bndata %>% 
+  select(NO, Gender, imp.R.Data, imp.T.Data, share.engage.Data) %>% 
+  pivot_longer( cols = c(imp.R.Data, imp.T.Data), names_to = c("Action", "Domain", "Aspect"), values_to = "Values", names_sep = "[.]") %>% 
+  mutate(Values = as.factor(Values)) %>% 
+  filter(Gender!= "Other", !is.na(Values)),
 
-imp.clm.f <- imp.clm.g,
+imp.clm.a.g <- clm(Values ~ Domain + share.engage.Data + Gender, data = ana.data.1.2a)  ,
+
+dredge(imp.clm.a.g),
+
+imp.clm.a.f <- imp.clm.a.g,
+
+summary(imp.clm.a.f),
+
+#code sharing
+
+ana.data.1.2b <- bndata %>% 
+  select(NO, Gender, imp.R.Code, imp.T.Code, share.engage.Code) %>% 
+  pivot_longer( cols = c(imp.R.Code, imp.T.Code), names_to = c("Action", "Domain", "Aspect"), values_to = "Values", names_sep = "[.]") %>% 
+  mutate(Values = as.factor(Values)) %>% 
+  filter(Gender!= "Other", !is.na(Values)),
+
+imp.clm.b.g <- clm(Values ~ Domain + share.engage.Code + Gender, data = ana.data.1.2b) , 
+
+dredge(imp.clm.b.g),
+
+imp.clm.b.f <- clm(Values ~ Domain + share.engage.Code, data = ana.data.1.2b)  ,
+
+summary(imp.clm.b.f),
 
 
-summary(imp.clm.f),
+#methods sharing
+
+ana.data.1.2c <- bndata %>% 
+  select(NO, Gender, imp.R.Method, imp.T.Method, share.engage.Methods) %>% 
+  pivot_longer( cols = c(imp.R.Method, imp.T.Method), names_to = c("Action", "Domain", "Aspect"), values_to = "Values", names_sep = "[.]") %>% 
+  mutate(Values = as.factor(Values)) %>% 
+  filter(Gender!= "Other", !is.na(Values)),
+
+imp.clm.c.g <- clm(Values ~ Domain + share.engage.Methods + Gender, data = ana.data.1.2c)  ,
+
+dredge(imp.clm.c.g),
+
+imp.clm.c.f <- clm(Values ~ Domain + Gender, data = ana.data.1.2c)  ,
+
+summary(imp.clm.c.f),
+
+#open publishing
+
+ana.data.1.2d <- bndata %>% 
+  select(NO, Gender, imp.R.Publish, imp.T.Publish, share.engage.Publish) %>% 
+  pivot_longer( cols = c(imp.R.Publish, imp.T.Publish), names_to = c("Action", "Domain", "Aspect"), values_to = "Values", names_sep = "[.]") %>% 
+  mutate(Values = as.factor(Values)) %>% 
+  filter(Gender!= "Other", !is.na(Values)),
+
+imp.clm.d.g <- clm(Values ~ Domain + share.engage.Publish + Gender, data = ana.data.1.2d)  ,
+
+dredge(imp.clm.d.g),
+
+imp.clm.d.f <- clm(Values ~ Domain, data = ana.data.1.2d)  ,
+
+summary(imp.clm.d.f),
 
 
 #1.3 BUT Most people have used open data and code, but have not contributed to open data and code.
@@ -75,13 +130,41 @@ summary(use.clm.f)
 
 #1.4 People more likely to use OS in supervision and teaching when they use it more in their ownresearch.
 
-ana.data.1.4 <- ana.data %>%
-  filter(does.T.teaching == "1" | does.S.supervision == "1", Action %in% c("use", "share") ) %>% 
-  group_by(NO, Domain) %>% 
-  summarise(sum.aspects = sum(Aspect, na.rm = TRUE))
+#make average values for OS activity scores
+
+ana.data.1.4 <- bndata %>%
+  select( NO, Gender, useinTprior, useinSprior, use.engage.Data:does.engage.Outreach) %>% 
+  pivot_longer( cols = c(use.engage.Data:does.engage.Outreach), names_to = c("Action", "Domain", "Aspect"), values_to = "Values", names_sep = "[.]") %>% 
+  mutate(Values = as.numeric(Values)) %>% 
+  filter(Gender!= "Other",!is.na(useinTprior), !is.na(useinSprior) ) %>% 
+  group_by(NO, Gender, useinTprior, useinSprior) %>% 
+  summarize(Values = mean(Values, na.rm = TRUE)),
+
+ana.data.1.4$useinTprior <- as.numeric(ana.data.1.4$useinTprior) ,
+ana.data.1.4$useinTprior[ana.data.1.4$useinTprior == "2"] <- "0",
+ana.data.1.4$useinTprior <- as.numeric(ana.data.1.4$useinTprior) ,
+
+ana.data.1.4$useinSprior <- as.numeric(ana.data.1.4$useinSprior) ,
+ana.data.1.4$useinSprior[ana.data.1.4$useinSprior == "2"] <- "0",
+ana.data.1.4$useinSprior <- as.numeric(ana.data.1.4$useinSprior) ,
 
 
-#teach.lme.g <- lme( ~  Aspect*Action + Gender, data = ana.data.1.3, family ="binomial", na.action = na.omit)
+teach.glm.g <- glm(useinTprior ~  Values + Gender, family = "binomial", data = ana.data.1.4),
+
+dredge(teach.glm.g),
+
+#no significant terms
+
+supervise.glm.g <- glm(useinSprior ~  Values + Gender, family = "binomial", data = ana.data.1.4),
+
+dredge(supervise.glm.g),
+
+supervise.glm.f <- glm(useinSprior ~ Gender, family = "binomial", data = ana.data.1.4),
+
+summary(supervise.glm.f),
+
+
+#no significant terms
 
 
 
@@ -94,6 +177,17 @@ ana.data.1.4 <- ana.data %>%
 #3.1 Researchers who teach are more likely to include open science-related practices in their teaching if they also frequently engage in those practices as researchers.
 
 #3.2 Colloquium participants having more experience with being taught open science-related practices are more likely to engage in those practices as researchers, and teachers.
+
+ana.data.3.2 <- ana.data %>% 
+  filter(Action == "imp",!is.na(fValues)),
+
+imp.clm.g <- clm(fValues ~ Domain + Aspect + Gender, data = ana.data.3.2),
+
+dredge(imp.clm.g),
+
+imp.clm.f <- imp.clm.g,
+
+summary(imp.clm.f)
 
 #3.3 Colloquium participants "think" OS practices are more important in their research compared to teaching and supervision.
 
