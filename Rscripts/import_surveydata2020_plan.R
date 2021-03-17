@@ -266,7 +266,7 @@ import_plan <- drake_plan(
       # use and sharing (in research?) of OS 0:1  (part1)
       use.engage.Data = Used_open_data,
       use.engage.Code = Used_codes,
-      use.engage.Publsh = Read_papers,
+      use.engage.Publish = Read_papers,
       
       use.engage.EduTool = Edu_tools,
       does.engage.Review = Open_review,

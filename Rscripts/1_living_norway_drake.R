@@ -12,7 +12,7 @@ pkgconfig::set_config("drake::strings_in_dots" = "literals")
 #source subplans
 source("Rscripts/import_surveydata2020_plan.R")
 source("Rscripts/plot_plan.R")
-
+source("Rscripts/analysis_plan.R")
 
 
 #drake plan
@@ -36,7 +36,7 @@ manuscript_plan <- drake_plan(
 
 #### combine plans ####
 living_norway_plan <- bind_plans(import_plan,
-                         # analysis_plan,
+                        #analysis_plan, #when activating: "Error: duplicated target names"
                          plot_plan)
                          #manuscript_plan)
 #quick plot
