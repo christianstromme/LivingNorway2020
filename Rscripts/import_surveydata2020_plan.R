@@ -1,6 +1,6 @@
 #data import drake plan
 
-import_plan <- drake_plan(
+import_plan = drake_plan(
   #Load the three partial surveys
   data_raw1 = read_csv2( file = "data/1dataset_clean.csv", skip_empty_rows = TRUE ),
   data_raw2 = read_csv2( file = "data/2dataset_clean.csv", skip_empty_rows = TRUE ),
