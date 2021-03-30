@@ -9,9 +9,8 @@ library(MuMIn)
 analysis_plan = drake_plan(
   # ...
   
-  bndata$does.T.teaching[bndata$does.T.teaching == "2"] = "0"  ,
-  
   ana.data = bndata %>%
+    mutate(does.T.teaching = if_else(does.T.teaching == 2, 0, does.T.teaching)) %>%
     select(NO:usein.S.prior, Degree, does.T.teaching, does.S.supervision  ) %>%
     pivot_longer( cols = c(does.T.ug, does.T.pg, does.T.outreach, does.T.other, does.S.ug, does.S.pg, does.S.pd, does.R.synthesis,  does.R.Assessment, does.R.policy, does.R.outreach, does.R.other, learnt.use.Data, learnt.use.Code, learnt.use.Publish, learnt.share.Data, learnt.share.Code, learnt.share.Publish, learnt.use.EduTool, imp.R.Data, imp.R.Code, imp.R.Method, imp.R.Publish, imp.S.Data, imp.S.Code, imp.S.Method, imp.S.Publish, imp.T.Data, imp.T.Code, imp.T.Method, imp.T.Publish, imp.R.Communication, imp.R.Communication, imp.R.Reproducibility, imp.R.Transparency, imp.S.Communication, imp.S.Reproducibility, imp.S.Transparency, imp.T.Communication, imp.T.Reproducibility, imp.T.Transparency, use.engage.Data, use.engage.Code, use.engage.Publish, use.engage.EduTool, does.engage.Review, does.engage.Outreach, share.engage.Data, share.engage.Code, share.engage.Publish, share.engage.Methods) , names_to = c("Action", "Domain", "Aspect"), values_to = "Values", names_sep = "[.]") %>% 
     mutate(NO = as.factor(NO), University = as.factor(University), Values = as.factor(Values)) %>% 
@@ -74,7 +73,7 @@ analysis_plan = drake_plan(
   ana.data.1.2a = bndata %>% 
     select(NO, Gender, does.T.teaching, does.R.primary, imp.R.Data, imp.T.Data, share.engage.Data) %>% 
     pivot_longer( cols = c(imp.R.Data, imp.T.Data), names_to = c("Action", "Domain", "Aspect"), values_to = "Values", names_sep = "[.]") %>% 
-    mutate(T_R = paste (does.T.teaching, does.R.primary, sep = '_'), NO = as.factor(NO), Values = as.factor(Values)) %>% 
+    mutate(T_R = paste (does.T.teaching, does.R.primary, sep = '_'), NO = as.factor(NO), Values = as.factor(Values)) %>%
     filter(Gender!= "Other", T_R == "1_1", share.engage.Data != 6, Values != 1, !is.na(Values)),
   #filtering out Values = 1 ("Not applicable to my work" does not make sense to include in the scaled responses Y)
   #filtering out share.engage.data = 6 ("I don't know")
@@ -202,16 +201,9 @@ analysis_plan = drake_plan(
     mutate(Values = as.numeric(Values)) %>% 
     filter(does.R.primary == "1", Gender!= "Other", !is.na(useinTprior), !is.na(useinSprior) ) %>% 
     group_by(NO, Gender, useinTprior, useinSprior) %>% 
-    summarize(Values = mean(Values, na.rm = TRUE)),
-  
-  ana.data.1.4$useinTprior = as.numeric(ana.data.1.4$useinTprior) ,
-  ana.data.1.4$useinTprior[ana.data.1.4$useinTprior == "2"] = "0",
-  ana.data.1.4$useinTprior = as.numeric(ana.data.1.4$useinTprior) ,
-  
-  ana.data.1.4$useinSprior = as.numeric(ana.data.1.4$useinSprior) ,
-  ana.data.1.4$useinSprior[ana.data.1.4$useinSprior == "2"] = "0",
-  ana.data.1.4$useinSprior = as.numeric(ana.data.1.4$useinSprior) ,
-  
+    summarize(Values = mean(Values, na.rm = TRUE)) %>% 
+    mutate(useinTprior = if_else(useinTprior == 2, 0, useinTprior),
+           useinSprior = if_else(useinSprior == 2, 0, useinSprior)),
   
   teach.glm.g = glm(useinTprior ~  Values + Gender, family = "binomial", data = ana.data.1.4),
   
