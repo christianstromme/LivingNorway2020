@@ -693,23 +693,28 @@ os_activity_stackplot = plotdata2 %>%
 # Mosaic plots
 
 ##1.1
-plotdata.1.1 = ana.data.1.1
+plotdata.1.1 <- ana.data.1.1 %>% 
+  mutate(University = if_else(University == "0", "University", "Other"),
+         University = factor(University, levels = c("University", "Other")))
 
-levels(plotdata.1.1$University) = c("University","Other")
+mosaic_activity = ggplot(data = plotdata.1.1) +
+  geom_mosaic(aes(x = product(University, Values, Gender), fill = Values), offset = 0.02) + 
+  scale_fill_viridis_d() +
+  scale_y_productlist(labels=c("Never", "Rarely", "Several times a year", "Several times a month", "Several times a week")) +
+  labs(x = "", y = "") +
+  theme_minimal() +
+  theme(legend.position = "none",
+        panel.grid.major = element_blank())
 
-
-mosaic_activity = ggplot(data=plotdata1.1)+
-  geom_mosaic(aes(x=product(University, Values, Gender), fill = Values), offset=0.02) + 
-  scale_colour_viridis_d()+
-  scale_fill_discrete(breaks = c(1:6), 
-                      labels = scale1$text_scale)+
-  theme(axis.text.y = element_blank(),
-        axis.ticks.y = element_blank(),
-        axis.title.y = element_blank(),
-        axis.text.x = element_blank(),
-        axis.ticks.x = element_blank(),
-        axis.title.x = element_blank(),
-        panel.background = element_blank())
+  # scale_fill_discrete(breaks = c(1:6), 
+  #                     labels = scale1$text_scale) +
+  # theme(axis.text.y = element_blank(),
+  #       axis.ticks.y = element_blank(),
+  #       axis.title.y = element_blank(),
+  #       axis.text.x = element_blank(),
+  #       axis.ticks.x = element_blank(),
+  #       axis.title.x = element_blank(),
+  #       panel.background = element_blank())
 mosaic_activity 
 mosaic_activity1.1 = add_sub(mosaic_activity, "University:Female   Other:Female      University:Male            Other:Male", x = 0, hjust = 0.01, size = 11)
 ggdraw(mosaic_activity1.1)
