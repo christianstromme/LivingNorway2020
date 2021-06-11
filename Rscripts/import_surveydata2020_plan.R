@@ -160,7 +160,10 @@ import_plan = drake_plan(
                               
                               Question %in% c("Data_sharing_S", "Code_sharing_S", "Method_sharing_S", "Publish_open_S", "Comm_science_S", "Reproducib_S", "Transparency_S") ~ "Importance_supervision",
                               
-                              Question %in% c("University", "Institute", "Gov_agency", "Private_comp", "Other", "Norway", "EU", "Non_EU", "Position", "Degree", "Prim_research", "Synthesis", "Assessment", "Policy_interf", "APublic_outreach", "AOther") ~"Background",
+                              Question %in% c("University", "Institute", "Gov_agency", "Private_comp", "Other") ~"Background",
+                              
+                              Question %in% c("Norway", "EU", "Non_EU") ~"Country",
+                              
                               
                               Question %in% c( "Day1", "An_workshop", "Ed_workshop", "Attending") ~ "Participation",
                               
