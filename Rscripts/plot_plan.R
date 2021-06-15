@@ -1048,6 +1048,23 @@ plot_plan <- drake_plan(
   pushViewport(viewport(layout = grid.layout(1,2))),
   
   print(affiliation_plot, vp = viewport(layout.pos.row = 1, layout.pos.col = 1)),
-  print(country_plot, vp = viewport(layout.pos.row = 1, layout.pos.col = 2))
+  print(country_plot, vp = viewport(layout.pos.row = 1, layout.pos.col = 2)),
+
+plotdata %>% 
+  filter(Category == "OS_activity") %>% 
+  mutate(Question = fct_recode(Question, "Used open access educational tools" = "Edu_tools", "Engaged in open peer review" = "Open_review" , "Engaged in outreach" = "Outreach", "Published papers open access" = "Published_open", "Read open access publications" = "Read_papers", "Shared code openly" = "Shared_code", "Shared data openly" = "Shared_data", "Shared methods openly" = "Shared_methods", "Used open code" =  "Used_codes", "Used open data" = "Used_open_data")) %>% 
+  ggplot(aes(x = Value, fill = factor(Value), group = Value)) +
+  geom_bar(show.legend = FALSE) +
+  scale_fill_manual(values = viridis_pal()(10)) +
+  scale_x_discrete(breaks = 1:6, labels = scale1$text_scale) +
+  scale_y_continuous(breaks = c(0, 20)) +
+  labs(x = "", y = "Number of respondents") +
+  facet_wrap(~ factor(Question, levels = c("Shared data openly", "Shared code openly", "Shared methods openly", "Used open data", "Used open code", "Published papers open access", "Used open access educational tools", "Read open access publications", "Engaged in open peer review", "Engaged in outreach")), ncol = 1) +
+  theme_bw()+
+  theme(panel.border = element_blank(),
+        panel.grid.major = element_blank(),
+        panel.grid.minor = element_blank(),
+        #      panel.spacing = unit(0.1, "lines"),
+        strip.background = element_blank())
   
 )
