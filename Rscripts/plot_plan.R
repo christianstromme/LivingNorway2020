@@ -676,29 +676,30 @@ plot_plan <- drake_plan(
   # Mosaic plots
   
   ##1.1
-  plotdata.1.1 <- ana.data.1.1 %>% 
-    mutate(University = if_else(University == "1", "University", "Other"),
-           University = factor(University, levels = c("University", "Other"))),
-  
-  mosaic_activity = ggplot(data = plotdata.1.1) +
-    geom_mosaic(aes(x = product(Gender, Values, University), fill = Values), offset = 0.02) + 
-    scale_fill_viridis_d() +
-    scale_y_productlist(labels=c("Never", "Rarely", "Several times a year", "Several times a month", "Several times a week")) +
-    labs(x = "", y = "") +
-    theme_minimal() +
-    theme(legend.position = "none",
-          panel.grid.major = element_blank()),
-  
-  # scale_fill_discrete(breaks = c(1:6), 
-  #                     labels = scale1$text_scale) +
-  # theme(axis.text.y = element_blank(),
-  #       axis.ticks.y = element_blank(),
-  #       axis.title.y = element_blank(),
-  #       axis.text.x = element_blank(),
-  #       axis.ticks.x = element_blank(),
-  #       axis.title.x = element_blank(),
-  #       panel.background = element_blank())
-  mosaic_activity ,
+plotdata.1.1 <- ana.data.1.1 %>% 
+  mutate(University = if_else(University == "1", "University", "Other"),
+         University = factor(University, levels = c("University", "Other"))) %>% 
+  mutate(Values = fct_relevel(Values, "5", "4", "3", "2", "1")),
+
+mosaic_activity = ggplot(data = plotdata.1.1) +
+  geom_mosaic(aes(x = product(Gender, Values, University), fill = Values), offset = 0.02) + 
+  scale_fill_viridis_d(direction = 1) +
+  scale_y_productlist(labels=c("Several times a week", "Several times a month", "Several times a year", "Rarely", "Never")) +
+  labs(x = "", y = "") +
+  theme_minimal() +
+  theme(legend.position = "none",
+        panel.grid.major = element_blank()),
+
+# scale_fill_discrete(breaks = c(1:6), 
+#                     labels = scale1$text_scale) +
+# theme(axis.text.y = element_blank(),
+#       axis.ticks.y = element_blank(),
+#       axis.title.y = element_blank(),
+#       axis.text.x = element_blank(),
+#       axis.ticks.x = element_blank(),
+#       axis.title.x = element_blank(),
+#       panel.background = element_blank())
+mosaic_activity ,
   
   
   #axis label frequency, text scale y axis, increase offset
@@ -734,28 +735,29 @@ plot_plan <- drake_plan(
   mosaic_action ,
   
   ##3.3
-  plotdata3.3 = ana.data.3.3 %>% 
-    mutate(Domain = fct_recode(Domain,
-                               "Research" = "R",
-                               "Supervision" = "S",
-                               "Teaching" = "T")),
-  
-  aspect.labs = c( "Data \n sharing", "Code \n sharing",  "Method/protocol \n sharing", "Publishing \n papers \n open access", "Science \n communication \n through open \n channels",  "Research \n reproducibility", "Research \n transparency"),
-  names(aspect.labs) = c("Data", "Code", "Method", "Publish", "Communication", "Reproducibility", "Transparency"),
-  
-  mosaic_all = ggplot(data=plotdata3.3)+
-    geom_mosaic(aes( x=product(Domain), fill = Values), offset=0.02) + 
-    scale_fill_viridis_d() +
-    scale_y_productlist(labels=c("Not applicable to my work", "Minimally important", "Somewhat important", "Very important", "Extremely important")) +
-    labs(x = "", y = "") +
-    facet_grid(~Aspect, labeller = labeller(Aspect = aspect.labs)) +
-    theme_minimal() +
-    theme(axis.text.x = element_text(angle = 90, hjust = 1, vjust = .5)) + 
-    theme(legend.position = "none",
-          panel.grid.major = element_blank())+
-    labs(title=""),
-  
-  mosaic_all,
+plotdata3.3 = ana.data.3.3 %>% 
+  mutate(Domain = fct_recode(Domain,
+                             "Research" = "R",
+                             "Supervision" = "S",
+                             "Teaching" = "T")) %>% 
+  mutate(Values = fct_relevel(Values, "5", "4", "3", "2")) %>% 
+  mutate(Domain = fct_relevel(Domain, "Research", "Teaching", "Supervision")) %>% 
+  mutate(Aspect = fct_recode(Aspect, "Data sharing" = "Data", "Code sharing" = "Code" , "Methods/protocol sharing" = "Method", "Open access publishing" = "Publish", "Science communication \nthrough open channels" = "Communication", "Research reproducibility" = "Reproducibility", "Research transparency" = "Transparency")) %>% 
+  mutate(Aspect = fct_relevel(Aspect, "Data sharing", "Code sharing", "Methods/protocol sharing", "Open access publishing", "Science communication \nthrough open channels", "Research reproducibility", "Research transparency")),
+
+mosaic_all = ggplot(data=plotdata3.3)+
+  geom_mosaic(aes( x=product(Aspect), fill = Values), offset=0.02) + 
+  scale_fill_viridis_d() +
+  scale_y_productlist(labels=c("Extremely important", "Very important", "Somewhat important", "Minimally important")) +
+  labs(x = "", y = "") +
+  facet_grid(~Domain) +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 90, hjust = 1, vjust = .5)) + 
+  theme(legend.position = "none",
+        panel.grid.major = element_blank())+
+  labs(title=""),
+
+mosaic_all,
   
   #1
   plotdata3.3.1 = plotdata3.3 %>% 
@@ -1050,21 +1052,30 @@ plot_plan <- drake_plan(
   print(affiliation_plot, vp = viewport(layout.pos.row = 1, layout.pos.col = 1)),
   print(country_plot, vp = viewport(layout.pos.row = 1, layout.pos.col = 2)),
 
-plotdata %>% 
-  filter(Category == "OS_activity") %>% 
-  mutate(Question = fct_recode(Question, "Used open access educational tools" = "Edu_tools", "Engaged in open peer review" = "Open_review" , "Engaged in outreach" = "Outreach", "Published papers open access" = "Published_open", "Read open access publications" = "Read_papers", "Shared code openly" = "Shared_code", "Shared data openly" = "Shared_data", "Shared methods openly" = "Shared_methods", "Used open code" =  "Used_codes", "Used open data" = "Used_open_data")) %>% 
-  ggplot(aes(x = Value, fill = factor(Value), group = Value)) +
-  geom_bar(show.legend = FALSE) +
-  scale_fill_manual(values = viridis_pal()(10)) +
-  scale_x_discrete(breaks = 1:6, labels = scale1$text_scale) +
-  scale_y_continuous(breaks = c(0, 20)) +
-  labs(x = "", y = "Number of respondents") +
-  facet_wrap(~ factor(Question, levels = c("Shared data openly", "Shared code openly", "Shared methods openly", "Used open data", "Used open code", "Published papers open access", "Used open access educational tools", "Read open access publications", "Engaged in open peer review", "Engaged in outreach")), ncol = 1) +
+os_activity_stackplot = ana.data %>%
+  filter(Domain == "engage") %>%
+  mutate(AspAct = paste (Aspect, Action, sep = '_')) %>% 
+  mutate(AspAct = fct_relevel(AspAct, "Data_share", "Code_share", "Methods_share", "Data_use", "Code_use", "EduTool_use", "Publish_share",  "Publish_use", "Review_does", "Outreach_does")) %>% 
+  mutate(AspAct = fct_recode(AspAct, "Shared data openly" = "Data_share", "Shared code openly" = "Code_share", "Shared methods/protocols openly" = "Methods_share", "Used open data" = "Data_use", "Used open code" = "Code_use",  "Published open access" = "Publish_share", "Used open educational tools" = "EduTool_use", "Read open access publications" = "Publish_use", "Engaged in open peer review" = "Review_does", "Engaged in outreach/\nscience communication" = "Outreach_does")) %>% 
+  mutate(Values = fct_relevel(Values, "6", "1", "2", "3", "4", "5")) %>% 
+  mutate(Values = fct_recode(Values, "Never" = "1", "Rarely" = "2", "Several times a year" = "3", "Several times a month" = "4", "Several times a week" = "5", "I don't know"  = "6")) %>% 
+  count(AspAct, Values) %>% 
+  group_by(AspAct) %>% 
+  mutate(Freq = prop.table(n)) %>% 
+  ggplot(aes(y = Freq, x = AspAct, fill = Values)) +
+  geom_bar(stat = "identity") +
+  scale_fill_viridis_d(direction = -1)+
+  ylab("Proportion of respondents") +
+  xlab("OS aspects")+
   theme_bw()+
-  theme(panel.border = element_blank(),
+  theme(axis.text.x = element_text(angle = 90, hjust = 1, vjust = .5),
+        panel.border = element_blank(),
         panel.grid.major = element_blank(),
         panel.grid.minor = element_blank(),
+        legend.title = element_blank(), 
         #      panel.spacing = unit(0.1, "lines"),
         strip.background = element_blank())
+os_activity_stackplot
   
 )
+

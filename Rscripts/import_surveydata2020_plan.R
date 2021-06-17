@@ -162,8 +162,9 @@ import_plan = drake_plan(
                               
                               Question %in% c("University", "Institute", "Gov_agency", "Private_comp", "Other") ~"Background",
                               
-                              Question %in% c("Norway", "EU", "Non_EU") ~"Country",
+                              Question %in% c("Position", "Degree", "Year") ~ "Carreer",
                               
+                              Question %in% c("Norway", "EU", "Non_EU") ~ "Country",
                               
                               Question %in% c( "Day1", "An_workshop", "Ed_workshop", "Attending") ~ "Participation",
                               
@@ -310,5 +311,5 @@ import_plan = drake_plan(
       # valuein.S = Use_supervision,
       # valuein.Education = Use_edu            
     )
-  
 )
+
