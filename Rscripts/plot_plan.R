@@ -1074,7 +1074,8 @@ os_activity_stackplot = ana.data %>%
         panel.grid.minor = element_blank(),
         legend.title = element_blank(), 
         #      panel.spacing = unit(0.1, "lines"),
-        strip.background = element_blank())
+        strip.background = element_blank()),
+
 os_activity_stackplot
   
 )
