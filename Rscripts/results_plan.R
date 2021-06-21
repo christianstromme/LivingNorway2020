@@ -104,44 +104,77 @@ results_plan = drake_plan(
     filter(coef.type == "location"),
   
   
-  result_Q3.2 = bind_rows(global_use_data = tidy(learn.clm.a.g),
-                          final_use_data = tidy(learn.clm.a.f),
+  result_Q3.2 = bind_rows(global_use.data = tidy(learn.clm.a.g),
+                          final_use.data = tidy(learn.clm.a.f),
                           
-                          global_use_code = tidy(learn.clm.b.g),
-                          final_use_code = tidy(learn.clm.b.f),
+                          global_use.code = tidy(learn.clm.b.g),
+                          final_use.code = tidy(learn.clm.b.f),
+
+                          global_use.publish = tidy(learn.clm.c.g),
+                          final_use.publish = tidy(learn.clm.c.f),
+
+                          global_share.data = tidy(learn.clm.d.g),
+                          final_share.data = tidy(learn.clm.d.f),
+
+                          global_share.code = tidy(learn.clm.e.g),
+                          final_share.code = tidy(learn.clm.e.f),
+
+                          global_share.publish = tidy(learn.clm.f.g),
+                          final_share.publish = tidy(learn.clm.f.f),
+
+                          global_use.edutool = tidy(learn.clm.g.g),
+                          final_use.edutool = tidy(learn.clm.g.f),
+
+                          global_do.review = tidy(learn.clm.h.g),
+                          final_do.review = tidy(learn.clm.h.f),
+
+                          global_do.outreach = tidy(learn.clm.i.g),
+                          final_do.outreach = tidy(learn.clm.i.f),
                           
-                          global_use_publish = tidy(learn.clm.c.g),
-                          final_use_publish = tidy(learn.clm.c.f),
-                          
-                          global_share_data = tidy(learn.clm.d.g),
-                          final_share_data = tidy(learn.clm.d.f),
-                          
-                          global_share_code = tidy(learn.clm.e.g),
-                          final_share_code = tidy(learn.clm.e.f),
-                          
-                          global_share_publish = tidy(learn.clm.f.g),
-                          final_share_publish = tidy(learn.clm.f.f),
-                          
-                          global_use_edutool = tidy(learn.clm.g.g),
-                          final_use_edutool = tidy(learn.clm.g.f),
-                          
-                          global_do_review = tidy(learn.clm.h.g),
-                          final_do_review = tidy(learn.clm.h.f),
-                          
-                          global_do_outreach = tidy(learn.clm.i.g),
-                          final_do_outreach = tidy(learn.clm.i.f),
-                          
-                          .id = "model_action_aspect"
+                          .id = "model_action"
   ) %>% 
-    filter(coef.type == "location"),
+    filter(coef.type == "location") %>% 
+    separate(col = model_action, into = c("model", "action"), sep = "_") %>% 
+    mutate(term = case_when(term == "learnt.use.DataTRUE" ~ "use open data",
+                            term == "learnt.use.CodeTRUE" ~ "use open code",
+                            term == "learnt.use.PublishTRUE" ~ "use open publication",
+                            term == "learnt.share.DataTRUE" ~ "share open data",
+                            term == "learnt.share.CodeTRUE" ~ "share open code",
+                            term == "learnt.share.PublishTRUE" ~ "share open publication",
+                            term == "learnt.use.EduToolTRUE" ~ "use open edu tools",
+                            term == "learnt.do.ReviewTRUE" ~ "do open review",
+                            term == "learnt.do.OutreachTRUE" ~ "do open outreach",
+                            term == "GenderMale"~ "Male",
+                            TRUE ~ term),
+           term = case_when(p.value < 0.001 ~ paste(term, "***"),
+                            p.value < 0.01 ~ paste(term, "**"),
+                            p.value < 0.05 ~ paste(term, "*"),
+                            TRUE ~ term)) %>%
+    select(Model = model, Action = action, `Fixed effect terms` = term, Estimate = estimate, SE = std.error, `z value` = statistic),
   
   
   result_Q3.3 = bind_rows(
-    global_R_vs_T = tidy(imp.clmm.g),
-    final_R_vs_T = tidy(imp.clmm.f),
+    global_RvsT = tidy(imp.clmm.g),
+    final_RvsT = tidy(imp.clmm.f),
     .id = "model_domain"
   ) %>% 
-    filter(coef.type == "location")
+    filter(coef.type == "location") %>% 
+    separate(col = model_domain, into = c("Model", "domain"), sep = "_") %>%
+    mutate(term = case_when(term == "DomainS" ~ "Supervision",
+                            term == "DomainT" ~ "Teaching",
+                            term == "AspectCommunication" ~ "Communication",
+                            term == "AspectData" ~ "Data",
+                            term == "AspectMethod" ~ "Method",
+                            term == "AspectPublish" ~ "Publish",
+                            term == "AspectReproducibility" ~ "Reproducibility",
+                            term == "AspectTransparency" ~ "Transparency",
+                            term == "GenderMale"~ "Male",
+                            TRUE ~ term),
+           term = case_when(p.value < 0.001 ~ paste(term, "***"),
+                            p.value < 0.01 ~ paste(term, "**"),
+                            p.value < 0.05 ~ paste(term, "*"),
+                            TRUE ~ term)) %>%
+    select(Model, `Fixed effect terms` = term, Estimate = estimate, SE = std.error, `z value` = statistic)
 
   
 )
