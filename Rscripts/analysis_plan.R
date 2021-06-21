@@ -211,20 +211,19 @@ analysis_plan = drake_plan(
   # model selection
   dredge.use.clmm.g = dredge(use.clmm.g),
 
-  #use.clmm.f = clmm(Values ~ Gender + (1|NO), data = ana.data.1.3),
   use.clmm.f = clmm(Values ~ Action + Gender + (1|NO), na.action = "na.fail", data = ana.data.1.3),
 
   # summary
   sum.use.clmm.f = summary(use.clmm.f),
   
-
-  
   #checking for violation of proportional odds assumption
 
-  use.clmm2.f1 = clmm2(Values ~ Gender, random = NO, data = ana.data.1.3, Hess = TRUE),
-  use.clmm2.f2 = clmm2(Values ~ Gender, scale = ~Gender, random = NO, data = ana.data.1.3, Hess = TRUE),
+  use.clmm2.f1 = clmm2(Values ~ Action + Gender, random = NO, data = ana.data.1.3, Hess = TRUE),
+  use.clmm2.f2 = clmm2(Values ~ Action + Gender, scale = ~Gender, random = NO, data = ana.data.1.3, Hess = TRUE),
+  use.clmm2.f3 = clmm2(Values ~ Action + Gender, scale = ~Action, random = NO, data = ana.data.1.3, Hess = TRUE),
 
-  use.clmm2.test = anova(use.clmm2.f1, use.clmm2.f2),
+  use.clmm2.test.1 = anova(use.clmm2.f1, use.clmm2.f2),
+  use.clmm2.test.2 = anova(use.clmm2.f1, use.clmm2.f3),
 
   #Proportional odds violated for Gender. Scaling to relax assumption.
 
@@ -442,7 +441,6 @@ analysis_plan = drake_plan(
 
   # summary
   sum.learn.clm.b.f = summary(learn.clm.b.f),
-  
 
   
   #checking for violation of proportional odds assumption
