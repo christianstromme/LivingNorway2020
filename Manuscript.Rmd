@@ -1,15 +1,25 @@
 ---
-title: Harry Potter and open and reproducible science
+title: "APPLYING AND PROMOTING OPEN SCIENCE IN ECOLOGY -SURVEYED  DRIVERS AND CHALLENGES"
 
 author: |
-  | Cotner S, Egelkraut DD $^1$, Halbritter A $^1$, Law E, Lane AK, Nater CR, 
-  | Nilsen EB, Grace
   | Strømme CB ^[Corresponding author: christian.stromme@uib.no] $^1$,
+  | Cotner S, 
+  | Egelkraut DD $^1$,
+  | Aud H. Halbritter$^{1,5}$, 
+  | Law E, 
+  | Lane AK, 
+  | Nater CR, 
+  | Nilsen EB, 
+  | Grace,
   | Telford R $^1$,
-  | Vigdis V $^1$
+  | Vigdis V $^{1,5}$
 address: |
-  | $^1$University of Bergen
-  add your affiliation here
+   | $^1$ Department of Biological Sciences, University of Bergen, Norway,
+   | ...
+   | $^5$ Bjerknes Centre for Climate Research, University of Bergen, Norway
+
+
+  
 abstract: |
   to be added
 date: "`r format(Sys.Date(), '%d %B %Y')`"
@@ -40,7 +50,7 @@ bibliography: Paperpile - Nov 02 BibTeX Export.bib
 
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = FALSE)
+knitr::opts_chunk$set(echo = FALSE, error = TRUE, eval = TRUE)
 library("drake")
 
 ```
@@ -57,8 +67,28 @@ library("drake")
 
 ## RESULTS
 
-``` {r Fig1, fig.height=10, fig.cap = "Here is a figure caption"}
-readd(os_activity_plot)
+
+### Experience
+
+``` {r participants-plot, fig.cap = "Workshop participants’ stated frequency of engagement with OS practices."}
+ readd(os_activity_stackplot)
+
+```
+
+
+
+### Workshop participants engagmenet with OS
+
+``` {r OS-engagement-plot, fig.cap = "Frequency of engagement with Open Science aspects for surveyed researchers (N=[36]) participating at the workshop in relation to affiliation and gender. Width of tiles correspond to the number of participants for the respective categories of participants, height of tiles correspond to proportion of each score category."}
+ readd(mosaic_activity)
+
+```
+
+
+### Importance of OS in reseach, supervison and teaching
+
+``` {r importance-plot, fig.cap = "Perceived importance of  Open Science aspects for surveyed researchers (N = ...) participating at the workshop in relation to research, supervision and teaching. Width of tiles correspond to number of participants involved in the respective activities, height of tiles correspond to proportion of each score category."}
+ readd(mosaic_all)
 
 ```
 
