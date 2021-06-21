@@ -7,10 +7,7 @@ analysis_plan = drake_plan(
     mutate(does.T.teaching = if_else(does.T.teaching == 2, 0, does.T.teaching)) %>%
     select(NO:does.engage.Outreach, share.engage.Data:usein.S.prior) %>%
     pivot_longer( cols = imp.R.Data:share.engage.Methods , names_to = c("Action", "Domain", "Aspect"), values_to = "Values", names_sep = "[.]") %>% 
-    mutate(NO = as.factor(NO), University = as.factor(University), Values = as.factor(Values)) %>% 
-    
-    #Removed "Other" gender category due to singleton.
-    filter(Gender!= "Other"),
+    mutate(NO = as.factor(NO), University = as.factor(University), Values = as.factor(Values)),
   
 
   ## Question 1.1: Researchers with academic affiliation have engaged more in open science-related practices compared to other researchers, and more so for early-career researchers.
@@ -46,9 +43,6 @@ analysis_plan = drake_plan(
   # summary
   sum.eng.clmm.f = summary(eng.clmm.f),
   
-  # results
-  res.eng.clmm.f = tidy(eng.clmm.f),
-  
   #checking for violation of proportional odds assumption
   
   eng.clmm2.f1 = clmm2(Values ~ University + Gender, random = NO, data = ana.data.1.1, Hess = TRUE),
@@ -68,15 +62,14 @@ analysis_plan = drake_plan(
 
   ana.data.1.2a = bndata %>%
     select(NO, Gender, does.T.teaching, does.R.primary, imp.R.Data, imp.T.Data, share.engage.Data) %>%
-    pivot_longer( cols = c(imp.R.Data, imp.T.Data), names_to = c("Action", "Domain", "Aspect"), values_to = "Values", names_sep = "[.]") %>%
+    pivot_longer(cols = c(imp.R.Data, imp.T.Data), names_to = c("Action", "Domain", "Aspect"), values_to = "Values", names_sep = "[.]") %>%
     mutate(T_R = paste(does.T.teaching, does.R.primary, sep = '_'), 
            NO = as.factor(NO), 
            share.engage.Data = as.factor(share.engage.Data)) %>%
     
     #filtering out Values = 1 ("Not applicable to my work" does not make sense to include in the scaled responses Y)
     #filtering out share.engage.data = 6 ("I don't know")
-    filter(Gender!= "Other", 
-           T_R == "1_1", share.engage.Data != 6, 
+    filter(T_R == "1_1", share.engage.Data != 6, 
            Values != 1, 
            !is.na(Values)) %>%
     mutate(Values = as.factor(Values)),
@@ -92,9 +85,6 @@ analysis_plan = drake_plan(
 
   # summary
   sum.imp.clmm.a.f = summary(imp.clmm.a.f),
-
-  # results
-  res.imp.clmm.a.f = tidy(imp.clmm.a.f),
   
   #checking for violation of proportional odds assumption
 
@@ -120,8 +110,7 @@ analysis_plan = drake_plan(
     
     #filtering Values = 1 ("Not applicable to my work" does not make sense to include in the scaled responses Y)
     #filtering out share.engage.data = 6 ("I don't know")
-    filter(Gender!= "Other", 
-           T_R == "1_1", share.engage.Code != 6, 
+    filter(T_R == "1_1", share.engage.Code != 6, 
            Values != 1, 
            !is.na(Values)),
   
@@ -137,10 +126,7 @@ analysis_plan = drake_plan(
   
   # summary
   sum.imp.clmm.b.f = summary(imp.clmm.b.f),
-
-  # results
-  res.imp.clmm.b.f = tidy(imp.clmm.b.f),
-
+  
 
   #methods sharing
 
@@ -154,8 +140,7 @@ analysis_plan = drake_plan(
     
     #filtering Values = 1 ("Not applicable to my work" does not make sense to include in the scaled responses Y)
     #filtering out share.engage.data = 6 ("I don't know")
-    filter(Gender!= "Other", 
-           T_R == "1_1", 
+    filter(T_R == "1_1", 
            share.engage.Methods != 6, 
            Values != 1, 
            !is.na(Values)),
@@ -172,9 +157,6 @@ analysis_plan = drake_plan(
   
   # summary
   sum.imp.clmm.c.f = summary(imp.clmm.c.f),
-  
-  # results
-  res.imp.clmm.c.f = tidy(imp.clmm.c.f),
 
 
   #open publishing
@@ -189,8 +171,7 @@ analysis_plan = drake_plan(
     
     #filtering Values = 1 ("Not applicable to my work" does not make sense to include in the scaled responses Y)
     #filtering out share.engage.data = 6 ("I don't know")
-    filter(Gender!= "Other", 
-           T_R == "1_1", 
+    filter(T_R == "1_1", 
            share.engage.Publish != 6, 
            Values != 1, 
            !is.na(Values)),
@@ -207,9 +188,6 @@ analysis_plan = drake_plan(
   
   # summary
   sum.imp.clmm.d.f = summary(imp.clmm.d.f),
-  
-  # results
-  res.imp.clmm.d.f = tidy(imp.clmm.d.f),
 
 
   
@@ -222,7 +200,8 @@ analysis_plan = drake_plan(
     filter(Action %in% c("use", "share"), 
            Aspect %in% c("Code", "Data"), 
            Values != 6, 
-           Values != 0, !is.na(Values)) %>%
+           Values != 0, 
+           !is.na(Values)) %>%
     mutate(Values = as.factor(Values)),
 
 
@@ -260,8 +239,7 @@ analysis_plan = drake_plan(
     pivot_longer(cols = c(use.engage.Data:does.engage.Outreach), names_to = c("Action", "Domain", "Aspect"), values_to = "Values", names_sep = "[.]") %>%
     mutate(Values = as.numeric(Values)) %>%
     #filtering out values = 6 ("I don't know")
-    filter(does.R.primary == "1", 
-           Gender!= "Other", 
+    filter(does.R.primary == "1",
            Values != 6, 
            !is.na(useinTprior), 
            !is.na(useinSprior)) %>%
@@ -287,10 +265,7 @@ analysis_plan = drake_plan(
   
   # sum
   sum.teach.glm.f = summary(teach.glm.f),
-  
-  # result
-  res.teach.glm.f = tidy(teach.glm.f),
-  
+
 
   # Supervision
   # run global model
@@ -304,9 +279,6 @@ analysis_plan = drake_plan(
 
   # summary
   sum.supervise.glm.f = summary(supervise.glm.f),
-  
-  # result
-  res.supervise.glm.f = tidy(supervise.glm.f),
 
   
   
@@ -316,8 +288,7 @@ analysis_plan = drake_plan(
     select(NO, Gender:does.R.primary, imp.S.Data:imp.T.Publish, share.engage.Data:useinSprior) %>%
     mutate(useinTprior = if_else(useinTprior == 2, 0, useinTprior),
            useinSprior = if_else(useinSprior == 2, 0, useinSprior)) %>%
-    filter(does.R.primary == "1", 
-           Gender!= "Other"),
+    filter(does.R.primary == "1"),
 
   ana.data.1.4.teach = ana.data.1.4.2 %>%
     mutate(imp.T.Data = as.factor(imp.T.Data), 
@@ -367,8 +338,6 @@ analysis_plan = drake_plan(
 
   teach.clm.publish.f = clm(imp.T.Publish ~ 1, na.action = "na.fail",
                             data = ana.data.1.4.teach.publish),
-  
-  res.teach.clm.publish.f = tidy(teach.clm.publish.f),
   
   
   #supervision
@@ -427,8 +396,7 @@ analysis_plan = drake_plan(
     mutate(use.engage.Data = as.factor(use.engage.Data), 
            learnt.use.Data = as.logical(learnt.use.Data)) %>%
     #filtering out use.engage.data = 6 ("I don't know")
-    filter(Gender!= "Other", 
-           use.engage.Data != 6, 
+    filter(use.engage.Data != 6, 
            !is.na(learnt.use.Data), 
            !is.na(use.engage.Data)),
 
@@ -444,9 +412,6 @@ analysis_plan = drake_plan(
 
   # summary
   sum.learn.clm.a.f = summary(learn.clm.a.f),
-  
-  # result
-  res.learn.clm.a.f = tidy(learn.clm.a.f),
 
   
   #checking for violation of proportional odds assumption
@@ -462,8 +427,7 @@ analysis_plan = drake_plan(
     mutate(use.engage.Code = as.factor(use.engage.Code), 
            learnt.use.Code = as.logical(learnt.use.Code)) %>%
     #filtering out use.engage.Code = 6 ("I don't know")
-    filter(Gender!= "Other", 
-           use.engage.Code != 6, 
+    filter(use.engage.Code != 6, 
            !is.na(learnt.use.Code), 
            !is.na(use.engage.Code)),
 
@@ -479,8 +443,6 @@ analysis_plan = drake_plan(
   # summary
   sum.learn.clm.b.f = summary(learn.clm.b.f),
   
-  # result
-  res.learn.clm.b.f = tidy(learn.clm.b.f),
 
   
   #checking for violation of proportional odds assumption
@@ -495,8 +457,7 @@ analysis_plan = drake_plan(
     mutate(use.engage.Publish = as.factor(use.engage.Publish), 
            learnt.use.Publish = as.logical(learnt.use.Publish)) %>%
     #filtering out use.engage.Publish = 6 ("I don't know")
-    filter(Gender!= "Other", 
-           use.engage.Publish != 6, 
+    filter(use.engage.Publish != 6, 
            !is.na(learnt.use.Publish), 
            !is.na(use.engage.Publish)),
 
@@ -510,8 +471,6 @@ analysis_plan = drake_plan(
   # final model
   learn.clm.c.f = clm(use.engage.Publish ~ 1, na.action = "na.fail", data = ana.data.3.2c),
   
-  # result
-  res.learn.clm.c.f = tidy(learn.clm.c.f),
   
 
   #3.2d Share open data
@@ -520,8 +479,7 @@ analysis_plan = drake_plan(
     mutate(share.engage.Data = as.factor(share.engage.Data), 
            learnt.share.Data = as.logical(learnt.share.Data)) %>%
     #filtering out share.engage.Data = 6 ("I don't know")
-    filter(Gender!= "Other", 
-           share.engage.Data != 6, 
+    filter(share.engage.Data != 6, 
            !is.na(learnt.share.Data), 
            !is.na(share.engage.Data)),
 
@@ -534,9 +492,6 @@ analysis_plan = drake_plan(
   learn.clm.d.f = clm(share.engage.Data ~ Gender, na.action = "na.fail", data = ana.data.3.2d),
 
   sum.learn.clm.d.f = summary(learn.clm.d.f),
-  
-  # result
-  res.learn.clm.d.f = tidy(learn.clm.d.f),
 
   
   #checking for violation of proportional odds assumption
@@ -551,8 +506,7 @@ analysis_plan = drake_plan(
     mutate(share.engage.Code = as.factor(share.engage.Code), 
            learnt.share.Code = as.logical(learnt.share.Code)) %>%
     #filtering out share.engage.Code = 6 ("I don't know")
-    filter(Gender!= "Other", 
-           share.engage.Code != 6,  
+    filter(share.engage.Code != 6,  
            !is.na(learnt.share.Code), 
            !is.na(share.engage.Code)),
 
@@ -567,9 +521,6 @@ analysis_plan = drake_plan(
 
   # summary
   sum.learn.clm.e.f = summary(learn.clm.e.f),
-  
-  # result
-  res.learn.clm.e.f = tidy(learn.clm.e.f),
 
   
   #checking for violation of proportional odds assumption
@@ -584,8 +535,7 @@ analysis_plan = drake_plan(
     mutate(share.engage.Publish = as.factor(share.engage.Publish), 
            learnt.share.Publish = as.logical(learnt.share.Publish)) %>%
     #filtering out share.engage.Publish = 6 ("I don't know")
-    filter(Gender!= "Other", 
-           share.engage.Publish != 6, 
+    filter(share.engage.Publish != 6, 
            !is.na(learnt.share.Publish), 
            !is.na(share.engage.Publish)),
 
@@ -598,9 +548,6 @@ analysis_plan = drake_plan(
   
   # final model
   learn.clm.f.f = clm(share.engage.Publish ~ 1, na.action = "na.fail", data = ana.data.3.2f),
-  
-  # result
-  res.learn.clm.f.f = tidy(learn.clm.f.f),
 
 
   #3.2g Use open education tools
@@ -609,8 +556,7 @@ analysis_plan = drake_plan(
     mutate(use.engage.EduTool = as.factor(use.engage.EduTool), 
            learnt.use.EduTool = as.logical(learnt.use.EduTool)) %>%
     #filtering out use.engage.EduTool = 6 ("I don't know")
-    filter(Gender!= "Other", 
-           use.engage.EduTool != 6, 
+    filter(use.engage.EduTool != 6, 
            !is.na(learnt.use.EduTool), 
            !is.na(use.engage.EduTool)),
   
@@ -625,9 +571,6 @@ analysis_plan = drake_plan(
   
   # summary
   sum.learn.clm.g.f = summary(learn.clm.g.f),
-  
-  # result
-  res.learn.clm.g.f = tidy(learn.clm.g.f),
 
   
   #checking for violation of proportional odds assumption
@@ -646,8 +589,7 @@ analysis_plan = drake_plan(
     mutate(does.engage.Review = as.factor(does.engage.Review), 
            learnt.do.Review = as.logical(learnt.do.Review)) %>%
     #filtering out does.engage.Review = 6 ("I don't know")
-    filter(Gender!= "Other", 
-           does.engage.Review != 6, 
+    filter(does.engage.Review != 6, 
            !is.na(learnt.do.Review), 
            !is.na(does.engage.Review)),
 
@@ -660,8 +602,6 @@ analysis_plan = drake_plan(
   
   # final model
   learn.clm.h.f = clm(does.engage.Review ~ 1, na.action = "na.fail", data = ana.data.3.2h),
-  
-  res.learn.clm.h.f = tidy(learn.clm.h.f),
 
   
 
@@ -671,8 +611,7 @@ analysis_plan = drake_plan(
     mutate(does.engage.Outreach = as.factor(does.engage.Outreach),
            learnt.do.Outreach = as.logical(learnt.do.Outreach)) %>%
     #filtering out does.engage.Outreach = 6 ("I don't know")
-    filter(Gender!= "Other", 
-           does.engage.Outreach != 6, 
+    filter(does.engage.Outreach != 6, 
            !is.na(learnt.do.Outreach), 
            !is.na(does.engage.Outreach)),
 
@@ -684,9 +623,6 @@ analysis_plan = drake_plan(
 
   # final model
   learn.clm.i.f = clm(does.engage.Outreach ~ 1, na.action = "na.fail", data = ana.data.3.2i),
-  
-  # result
-  res.learn.clm.i.f = tidy(learn.clm.i.f),
   
 
   
@@ -713,9 +649,6 @@ analysis_plan = drake_plan(
   
   # summary
   sum.imp.clmm.f = summary(imp.clmm.f),
-  
-  # result
-  res.imp.clmm.f = tidy(imp.clmm.f),
 
   
   #checking for violation of proportional odds assumption
