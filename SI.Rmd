@@ -1,0 +1,124 @@
+---
+title: "APPLYING AND PROMOTING OPEN SCIENCE IN ECOLOGY -SURVEYED  DRIVERS AND CHALLENGES"
+
+
+
+date: "`r format(Sys.Date(), '%d %B %Y')`"
+
+output: 
+  #pdf_document
+  bookdown::pdf_book:
+    dev: cairo_pdf
+    toc: no
+    number_sections: false
+    latex_engine: lualatex
+  fig_caption: yes
+  extra_dependencies: ["flafter"]
+  header-includes:
+    - \usepackage{caption}
+    - \usepackage{booktabs}
+    - \usepackage{longtable}
+classoption: a4paper
+bibliography: Paperpile - Nov 02 BibTeX Export.bib
+# csl: Rmd/elsevier-harvard_rjt.csl
+
+
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, error = TRUE, eval = TRUE)
+library(drake)
+# library("cairoDevice")
+library(kableExtra)
+# library(patchwork)
+library(tidyverse)
+
+```
+
+## Supplementary
+
+This section contains all plots and tables of the supplementary material of this manuscript.
+
+
+
+
+### Question 1.1
+
+Researchers with academic affiliation have engaged more in open science-related practices compared to other researchers, and more so for early-career researchers.
+
+```{r results-q1-1}
+loadd(result_Q1.1)
+
+result_Q1.1 %>% 
+  select(-model) %>% 
+  kbl(booktabs = TRUE, 
+      digits = 2,
+      caption = "Model stats") %>% 
+  pack_rows("global", 1, 4) %>% 
+  pack_rows("final", 5, 6) %>% 
+  kable_styling()
+  
+```
+
+
+
+### Question 1.2
+
+
+OS practices are perceived to be more important in data-, code-, methods-sharing and publishing than educational tools, depending on activities engaged in.
+
+```{r results-q1-2}
+loadd(result_Q1.2)
+
+result_Q1.2 %>% 
+  select(-aspect) %>% 
+  kbl(booktabs = TRUE, 
+      digits = 2,
+      caption = "Model stats") %>% 
+  pack_rows("data sharing", 1, 4) %>% 
+  pack_rows("code sharing", 5, 10) %>% 
+  pack_rows("method", 11, 16) %>% 
+  pack_rows("open publishing", 17, 21) %>% 
+  kable_styling()
+  
+```
+
+
+
+### Question 1.3
+
+BUT Most people have used open data and code, but have not contributed to open data and code.
+
+```{r results-q1-3}
+loadd(result_Q1.3)
+
+result_Q1.3 %>% 
+  select(-model) %>% 
+  kbl(booktabs = TRUE, 
+      digits = 2,
+      caption = "Model stats") %>% 
+  pack_rows("global", 1, 3) %>% 
+  pack_rows("final", 4, 5) %>% 
+  kable_styling()
+  
+```
+
+
+
+### Question 1.4
+
+People more likely to use OS in supervision and teaching when they use it more in their own research.
+
+```{r results-q1-4}
+loadd(result_Q1.4)
+
+result_Q1.4 %>% 
+  select(-domain) %>% 
+  kbl(booktabs = TRUE, 
+      digits = 2,
+      caption = "Model stats") %>% 
+  pack_rows("Teaching", 1, 4) %>% 
+  pack_rows("Supervision", 5, 9) %>% 
+  kable_styling()
+  
+```
