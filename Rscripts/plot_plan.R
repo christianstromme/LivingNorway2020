@@ -38,11 +38,13 @@ plot_plan <- drake_plan(
     geom_bar(stat = "identity") +
     scale_fill_viridis_d(direction = -1) +
     labs(y = "Proportion of respondents", x = "") +
+    guides(fill = guide_legend(nrow = 2,byrow = TRUE)) +
     theme_bw() +
     theme(axis.text.x = element_text(angle = 90, hjust = 1, vjust = .5),
           panel.border = element_blank(),
           panel.grid.major = element_blank(),
           panel.grid.minor = element_blank(),
+          legend.position = "top",
           legend.title = element_blank(),
           strip.background = element_blank()),
   
@@ -61,6 +63,7 @@ plot_plan <- drake_plan(
     #scale_y_productlist(labels = c("Several times a week", "Several times a month", "Several times a year", "Rarely", "Never")) +
     labs(x = "", y = "") +
     coord_flip() +
+    guides(fill = guide_legend(nrow = 2,byrow = TRUE)) +
     theme_minimal() +
     theme(axis.text.x=element_blank(),
           legend.position = "bottom",
@@ -82,6 +85,7 @@ plot_plan <- drake_plan(
     #scale_y_productlist(labels = c("Minimally important", "Somewhat important", "Very important", "Extremely important")) +
     labs(x = "", y = "") +
     coord_flip() +
+    guides(fill = guide_legend(nrow = 2,byrow = TRUE)) +
     theme_minimal() +
     theme(axis.text.x=element_blank(),
           legend.position = "bottom",
@@ -97,6 +101,7 @@ plot_plan <- drake_plan(
     #scale_y_productlist(labels = c("Never", "Rarely", "Several times a year", "Several times a month", "Several times a week")) +
     labs(x = "", y = "") +
     coord_flip() +
+    guides(fill = guide_legend(nrow = 2,byrow = TRUE)) +
     theme_minimal() +
     theme(axis.text.x=element_blank(),
           legend.position = "bottom",
@@ -121,6 +126,7 @@ plot_plan <- drake_plan(
     #scale_y_productlist(labels = c("Extremely important", "Very important", "Somewhat important", "Minimally important")) +
     labs(x = "", y = "", title="") +
     facet_grid(~ Domain) +
+    guides(fill = guide_legend(nrow = 2,byrow = TRUE)) +
     coord_flip() +
     theme_minimal() +
     theme(axis.text.x=element_blank(),
