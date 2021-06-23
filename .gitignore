@@ -48,3 +48,8 @@ vignettes/*.pdf
 *.png
 *.jpeg
 *.jpg
+*.pdf
+
+# Markdown
+*.tex
+*.log
