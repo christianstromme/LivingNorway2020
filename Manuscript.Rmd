@@ -70,7 +70,7 @@ library("drake")
 
 ### Experience
 
-``` {r participants-plot, fig.cap = "Workshop participants’ stated frequency of engagement with OS practices."}
+``` {r participants-plot, fig.height= 7, fig.cap = "Workshop participants’ stated frequency of engagement with OS practices."}
  readd(os_activity_stackplot)
 
 ```
@@ -87,7 +87,7 @@ library("drake")
 
 ### Importance of OS in reseach, supervison and teaching
 
-``` {r importance-plot, fig.cap = "Perceived importance of  Open Science aspects for surveyed researchers (N = ...) participating at the workshop in relation to research, supervision and teaching. Width of tiles correspond to number of participants involved in the respective activities, height of tiles correspond to proportion of each score category."}
+``` {r importance-plot, fig.height= 7, fig.cap = "Perceived importance of  Open Science aspects for surveyed researchers (N = ...) participating at the workshop in relation to research, supervision and teaching. Width of tiles correspond to number of participants involved in the respective activities, height of tiles correspond to proportion of each score category."}
  readd(mosaic_all)
 
 ```
