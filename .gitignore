@@ -49,3 +49,8 @@ vignettes/*.pdf
 *.jpeg
 *.jpg
 *.tiff
+*.pdf
+
+# Markdown
+*.tex
+*.log

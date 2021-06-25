@@ -4,9 +4,11 @@ library(ggpmisc)
 library(broom)
 library(viridis)
 library(gridExtra)
+library(grid)
 library(ggmosaic)
 library(ggtext)
 library(cowplot)
+library(forcats)
 
 #Probability distributions
 
@@ -144,19 +146,18 @@ g1.2a +                                               # Add table to ggplot2 plo
 
 #1.3
 
-eng.clmm.graph <- clmm(Values ~ Action + Gender + (1|NO), data = ana.data.1.3)
+eng.clmm.graph <- clmm(Values ~ Gender + (1|NO), data = ana.data.1.3)
 
 summary(eng.clmm.graph)
 
 t1.3 <- tidy(eng.clmm.graph) %>%
-  mutate(term = if_else(term == "Actionuse", "Using ***", term),
-         term = if_else(term == "GenderMale", "Male ***", term)) %>% 
+  mutate(term = if_else(term == "GenderMale", "Male *", term)) %>% 
   select(-p.value, -coef.type,
          "Fixed effect terms" = term,
          Estimate = estimate,
          SE = std.error,
          "z-value" = statistic) %>%
-  slice(5:6)
+  slice(5:5)
 
 t1.3 <- as.data.frame(t1.3)
 is.num <- sapply(t1.3, is.numeric)
@@ -165,8 +166,7 @@ t1.3
 
 
 vlines <- c(0,
-            eng.clmm.graph$beta[[1]],
-            eng.clmm.graph$beta[[2]])
+            eng.clmm.graph$beta[[1]])
 xaxis <- seq(min(vlines-.5), max(vlines+.5), length.out = 100) # create 100 steps
 yaxis <- rep(c(0,1),50) # fill in 0s and 1s for y-axis
 
@@ -187,8 +187,7 @@ g1.3 <- tibble(xaxis,yaxis) %>% # baseline tibble for plot dimensions
            lty="solid", alpha=.75) + # visual properties of vertical lines
   annotate("text", # type of annotation = text
            x=vlines,y=.75, # location of labels
-           label=c("Sharing - Female",
-                   "Using",
+           label=c("Female",
                    "Male"), # label names aligned with vlines[1:4]
            angle=90,vjust=-0.2) + # visual properties of text labels
   scale_x_continuous(breaks=c(min(xaxis-.5),max(xaxis+.5))) + # expand x axis horizontally
@@ -555,30 +554,30 @@ g3.2g +                                               # Add table to ggplot2 plo
 
 #3.3
 
-eng.clmm.graph <- clmm(Values ~ Domain + Aspect + (1|NO), data = ana.data.3.3)
-summary(eng.clmm.graph)
+#eng.clmm.graph <- clmm(Values ~ Domain + Aspect + (1|NO), data = ana.data.3.3)
+#summary(eng.clmm.graph)
 
 
-t3.3 <- tidy(eng.clmm.graph) %>%
-  mutate(term = if_else(term == "DomainS", "Supervision", term),
-         term = if_else(term == "DomainT", "Teaching ***", term),
-         term = if_else(term == "AspectCommunication", "Communication", term),
-         term = if_else(term == "AspectData", "Data sharing", term),
-         term = if_else(term == "AspectMethod", "Method sharing", term),
-         term = if_else(term == "AspectPublish", "Publishing", term),
-         term = if_else(term == "AspectReproducibility", "Reproducibility **", term),
-         term = if_else(term == "AspectTransparency", "Transparency ***", term)) %>% 
-  select(-p.value, -coef.type,
-         "Fixed effect terms" = term,
-         Estimate = estimate,
-         SE = std.error,
-         "z-value" = statistic) %>%
-  slice(4:11)
+#t3.3 <- tidy(eng.clmm.graph) %>%
+ # mutate(term = if_else(term == "DomainS", "Supervision", term),
+  #       term = if_else(term == "DomainT", "Teaching ***", term),
+   #      term = if_else(term == "AspectCommunication", "Communication", term),
+    #     term = if_else(term == "AspectData", "Data sharing", term),
+     #    term = if_else(term == "AspectMethod", "Method sharing", term),
+      #   term = if_else(term == "AspectPublish", "Publishing", term),
+       #  term = if_else(term == "AspectReproducibility", "Reproducibility **", term),
+        # term = if_else(term == "AspectTransparency", "Transparency ***", term)) %>% 
+  #select(-p.value, -coef.type,
+   #      "Fixed effect terms" = term,
+    #     Estimate = estimate,
+     #    SE = std.error,
+      #   "z-value" = statistic) %>%
+  #slice(4:11)
 
-t3.3 <- as.data.frame(t3.3)
-is.num <- sapply(t3.3, is.numeric)
-t3.3[is.num] <- lapply(t3.3[is.num], round, 2)
-t3.3
+#t3.3 <- as.data.frame(t3.3)
+#is.num <- sapply(t3.3, is.numeric)
+#t3.3[is.num] <- lapply(t3.3[is.num], round, 2)
+#t3.3
 
 #png("test.png")
 #p<-tableGrob(t3.3, theme_bw())
@@ -652,7 +651,7 @@ g3.3 +                                               # Add table to ggplot2 plot
 
 
 scale1 = tibble( numeric_scale = c( 1, 2, 3, 4, 5, 6 ),
-                 text_scale = c( "Never", "Rarely", "Several times a year", "Several times a month", "Several times a week", "I don't know" ))
+                 text_scale = c( "Never", "Rarely", "Several times \n a year", "Several times \n a month", "Several times \n a week", "I don't know" ))
 scale2 = tibble( numeric_scale = c(2, 3, 4, 5, 1 ),
                  text_scale = c("Minimally important", "Somewhat important", "Very important", "Extremely important", "Not applicable to my work" ))
 scale3 = tibble( numeric_scale = c( 1, 2, 3, 4, 5 ),
@@ -694,13 +693,14 @@ os_activity_stackplot = plotdata2 %>%
 
 ##1.1
 plotdata.1.1 <- ana.data.1.1 %>% 
-  mutate(University = if_else(University == "0", "University", "Other"),
-         University = factor(University, levels = c("University", "Other")))
+  mutate(University = if_else(University == "1", "University", "Other"),
+         University = factor(University, levels = c("University", "Other"))) %>% 
+  mutate(Values = fct_relevel(Values, "5", "4", "3", "2", "1"))
 
 mosaic_activity = ggplot(data = plotdata.1.1) +
-  geom_mosaic(aes(x = product(University, Values, Gender), fill = Values), offset = 0.02) + 
+  geom_mosaic(aes(x = product(Gender, Values, University), fill = Values), offset = 0.02) + 
   scale_fill_viridis_d() +
-  scale_y_productlist(labels=c("Never", "Rarely", "Several times a year", "Several times a month", "Several times a week")) +
+  scale_y_productlist(labels=c("Several times a week", "Several times a month", "Several times a year", "Rarely", "Never")) +
   labs(x = "", y = "") +
   theme_minimal() +
   theme(legend.position = "none",
@@ -716,72 +716,423 @@ mosaic_activity = ggplot(data = plotdata.1.1) +
   #       axis.title.x = element_blank(),
   #       panel.background = element_blank())
 mosaic_activity 
-mosaic_activity1.1 = add_sub(mosaic_activity, "University:Female   Other:Female      University:Male            Other:Male", x = 0, hjust = 0.01, size = 11)
-ggdraw(mosaic_activity1.1)
+
+
 #axis label frequency, text scale y axis, increase offset
 
+
 ##1.2a
-plotdata1.2a = ana.data.1.2a 
+plotdata1.2a = ana.data.1.2a %>% 
+  mutate(Domain = if_else(Domain == "R", "Research", "Teaching"))
 
 mosaic_importance = ggplot(data=plotdata1.2a)+
-  geom_mosaic(aes(x=product(Domain, Values, Gender), fill = Values), offset=0.02) + 
-  scale_colour_viridis_d()+
-  scale_fill_discrete(breaks = c(1:5), 
-                      labels = scale2$text_scale)+
-  theme(axis.text.y = element_blank(),
-        axis.ticks.y = element_blank(),
-        axis.title.y = element_blank(),
-        axis.text.x = element_blank(),
-        axis.ticks.x = element_blank(),
-        axis.title.x = element_blank(),
-        panel.background = element_blank())
+  geom_mosaic(aes(x = product(Gender, Values, Domain), fill = Values), offset=0.02) + 
+  scale_fill_viridis_d() +
+  scale_y_productlist(labels = c("Minimally important", "Somewhat important", "Very important", "Extremely important")) +
+  labs(x = "", y = "") +
+  theme_minimal() +
+  theme(legend.position = "none",
+        panel.grid.major = element_blank())
 mosaic_importance 
-mosaic_importance1.2a = add_sub(mosaic_importance, "R:Female  T:Female                R:Male      T:Male", x = 0.1, hjust = 0, size = 11)
-ggdraw(mosaic_importance1.2a)
-
-mosaic_importance = ggplot(data=plotdata3)
 
 
 ##1.3
 plotdata1.3 = ana.data.1.3 
 
 mosaic_action = ggplot(data=plotdata1.3)+
-  geom_mosaic(aes(x=product(Action, Values, Gender), fill = Values), offset=0.02) + 
-  scale_colour_viridis_d()+
-  scale_fill_discrete(breaks = c(1:6), 
-                      labels = scale1$text_scale)+
-  theme(axis.text.y = element_blank(),
-        axis.ticks.y = element_blank(),
-        axis.title.y = element_blank(),
-        axis.text.x = element_blank(),
-        axis.ticks.x = element_blank(),
-        axis.title.x = element_blank(),
-        panel.background = element_blank())
-mosaic_action 
-mosaic_action1.3 = add_sub(mosaic_action, "Share:Female   Use:Female          Share:Male   Use:Male", x = 0.1, hjust = 0, size = 11)
-ggdraw(mosaic_action1.3)
+  geom_mosaic(aes(x=product(Gender), fill = Values), offset=0.02) + 
+  scale_fill_viridis_d() +
+  scale_y_productlist(labels=c("Never", "Rarely", "Several times a year", "Several times a month", "Several times a week")) +
+  labs(x = "", y = "") +
+  theme_minimal() +
+  theme(legend.position = "none",
+        panel.grid.major = element_blank())
 
-mosaic_importance = ggplot(data=plotdata3)
-#share vs use as main split
+mosaic_action 
 
 ##3.3
-plotdata3.3 = ana.data.3.3 
+plotdata3.3 = ana.data.3.3 %>% 
+  mutate(Domain = fct_recode(Domain,
+                             "Research" = "R",
+                             "Supervision" = "S",
+                             "Teaching" = "T")) %>% 
+  mutate(Values = fct_relevel(Values, "5", "4", "3", "2")) %>% 
+  mutate(Domain = fct_relevel(Domain, "Research", "Teaching", "Supervision")) %>% 
+  mutate(Aspect = fct_recode(Aspect, "Data sharing" = "Data", "Code sharing" = "Code" , "Methods/protocol sharing" = "Method", "Open access publishing" = "Publish", "Science communication \nthrough open channels" = "Communication", "Research reproducibility" = "Reproducibility", "Research transparency" = "Transparency")) %>% 
+  mutate(Aspect = fct_relevel(Aspect, "Data sharing", "Code sharing", "Methods/protocol sharing", "Open access publishing", "Science communication \nthrough open channels", "Research reproducibility", "Research transparency"))
 
-mosaic_compare = ggplot(data=plotdata3.3)+
-  geom_mosaic(aes(x=product(Aspect, Domain), fill = Values), offset=0.02) + 
-  scale_colour_viridis_d()+
-  scale_fill_discrete(breaks = c(1:6), 
-                      labels = scale1$text_scale)+
+mosaic_all = ggplot(data=plotdata3.3)+
+  geom_mosaic(aes( x=product(Aspect), fill = Values), offset=0.02) + 
+  scale_fill_viridis_d() +
+  scale_y_productlist(labels=c("Extremely important", "Very important", "Somewhat important", "Minimally important")) +
+  labs(x = "", y = "") +
+  facet_grid(~Domain) +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 90, hjust = 1, vjust = .5)) + 
+  theme(legend.position = "none",
+        panel.grid.major = element_blank())+
+  labs(title="")
+
+mosaic_all
+
+#1
+plotdata3.3.1 = plotdata3.3 %>% 
+  filter(Aspect=="Data")
+
+
+
+mosaic_data = ggplot(data=plotdata3.3.1)+
+  geom_mosaic(aes( x=product(Domain), fill = Values), offset=0.02) + 
+  scale_fill_viridis_d() +
+  scale_y_productlist(labels=c("Not applicable to my work", "Minimally important", "Somewhat important", "Very important", "Extremely important")) +
+  labs(x = "", y = "") +
+  theme_minimal() +
+  theme(legend.position = "none",
+        panel.grid.major = element_blank())+
+  labs(title="Data sharing")
+
+mosaic_data
+
+##3.3
+#2
+plotdata3.3.2 = plotdata3.3 %>% 
+  filter(Aspect=="Code") %>% 
+  
+
+mosaic_code = ggplot(data=plotdata3.3.2)+
+  geom_mosaic(aes( x=product(Values,Domain), fill = Values), offset=0.02) + 
+  scale_fill_viridis_d() +
+  scale_y_productlist(labels=c("Not applicable to my work", "Minimally important", "Somewhat important", "Very important", "Extremely important")) +
+  labs(x = "", y = "") +
+  theme_minimal() +
+  theme(legend.position = "none",
+        panel.grid.major = element_blank())+
+  labs(title="Code sharing")
+
+mosaic_code
+
+#3
+plotdata3.3.3 = plotdata3.3 %>% 
+  filter(Aspect=="Method")
+
+mosaic_method = ggplot(data=plotdata3.3.3)+
+  geom_mosaic(aes( x=product(Values, Domain), fill = Values), offset=0.02) + 
+  scale_fill_viridis_d() +
+  scale_y_productlist(labels=c("Not applicable to my work", "Minimally important", "Somewhat important", "Very important", "Extremely important")) +
+  labs(x = "", y = "") +
+  theme_minimal() +
+  theme(legend.position = "none",
+        panel.grid.major = element_blank())+
+  labs(title="Method sharing")
+
+mosaic_method
+
+
+
+#4
+plotdata3.3.4 = plotdata3.3 %>% 
+  filter(Aspect=="Publish")
+
+mosaic_publish = ggplot(data=plotdata3.3.4)+
+  geom_mosaic(aes( x=product(Values, Domain), fill = Values), offset=0.02) + 
+  scale_fill_viridis_d() +
+  scale_y_productlist(labels=c("Not applicable to my work", "Minimally important", "Somewhat important", "Very important", "Extremely important")) +
+  labs(x = "", y = "") +
+  theme_minimal() +
+  theme(legend.position = "none",
+        panel.grid.major = element_blank())+
+  labs(title="Publishing open access")
+
+mosaic_publish
+
+
+#5
+plotdata3.3.5 = plotdata3.3 %>% 
+  filter(Aspect=="Communication")
+
+mosaic_communication = ggplot(data=plotdata3.3.5)+
+  geom_mosaic(aes( x=product(Values, Domain), fill = Values), offset=0.02) + 
+  scale_fill_viridis_d() +
+  scale_y_productlist(labels=c("Not applicable to my work", "Minimally important", "Somewhat important", "Very important", "Extremely important")) +
+  labs(x = "", y = "") +
+  theme_minimal() +
+  theme(legend.position = "none",
+        panel.grid.major = element_blank())+
+  labs(title="Communicating science through open channels")
+
+mosaic_communication
+
+#6
+plotdata3.3.6 = plotdata3.3 %>% 
+  filter(Aspect=="Reproducibility")
+
+mosaic_reproducibility = ggplot(data=plotdata3.3.6)+
+  geom_mosaic(aes( x=product(Values, Domain), fill = Values), offset=0.02) + 
+  scale_fill_viridis_d() +
+  scale_y_productlist(labels=c("Not applicable to my work", "Minimally important", "Somewhat important", "Very important", "Extremely important")) +
+  labs(x = "", y = "") +
+  theme_minimal() +
+  theme(legend.position = "none",
+        panel.grid.major = element_blank())+
+  labs(title="Research reproducibility")
+
+mosaic_reproducibility
+
+#7
+plotdata3.3.7 = plotdata3.3 %>% 
+  filter(Aspect=="Transparency")
+
+mosaic_transparency = ggplot(data=plotdata3.3.7)+
+  geom_mosaic(aes( x=product(Values, Domain), fill = Values), offset=0.02) + 
+  scale_fill_viridis_d() +
+  scale_y_productlist(labels=c("Not applicable to my work", "Minimally important", "Somewhat important", "Very important", "Extremely important")) +
+  labs(x = "", y = "") +
+  theme_minimal() +
+  theme(legend.position = "none",
+        panel.grid.major = element_blank())+
+  labs(title="Research transparency")+
+  
+
+mosaic_transparency
+
+grid.newpage()
+pushViewport(viewport(layout = grid.layout(4,2)))
+
+print(mosaic_data, vp = viewport(layout.pos.row = 1, layout.pos.col = 1))
+print(mosaic_code, vp = viewport(layout.pos.row = 1, layout.pos.col = 2))
+print(mosaic_method, vp = viewport(layout.pos.row = 2, layout.pos.col = 1))
+print(mosaic_publish, vp = viewport(layout.pos.row = 2, layout.pos.col = 2))
+print(mosaic_communication, vp = viewport(layout.pos.row = 3, layout.pos.col = 1))
+print(mosaic_reproducibility, vp = viewport(layout.pos.row = 3, layout.pos.col = 2))
+print(mosaic_transparency, vp = viewport(layout.pos.row = 4, layout.pos.col = 1))
+
+
+
+
+
+#3.2
+plotdata3.2 <- bndata %>% 
+  select(NO, Gender, learnt.use.Data, learnt.share.Data, learnt.use.Code, learnt.share.Code,learnt.use.Publish, learnt.share.Publish,learnt.use.EduTool, learnt.do.Review, learnt.do.Outreach, learnt.principle.Reproducibility, learnt.principle.Transparency) %>% 
+  pivot_longer( cols = c(learnt.use.Data, learnt.share.Data, learnt.use.Code, learnt.share.Code,learnt.use.Publish, learnt.share.Publish,learnt.use.EduTool, learnt.do.Review, learnt.do.Outreach, learnt.principle.Reproducibility, learnt.principle.Transparency), 
+                names_to = c("Action", "Domain", "Aspect"), values_to = "Values", names_sep = "[.]") %>%
+  mutate(Values = if_else(Values == "0", "No", "Yes"),
+         Values = factor(Values, levels = c("No", "Yes"))) %>%
+  filter(!is.na(Values))
+#filtering out use.engage.data = 6 ("I don't know")
+
+
+#earning.labs = c( "Open data", "Open code", "Open learning tools", "Open publications", "Open review", "Open science \n communication")
+#names(learning.labs) = c("Data", "Code", "EduTool", "Publish", "Review", "Outreach")
+
+## using
+
+
+
+learning_use_stackplot = plotdata3.2 %>% 
+  filter(Domain == "use") %>%
+  count(Aspect, Values) %>% 
+  group_by(Aspect) %>% 
+  mutate(Freq = prop.table(n)) %>% 
+  ggplot(aes(fill = Values, y = Freq, x = Aspect)) +
+  geom_bar(stat = "identity") +
+  labs(x = "", y = "Proportion of respondents") +
+  scale_fill_manual(values = c("#31688EFF", "#FDE725FF"))+
+  scale_x_discrete(labels = c("Open code", "Open data", "Open \n learning tools", "Read open \n publications"))+
+  theme_minimal() +
+  theme(legend.title = element_blank(), 
+        panel.grid.major = element_blank(),
+        panel.grid.minor = element_blank())+
+  labs(title="Using open resources in own education")
+
+learning_use_stackplot
+  
+## sharing
+
+
+learning_share_stackplot = plotdata3.2 %>% 
+  filter(Domain == "share") %>%
+  count(Aspect, Values) %>% 
+  group_by(Aspect) %>% 
+  mutate(Freq = prop.table(n)) %>% 
+  ggplot(aes(fill = Values, y = Freq, x = Aspect)) +
+  geom_bar(stat = "identity") +
+  labs(x = "", y = "") +
+  scale_fill_manual(values = c("#31688EFF", "#FDE725FF"))+
+  scale_x_discrete(labels = c("Own code", "Own data","Publish papers \n or results \n openly"))+
+  theme_minimal() +
+  theme(legend.title = element_blank(), 
+        panel.grid.major = element_blank(),
+        panel.grid.minor = element_blank())+
+  labs(title="Sharing of resources openly in own education")
+
+learning_share_stackplot
+
+
+
+## Principles
+
+
+learning_principles_stackplot = plotdata3.2 %>% 
+  filter( Domain == "principle") %>%
+  count(Aspect, Values) %>% 
+  group_by(Aspect) %>% 
+  mutate(Freq = prop.table(n)) %>% 
+  ggplot(aes(fill = Values, y = Freq, x = Aspect)) +
+  geom_bar(stat = "identity") +
+  labs(x = "", y = "Proportion of respondents") +
+  scale_fill_manual(values = c("#31688EFF", "#FDE725FF"))+
+  #scale_x_discrete(labels = c("Own code", "Own data","Publish papers \n or results \n openly"))+
+  theme_minimal() +
+  theme(legend.title = element_blank(), 
+        panel.grid.major = element_blank(),
+        panel.grid.minor = element_blank())+
+  labs(title="Learned principles in own education")
+
+
+learning_principles_stackplot
+
+## Review and outreach
+
+
+learning_other_stackplot = plotdata3.2 %>% 
+  filter( Domain == "do") %>%
+  count(Aspect, Values) %>% 
+  group_by(Aspect) %>% 
+  mutate(Freq = prop.table(n)) %>% 
+  ggplot(aes(fill = Values, y = Freq, x = Aspect)) +
+  geom_bar(stat = "identity") +
+  labs(x = "", y = "") +
+  scale_fill_manual(values = c("#31688EFF", "#FDE725FF"))+
+  scale_x_discrete(labels = c("Outreach or \n science communication", "Open peer \n review"))+
+  theme_minimal() +
+  theme(legend.title = element_blank(), 
+        panel.grid.major = element_blank(),
+        panel.grid.minor = element_blank())+
+  labs(title="Open engamement in own learning")
+
+
+learning_other_stackplot
+
+
+
+grid.newpage()
+pushViewport(viewport(layout = grid.layout(2,2)))
+
+print(learning_use_stackplot, vp = viewport(layout.pos.row = 1, layout.pos.col = 1))
+print(learning_share_stackplot, vp = viewport(layout.pos.row = 1, layout.pos.col = 2))
+print(learning_principles_stackplot, vp = viewport(layout.pos.row = 2, layout.pos.col = 1))
+print(learning_other_stackplot, vp = viewport(layout.pos.row = 2, layout.pos.col = 2))
+
+affiliation_plot = plotdata %>% 
+  filter(Category == "Background") %>% 
+  filter(Value != 0) %>%
+  select(NO, Question, Value) %>% 
+  mutate(Value = as.numeric(Value)) %>%
+  group_by(Question) %>% 
+  #summarise(Freq = sum(Value)) %>% 
+  ggplot() +
+  geom_bar(aes(Question, fill = Question)) +
+  labs(x = "Affiliation", y = "Number of respondents") +
+  scale_fill_viridis_d() +
+  scale_x_discrete(labels = c("Government \n agency", "Institute", "Other", "University"))+
+  ylim(0, 50) +
+  theme_minimal() +
+  theme(legend.title = element_blank(),
+        legend.position="none",
+        panel.grid.major = element_blank(),
+        panel.grid.minor = element_blank())
+
+
+
+country_plot = plotdata %>% 
+  filter(Category == "Country") %>% 
+  filter(Value != 0) %>% 
+  select(NO, Question, Value) %>% 
+  mutate(Value = as.numeric(Value)) %>%
+  group_by(Question) %>% 
+  ggplot() +
+  geom_bar(aes(Question, fill = Question)) +
+  labs(x = "Country of affiliation", y = "") +
+  scale_fill_viridis_d() +
+  scale_x_discrete(labels = c("EU", "Non-EU", "Norway"))+
+  ylim(0, 50) +
+  theme_minimal() +
   theme(axis.text.y = element_blank(),
-        axis.ticks.y = element_blank(),
-        axis.title.y = element_blank(),
-        #axis.text.x = element_blank(),
-        axis.ticks.x = element_blank(),
-        axis.title.x = element_blank(),
-        panel.background = element_blank())
-mosaic_compare 
-mosaic_compare3.3 = add_sub(mosaic_compare, "Share:Female   Use:Female          Share:Male   Use:Male", x = 0.1, hjust = 0, size = 11)
-ggdraw(mosaic_action1.3)
+        legend.title = element_blank(),
+        legend.position="none",
+        panel.grid.major = element_blank(),
+        panel.grid.minor = element_blank())
 
-mosaic_importance = ggplot(data=plotdata3)
 
+grid.newpage()
+pushViewport(viewport(layout = grid.layout(1,2)))
+
+print(affiliation_plot, vp = viewport(layout.pos.row = 1, layout.pos.col = 1))
+print(country_plot, vp = viewport(layout.pos.row = 1, layout.pos.col = 2))
+
+
+  activity_plotdata = bndata %>%
+  select(NO, Position, Degree, use.engage.Data:does.engage.Outreach, share.engage.Data:share.engage.Methods) %>% 
+  pivot_longer(cols = c(use.engage.Data:does.engage.Outreach, share.engage.Data:share.engage.Methods), names_to = c("Action", "Domain", "Aspect"), values_to = "Values", names_sep = "[.]") %>% 
+  mutate(Values = as.factor(Values))
+
+position_plot = activity_plotdata %>%
+  select(NO, Position, Aspect, Values) %>% 
+  filter(Position == 3) %>% 
+  group_by(Aspect) %>% 
+  ggplot() +
+  geom_bar(aes(Aspect)) +
+  labs(x = "Position", y = "") +
+  #scale_x_discrete(labels = c("EU", "Non-EU", "Norway"))+
+  ylim(0, 50) +
+  theme_minimal() +
+  theme(axis.text.y = element_blank(),
+        legend.title = element_blank(), 
+        panel.grid.major = element_blank(),
+        panel.grid.minor = element_blank())
+
+  
+  
+
+plotdata %>% 
+  filter(Category == "OS_activity") %>% 
+  mutate(Question = fct_recode(Question, "Used open access educational tools" = "Edu_tools", "Engaged in open peer review" = "Open_review" , "Engaged in outreach" = "Outreach", "Published papers open access" = "Published_open", "Read open access publications" = "Read_papers", "Shared code openly" = "Shared_code", "Shared data openly" = "Shared_data", "Shared methods openly" = "Shared_methods", "Used open code" =  "Used_codes", "Used open data" = "Used_open_data")) %>% 
+ggplot(aes(x = Value, fill = factor(Value), group = Value)) +
+  geom_bar(show.legend = FALSE) +
+  scale_fill_manual(values = viridis_pal()(10)) +
+  scale_x_discrete(breaks = 1:6, labels = scale1$text_scale) +
+  scale_y_continuous(breaks = c(0, 20)) +
+  labs(x = "", y = "Number of respondents") +
+  facet_wrap(~ factor(Question, levels = c("Shared data openly", "Shared code openly", "Shared methods openly", "Used open data", "Used open code", "Published papers open access", "Used open access educational tools", "Read open access publications", "Engaged in open peer review", "Engaged in outreach")), ncol = 1) +
+  theme_bw()+
+theme(panel.border = element_blank(),
+      panel.grid.major = element_blank(),
+      panel.grid.minor = element_blank(),
+#      panel.spacing = unit(0.1, "lines"),
+      strip.background = element_blank())
+
+
+os_activity_stackplot = ana.data %>%
+  filter(Domain == "engage") %>%
+  mutate(AspAct = paste (Aspect, Action, sep = '_')) %>% 
+  mutate(AspAct = fct_relevel(AspAct, "Data_share", "Code_share", "Methods_share", "Data_use", "Code_use", "EduTool_use", "Publish_share",  "Publish_use", "Review_does", "Outreach_does")) %>% 
+  mutate(AspAct = fct_recode(AspAct, "Shared data openly" = "Data_share", "Shared code openly" = "Code_share", "Shared methods/protocols openly" = "Methods_share", "Used open data" = "Data_use", "Used open code" = "Code_use",  "Published open access" = "Publish_share", "Used open educational tools" = "EduTool_use", "Read open access publications" = "Publish_use", "Engaged in open peer review" = "Review_does", "Engaged in outreach/\nscience communication" = "Outreach_does")) %>% 
+  mutate(Values = fct_relevel(Values, "6", "1", "2", "3", "4", "5")) %>% 
+  mutate(Values = fct_recode(Values, "Never" = "1", "Rarely" = "2", "Several times a year" = "3", "Several times a month" = "4", "Several times a week" = "5", "I don't know"  = "6")) %>% 
+  count(AspAct, Values) %>% 
+  group_by(AspAct) %>% 
+  mutate(Freq = prop.table(n)) %>% 
+  ggplot(aes(y = Freq, x = AspAct, fill = Values)) +
+  geom_bar(stat = "identity") +
+  scale_fill_viridis_d(direction = -1)+
+  ylab("Proportion of respondents") +
+  xlab("OS aspects")+
+  theme_bw()+
+  theme(axis.text.x = element_text(angle = 90, hjust = 1, vjust = .5),
+        panel.border = element_blank(),
+        panel.grid.major = element_blank(),
+        panel.grid.minor = element_blank(),
+        legend.title = element_blank(), 
+        #      panel.spacing = unit(0.1, "lines"),
+        strip.background = element_blank())
+os_activity_stackplot

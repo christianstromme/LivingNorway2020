@@ -1,5 +1,5 @@
-#loadpackages
-library("drake")
+#load packages
+library(drake)
 
 #plan
 trait_driver_plan <- "Rscripts/1_living_norway_drake.R"
