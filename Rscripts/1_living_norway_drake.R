@@ -17,6 +17,7 @@ library(ggtext)
 library(patchwork)
 #library(cowplot)
 library(forcats)
+library(kableExtra)
 
 
 
@@ -28,6 +29,7 @@ source("Rscripts/import_surveydata2020_plan.R")
 source("Rscripts/analysis_plan.R")
 source("Rscripts/results_plan.R")
 source("Rscripts/plot_plan.R")
+source("Rscripts/table_plan.R")
 source("Rscripts/SI_plot_plan.R")
 
 
@@ -66,6 +68,7 @@ living_norway_plan <- bind_plans(import_plan,
                                  results_plan,
                                  manuscript_plan,
                                  plot_plan,
+                                 table_plan,
                                  SI_plot_plan)
                          
 #quick plot
@@ -74,3 +77,4 @@ plot(living_norway_plan)
 #### configure drake plan ####
 trait_config <- drake_config(plan = living_norway_plan, keep_going = TRUE)
 trait_config
+

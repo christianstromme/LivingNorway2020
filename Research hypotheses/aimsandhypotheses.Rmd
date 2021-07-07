@@ -8,23 +8,40 @@ Overarching theme: propagation of open science, knowledge and culture (how to do
 Gender patterns - perhaps more 'exploratory' in nature - can be nested under all of the other questions
 ### 1. Current experience/emphases and perceived importance are uneven between types of OS practices in e.g. data, code, publication - showing success in some aspects, but less in others. Are these the bits that are easiest/least controversial? 
 1.1 Researchers with academic affiliation have engaged more in open science-related practices compared to other researchers, and more so for early-career researchers.
+
 Academic affiliation
 Year of degree
-# of open science practices engaged in
+Frequency of engagement with open science practices
 gender
+
 1.2 OS practices are perceived to be more important in data, methods and publishing than educational tools and code, depending on activities engaged in. 
-Perception of importance of OS practices
+Perceived importance of OS practices
 gender
-1.3 BUT…Most people have used open data and code, but have not contributed to open data and code. 
+#Omitted, unavailable data.
+
+1.3 BUT…Most people have used open data and code, but have not contributed to open data and code.
+#Rephrased to:
+Workshop participants use open data more frequently rather than contributing with open data and code.
+
 Use of OS practices 
 gender
 
+#1.4 People more likely to use OS in supervision and teaching when they use it more in their own research. (present in analysis plan)
+#Rephrase to:
+Workshop participants are more likely to use OS in supervision and teaching when they use it more in their own research.
+
+
 ### 2. Workshops such as ours can give people experience - both in terms of concepts and practical
 2.1 Colloquium participants having less experience with open science-related practices are more likely to change or adapt their open science related practices in research, teaching and/or supervision after the colloquium.
+#Omitted, unavailable data.
 
 2.2 Motivation for doing the workshop - experience with OS practices
+#Omitted, unavailable data.
+
 
 2.3 Statements of use in the future vs used in the past -- predictor also: stated usefulness of the workshop … (open ended answers available to qualify)
+#Omitted, unavailable data.
+
 ### 3. Experience should help - in terms of both recognising the need for and the uptake of OS practices in, and as a subject of, teaching
 (propagation of open science culture)
 
@@ -32,8 +49,15 @@ gender
 
 
 3.2 Colloquium participants having more experience with being taught open science-related practices are more likely to engage in those practices as researchers, and teachers.
+#Rephrase, engament data is not differentiated between research and teaching context:
 
-3.4 Colloquium participants "think" OS practices are more important in their research compared to teaching and supervision.
+Colloquium participants having more experience with being taught open science-related practices are more likely to engage in those practices.
+
+3.3 Colloquium participants "think" OS practices are more important in their research compared to teaching and supervision.
+#Rephrase:
+Colloquium participants perceive OS practices to be more important in their research compared to teaching and supervision.
+
+
 
 ### 4. Future of open science. 
 4.1 What are the hurdles and hindrances preventing people from doing OS
