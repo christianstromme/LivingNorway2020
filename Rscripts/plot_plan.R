@@ -39,12 +39,14 @@ plot_plan <- drake_plan(
     scale_fill_viridis_d(direction = -1) +
     labs(y = "Proportion of respondents", x = "") +
     guides(fill = guide_legend(nrow = 2,byrow = TRUE)) +
+    coord_flip() +
     theme_bw() +
     theme(axis.text.x = element_text(angle = 90, hjust = 1, vjust = .5),
+          axis.ticks.y = element_blank(),
           panel.border = element_blank(),
           panel.grid.major = element_blank(),
           panel.grid.minor = element_blank(),
-          legend.position = "top",
+          legend.position = "bottom",
           legend.title = element_blank(),
           strip.background = element_blank()),
   
