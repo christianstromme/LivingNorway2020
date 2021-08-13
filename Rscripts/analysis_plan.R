@@ -58,6 +58,7 @@ analysis_plan = drake_plan(
   
   ## Questions 1.2: OS practices are perceived to be more important in data-, code-, methods-sharing and publishing than educational tools, depending on activities engaged in.
 
+  ## Analyses for 1.2 are redundant with analysis in 3.3. Latter analysis will be used.
   #data sharing
 
   ana.data.1.2a = bndata %>%
@@ -225,10 +226,8 @@ analysis_plan = drake_plan(
   use.clmm2.test.1 = anova(use.clmm2.f1, use.clmm2.f2),
   use.clmm2.test.2 = anova(use.clmm2.f1, use.clmm2.f3),
 
-  #Proportional odds violated for Gender. Scaling to relax assumption.
+  #Check ok.
 
-
-  sum.use.clmm2.f2 = summary(use.clmm2.f2),
 
 
   ## Question 1.4: People more likely to use OS in supervision and teaching when they use it more in their own research.
@@ -624,7 +623,7 @@ analysis_plan = drake_plan(
   
 
   
-  ## Quesiton 3.3: Colloquium participants "think" OS practices are more important in their research compared to teaching and supervision.
+  ## Questiton 3.3: Colloquium participants "think" OS practices are more important in their research compared to teaching and supervision.
   ana.data.3.3 = ana.data %>%
     mutate(Values = as.numeric(Values)) %>%
     #filtering out Values = 1 ("Not applicable to my work" does not make sense to include in the scaled responses Y)
