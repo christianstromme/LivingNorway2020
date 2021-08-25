@@ -88,7 +88,7 @@ library(tidyverse)
 loadd(define.table)
 
   define.table %>%
-  mutate(across(where(is.character), ~str_wrap(.x, width = 50))) %>%
+  mutate(across(where(is.character))) %>%
   mutate(across(where(is.character), linebreak)) %>%
     kbl(booktabs = TRUE,
         escape = FALSE,
@@ -129,7 +129,7 @@ loadd(define.freq.table)
 ```{r hinder.table}
 loadd(hinder.table)
   hinder.table %>%
-  mutate(across(where(is.character), ~str_wrap(.x, width = 50))) %>%
+  mutate(across(where(is.character))) %>%
   mutate(across(where(is.character), linebreak)) %>%
     kbl(booktabs = TRUE,
         escape = FALSE,
@@ -137,12 +137,12 @@ loadd(hinder.table)
         caption = "Table 3. Codes assigned to participant responses during qualitative analysis of the “what hinders your engagement in OS?” prompt. Note that many of the examples used could be, and ultimately were, assigned to two or more of the codes.")
 ```
 
+
 ```{r help.table}
 loadd(help.table)
   help.table %>%
-  mutate(across(where(is.character), ~str_wrap(.x, width = 50))) %>%
+  mutate(across(where(is.character))) %>%
   mutate(across(where(is.character), linebreak)) %>%
-    #mutate(across(where(is.character), linebreak)) %>%
     kbl(booktabs = TRUE,
         escape = FALSE,
         col.names = linebreak(c("Code or category", "Inclusion criteria and definitions", "Examples"), align = "c"),
@@ -152,9 +152,8 @@ loadd(help.table)
 ```{r hinder.freq.table}
 loadd(hinder.freq.table)
   hinder.freq.table %>%
-  mutate(across(where(is.character), ~str_wrap(.x, width = 50))) %>%
+  mutate(across(where(is.character))) %>%
   mutate(across(where(is.character), linebreak)) %>%
-    #mutate(across(where(is.character), linebreak)) %>%
     kbl(booktabs = TRUE,
         escape = FALSE,
         col.names = linebreak(c("Code", "Number of occurrences in sample responses (Part I; n=60)"), align = "c"),
@@ -164,7 +163,7 @@ loadd(hinder.freq.table)
 ```{r help.freq.table}
 loadd(help.freq.table)
   help.freq.table %>%
-  mutate(across(where(is.character), ~str_wrap(.x, width = 50))) %>%
+  mutate(across(where(is.character))) %>%
   mutate(across(where(is.character), linebreak)) %>%
     kbl(booktabs = TRUE,
         escape = FALSE,
