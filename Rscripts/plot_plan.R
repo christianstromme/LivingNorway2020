@@ -2,27 +2,8 @@
 
 plot_plan <- drake_plan(
 
-  # scales
-  scale1 = tibble(numeric_scale = c(1, 2, 3, 4, 5, 6),
-                   text_scale = c( "Never", "Rarely", "Several times a year", "Several times a month", "Several times a week", "I don't know" )),
   
-  scale2 = tibble( numeric_scale = c(2, 3, 4, 5, 1 ),
-                   text_scale = c("Minimally important", "Somewhat important", "Very important", "Extremely important", "Not applicable to my work" )),
-  scale3 = tibble( numeric_scale = c( 1, 2, 3, 4, 5 ),
-                   text_scale = c( "Not applicable to my work", "Minimally useful", "Somewhat useful", "Very useful", "Extremely useful" )),
-  scale4 = tibble (numeric_scale = c(0, 1),
-                   text_scale= c("No", "Yes")),
-  scale5 = tibble (numeric_scale = c(0, 1, 2),
-                   text_scale= c("No", "Yes", "Don't_know")),
-  scale6 = tibble (numeric_scale = c(1, 2),
-                   text_scale= c("Yes", "No")),
-  scale7 = tibble (numeric_scale = c(1,2,3,4),
-                   text_scale = c ("High_school", "Bsc", "Msc", "PhD")),
-  scale8 = tibble (numeric_scale = c(1,2,3,4,5,6,7),
-                   text_scale = c ("Bachelor_student", "Master_student", "PhD_student", "Researcher(temporary)", "Researcher(permanent)", "Associate_professor/Professor", "Other" )),
-  
-  
-  # Engagment plot
+  # Engagement plot
   os_activity_stackplot = ana.data %>%
     filter(Domain == "engage") %>%
     mutate(AspAct = paste (Aspect, Action, sep = '_'),
@@ -119,7 +100,7 @@ plot_plan <- drake_plan(
   mutate(Values = fct_relevel(Values, "5", "4", "3", "2")) %>% 
   mutate(Domain = fct_relevel(Domain, "Research", "Teaching", "Supervision")) %>% 
   mutate(Aspect = fct_recode(Aspect, "Data sharing" = "Data", "Code sharing" = "Code" , "Methods/protocol sharing" = "Method", "Open access publishing" = "Publish", "Science communication \nthrough open channels" = "Communication", "Research reproducibility" = "Reproducibility", "Research transparency" = "Transparency")) %>% 
-  mutate(Aspect = fct_relevel(Aspect, "Data sharing", "Code sharing", "Methods/protocol sharing", "Open access publishing", "Science communication \nthrough open channels", "Research reproducibility", "Research transparency")) %>% 
+  mutate(Aspect = fct_relevel(Aspect, "Data sharing", "Code sharing", "Methods/protocol sharing", "Open access publishing", "Science communication \nthrough open channels", "Research reproducibility", "Research transparency")) %>%
     ggplot() +
     geom_mosaic(aes(x = product(Aspect), fill = Values), offset = 0.02) + 
     scale_fill_viridis_d(direction = 1, 

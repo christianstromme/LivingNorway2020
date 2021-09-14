@@ -1,3 +1,15 @@
+---
+output:
+  pdf_document: default
+  word_document: default
+  bookdown::pdf_book:
+    dev: "cairo_pdf"
+    toc: no
+    number_sections: false
+  latex_engine: lualatex
+  fig_caption: true
+  extra_dependencies: ["flafter"]
+---
 ```{r, include=FALSE}
 options(tinytex.verbose = TRUE)
 ```
@@ -23,32 +35,11 @@ address: |
    | ...
    | $^5$ Bjerknes Centre for Climate Research, University of Bergen, Norway
 
-
   
-abstract: |
-  to be added
 date: "`r format(Sys.Date(), '%d %B %Y')`"
 
-# These are LaTex settings to take care of floating figures/tables, line spacing, etc
-header-includes:
-  #- \usepackage{endfloat} put figs at the end
-  - \usepackage{setspace}\doublespacing
-  - \usepackage{lineno}
-  - \linenumbers
-
-output:
-  #word_document
-  bookdown::pdf_book:
-    dev: cairo_pdf
-    toc: no
-    number_sections: false
-    latex_engine: lualatex
-  fig_caption: yes
-  extra_dependencies: ["flafter"]
-  
 documentclass: article
 classoption: a4paper
-bibliography: Paperpile - Nov 02 BibTeX Export.bib
 #csl: journal-of-ecology.csl
 
  #always_allow_html: yes
@@ -57,76 +48,107 @@ bibliography: Paperpile - Nov 02 BibTeX Export.bib
 
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = FALSE, error = TRUE, eval = TRUE)
+knitr::opts_chunk$set(echo = FALSE, 
+                      error = TRUE, 
+                      eval = TRUE)
 library("drake")
 # library("cairoDevice")
 library(kableExtra)
 # library(patchwork)
 library(tidyverse)
-
+library(ggmosaic)
 ```
+
+
+
+
+## ABSTRACT
 
 ## INTRODUCTION
 
 
 
 
+
+
 ## METHODS
 
-
-
+Colloquium
+$
+Survey development and administration
+$
+Survey structure and content
+$
+Qualitative analysis
+$
+Statistical analysis
+$
+Confirmatory analyses
+$
+Data management
+$
 
 ## RESULTS
 
-###Surveyed respondents
+Surveyed respondents
 
 | The number of respondents completing each of the three partial surveys were 60 for Part I, 51 for Part II and 38 for Part III. Four workshop participants that responded to Parts II and III did not respond to Part I. The majority of surveyed workshop participants were affiliated with universities (N=37), followed by research institutes (N=22), other affiliations (N=5) and governmental agencies (N=2). Among these, six respondents stated dual affiliations. Further, the majority of respondents stated Norway as their country of work or study (N=45), followed by countries outside of the EU (N=13) and within the EU (N=8). Among these, four respondents stated multiple countries of affiliation. In terms of gender, 27 participants stated female, 32 as male while 1 participant  stated non-binary. In statistical analyses where Gender was used as a fixed term, the latter category was omitted as a factor level as this represented a single observation.
 
-### How do participants define open science?
+How do respondents define open science?
 
-```{r define.table}
+```{r $define table$}
 loadd(define.table)
 
   define.table %>%
-  mutate(across(where(is.character))) %>%
   mutate(across(where(is.character), linebreak)) %>%
-    kbl(booktabs = TRUE,
-        escape = FALSE,
+    kable(booktabs = TRUE,
+        #escape = FALSE,
         col.names = linebreak(c("Code", "Inclusion criteria and definitions", "Examples"), align = "c"),
-        caption = "Table 1. Codes assigned to participant responses during qualitative analysis of the “define open science” prompt. Note that many of the examples used could be, and ultimately were, assigned to two or more of the codes.") 
+        caption = "Codes assigned to participant responses during qualitative analysis of the “define open science” prompt. Note that many of the examples used could be, and ultimately were, assigned to two or more of the codes."
+        ) %>%
+    kable_styling(font_size = 8) %>% 
+    column_spec(column = 1, width = "50px") %>% 
+    column_spec(column = 2, width = "200px") %>% 
+    column_spec(column = 3, width = "150px") 
     
+
 ```
-  
-```{r define.freq.table}
+
+
+```{r $define freq table$}
 loadd(define.freq.table)
 
   define.freq.table %>%
-  mutate(across(where(is.character), ~str_wrap(.x, width = 50))) %>%
+  mutate(across(where(is.character))) %>%
   mutate(across(where(is.character), linebreak)) %>%
     kbl(booktabs = TRUE,
-        escape = FALSE,
+        #escape = FALSE,
         col.names = linebreak(c("Code or category", "Number of occurrences in sample responses (before workshop; n=60)", "Number of occurrences in sample responses (after workshop; n=38)"), align = "c"),
-        caption = "Table 2. Frequency with which emergent codes were identified in the survey responses in Parts I and II. Codes are organized from most frequent (“sharing data”) to least frequent (“relationship between OS and education”), in Part I.")
+        caption = "Frequency with which emergent codes were identified in the survey responses in Parts I and II. Codes are organized from most frequent (“sharing data”) to least frequent (“relationship between OS and education”), in Part I."
+        ) %>% 
+    column_spec(column = 2, width = "200px") %>% 
+    column_spec(column = 3, width = "100px") %>% 
+    column_spec(column = 3, width = "100px")
 ```
 
-### Which OS aspects do practitioners interact with, and how frequently?
+Which OS aspects do practitioners interact with, and how frequently?
 
-
-``` {r participants-plot, fig.height= 7, fig.cap = "Workshop participants’ stated frequency of engagement with OS practices."}
+``` {r os activity stackplot, fig.cap = "Workshop participants’ stated frequency of engagement with OS practices."}
  readd(os_activity_stackplot)
 
 ```
 
 
-
-``` {r OS-engagement-plot, fig.cap = "Frequency of engagement with Open Science aspects for surveyed researchers (N=[36]) participating at the workshop in relation to affiliation and gender. Width of tiles correspond to the number of participants for the respective categories of participants, height of tiles correspond to proportion of each score category."}
+``` {r mosaic activity, fig.cap = "Frequency of engagement with Open Science aspects for surveyed researchers (N=36) participating at the workshop in relation to affiliation and gender. Height of tiles corresponds to the number of participants for the respective categories of participants, width of tiles corresponds to frequency of scale category."}
  readd(mosaic_activity)
 
 ```
 
-### What are the perceived benefits and risks for individual engagement in OS?
 
-```{r hinder.table}
+
+What are the perceived benefits and risks for individual engagement in OS?
+
+```{r $hinder table$}
 loadd(hinder.table)
   hinder.table %>%
   mutate(across(where(is.character))) %>%
@@ -134,11 +156,14 @@ loadd(hinder.table)
     kbl(booktabs = TRUE,
         escape = FALSE,
         col.names = linebreak(c("Code or category", "Inclusion criteria and definitions", "Examples"), align = "c"),
-        caption = "Table 3. Codes assigned to participant responses during qualitative analysis of the “what hinders your engagement in OS?” prompt. Note that many of the examples used could be, and ultimately were, assigned to two or more of the codes.")
+        caption = "Codes assigned to participant responses during qualitative analysis of the “what hinders your engagement in OS?” prompt. Note that many of the examples used could be, and ultimately were, assigned to two or more of the codes."
+        ) %>% 
+    column_spec(column = 1, width = "50px") %>% 
+    column_spec(column = 2, width = "200px") %>% 
+    column_spec(column = 3, width = "150px")
 ```
 
-
-```{r help.table}
+```{r $help table$ }
 loadd(help.table)
   help.table %>%
   mutate(across(where(is.character))) %>%
@@ -146,10 +171,15 @@ loadd(help.table)
     kbl(booktabs = TRUE,
         escape = FALSE,
         col.names = linebreak(c("Code or category", "Inclusion criteria and definitions", "Examples"), align = "c"),
-        caption = "Table 4. Codes assigned to participant responses during qualitative analysis of the “what helps you to engage in OS?” prompt. Note that many of the examples used could be, and ultimately were, assigned to two or more of the codes.")
+        caption = "Codes assigned to participant responses during qualitative analysis of the “what helps you to engage in OS?” prompt. Note that many of the examples used could be, and ultimately were, assigned to two or more of the codes."
+        ) %>% 
+    column_spec(column = 1, width = "50px") %>% 
+    column_spec(column = 2, width = "200px") %>% 
+    column_spec(column = 3, width = "150px") 
 ```
 
-```{r hinder.freq.table}
+
+```{r $hinder freq.table$}
 loadd(hinder.freq.table)
   hinder.freq.table %>%
   mutate(across(where(is.character))) %>%
@@ -157,10 +187,13 @@ loadd(hinder.freq.table)
     kbl(booktabs = TRUE,
         escape = FALSE,
         col.names = linebreak(c("Code", "Number of occurrences in sample responses (Part I; n=60)"), align = "c"),
-        caption = "Table 5. Frequency with which emergent codes were identified for the responses to “what hinders your engagement in OS?“ prompt. Codes are organized from most frequent (“Lack of guidelines”) to least frequent (“Fear of critique”)")
+        caption = "Frequency with which emergent codes were identified for the responses to “what hinders your engagement in OS?“ prompt. Codes are organized from most frequent (“Lack of guidelines”) to least frequent (“Fear of critique”)"
+        ) %>% 
+    column_spec(column = 2, width = "200px") %>% 
+    column_spec(column = 3, width = "150px")
 ```
 
-```{r help.freq.table}
+```{r $help freq table$}
 loadd(help.freq.table)
   help.freq.table %>%
   mutate(across(where(is.character))) %>%
@@ -168,15 +201,19 @@ loadd(help.freq.table)
     kbl(booktabs = TRUE,
         escape = FALSE,
         col.names = linebreak(c("Code", "Number of occurrences in sample responses (Part I; n=60)"), align = "c"),
-        caption = "Table 6. Frequency with which emergent codes were identified for the responses to “what helps your engagement in OS?“ prompt. Codes are organized from most frequent (“Lack of guidelines”) to least frequent (“Fear of critique”)")
+        caption = "Frequency with which emergent codes were identified for the responses to “what helps your engagement in OS?“ prompt. Codes are organized from most frequent (“Lack of guidelines”) to least frequent (“Fear of critique”)"
+       ) %>% 
+    column_spec(column = 2, width = "200px") %>% 
+    column_spec(column = 3, width = "150px")
 ```
 
-### Which OS aspects have practitioners encountered in their own formal education?
+Which OS aspects have practitioners encountered in their own formal education?
 
-### How do OS practitioners involved in higher education value OS in teaching and supervision?
+How do OS practitioners involved in higher education value OS in teaching and supervision?
 
 
-``` {r importance-plot, fig.height= 7, fig.cap = "Perceived importance of  Open Science aspects for surveyed researchers (N = ...) participating at the workshop in relation to research, supervision and teaching. Width of tiles correspond to number of participants involved in the respective activities, height of tiles correspond to proportion of each score category."}
+
+``` {r mosaic all, fig.cap = "Perceived importance of  Open Science aspects for surveyed researchers (N = 26) participating at the workshop in relation to research, supervision and teaching. Width of tiles corresponds to number of participants involved in the respective activities."} 
  readd(mosaic_all)
 
 ```
