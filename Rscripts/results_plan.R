@@ -2,6 +2,12 @@
 
 results_plan = drake_plan(
   
+  tidy_output_clmm = function(fit){
+    results = as.data.frame(coefficients(summary(fit)))
+    colnames(results) = c("estimate","std.error","statistic","p.value")
+    results %>% tibble::rownames_to_column("term")
+  },
+  
   ## Question 1.1
   
   result_Q1.1 = bind_rows(
@@ -12,7 +18,7 @@ results_plan = drake_plan(
     filter(coef.type == "location") %>% 
     mutate(term = case_when(term == "University1" ~ "University",
                             term == "University1:YearLate" ~ "University:YearLate",
-                            term == "GenderMale"~ "Male",
+                            term == "GenderMale"~ "Men",
                             TRUE ~ term),
            term = case_when(p.value < 0.001 ~ paste(term, "***"),
                                p.value < 0.01 ~ paste(term, "**"),
@@ -21,31 +27,9 @@ results_plan = drake_plan(
     select(model, `Fixed effect terms` = term, Estimate = estimate, SE = std.error, `z value` = statistic),
 
   
-  ## Questions 1.2
   
-  result_Q1.2 = bind_rows(global_data.sharing = tidy(imp.clmm.a.g),
-            final_data.sharing = tidy(imp.clmm.a.f),
-            
-            global_code.sharing = tidy(imp.clmm.b.g),
-            final_code.sharing = tidy(imp.clmm.b.f),
-            
-            global_method.method = tidy(imp.clmm.c.g),
-            final_method.method = tidy(imp.clmm.c.f),
-            
-            global_open.publish = tidy(imp.clmm.d.g),
-            final_open.publish = tidy(imp.clmm.d.f),
-            .id = "model_aspect"
-            ) %>% 
-    filter(coef.type == "location") %>% 
-    separate(col = model_aspect, into = c("model", "aspect"), sep = "_") %>% 
-    mutate(term = case_when(term == "DomainT" ~ "Teaching",
-                            term == "GenderMale"~ "Male",
-                            TRUE ~ term),
-           term = case_when(p.value < 0.001 ~ paste(term, "***"),
-                            p.value < 0.01 ~ paste(term, "**"),
-                            p.value < 0.05 ~ paste(term, "*"),
-                            TRUE ~ term)) %>% 
-    select(model, aspect, `Fixed effect terms` = term, Estimate = estimate, SE = std.error, `z value` = statistic),
+  
+  ## Prediction 1.3
   
   result_Q1.3 = bind_rows(
     global = tidy(use.clmm.g),
@@ -55,7 +39,7 @@ results_plan = drake_plan(
     filter(coef.type == "location") %>% 
     mutate(term = case_when(term == "Actionuse" ~ "Use",
                             term == "AspectData" ~ "Data",
-                            term == "GenderMale"~ "Male",
+                            term == "GenderMale"~ "Men",
                             TRUE ~ term),
            term = case_when(p.value < 0.001 ~ paste(term, "***"),
                             p.value < 0.01 ~ paste(term, "**"),
@@ -64,44 +48,47 @@ results_plan = drake_plan(
     select(model, `Fixed effect terms` = term, Estimate = estimate, SE = std.error, `z value` = statistic),
   
   
-  result_Q1.4 = bind_rows(
-    global_teach = tidy(teach.glm.g),
-    final_teach = tidy(teach.glm.f),
-    global_supervise = tidy(supervise.glm.g),
-    final_supervise = tidy(supervise.glm.f),
-    .id = "model_domain"
-  ) %>% 
-    separate(col = model_domain, into = c("model", "domain"), sep = "_") %>% 
-    mutate(term = case_when(term == "(Intercept)" ~ "Intercept",
-                            term == "GenderMale"~ "Male",
-                            TRUE ~ term),
-           term = case_when(p.value < 0.001 ~ paste(term, "***"),
-                            p.value < 0.01 ~ paste(term, "**"),
-                            p.value < 0.05 ~ paste(term, "*"),
-                            TRUE ~ term)) %>%
-    select(Model = model, Domain = domain, `Fixed effect terms` = term, Estimate = estimate, SE = std.error, `z value` = statistic),
+  #result_Q1.4 = bind_rows(
+   # global_teach = tidy(teach.glm.g),
+    #final_teach = tidy(teach.glm.f),
+    #global_supervise = tidy(supervise.glm.g),
+    #final_supervise = tidy(supervise.glm.f),
+   # .id = "model_domain"
+  #) %>% 
+   # separate(col = model_domain, into = c("model", "domain"), sep = "_") %>% 
+  #  mutate(term = case_when(term == "(Intercept)" ~ "Intercept",
+  #                          term == "GenderMale"~ "Male",
+   #                         TRUE ~ term),
+    #       term = case_when(p.value < 0.001 ~ paste(term, "***"),
+     #                       p.value < 0.01 ~ paste(term, "**"),
+      #                      p.value < 0.05 ~ paste(term, "*"),
+       #                     TRUE ~ term)) %>%
+    #select(Model = model, Domain = domain, `Fixed effect terms` = term, Estimate = estimate, SE = std.error, `z value` = statistic),
   
   
-  result_Q1.4.2 = bind_rows(global_teach_data = tidy(teach.clm.data.g),
+  #result_Q1.4.2 = bind_rows(global_teach_data = tidy(teach.clm.data.g),
                             
-                            global_teach_code = tidy(teach.clm.code.g),
+   #                         global_teach_code = tidy(teach.clm.code.g),
                             
-                            global_teach_method = tidy(teach.clm.method.g),
+    #                        global_teach_method = tidy(teach.clm.method.g),
                             
-                            global_teach_publish = tidy(teach.clm.publish.g),
-                            final_teach_publish = tidy(teach.clm.publish.f),
+     #                       global_teach_publish = tidy(teach.clm.publish.g),
+      #                      final_teach_publish = tidy(teach.clm.publish.f),
                             
-                            global_supervise_data = tidy(superv.clm.data.g),
+       #                     global_supervise_data = tidy(superv.clm.data.g),
                             
-                            global_supervise_code = tidy(superv.clm.code.g),
+        #                    global_supervise_code = tidy(superv.clm.code.g),
                             
-                            global_supervise_method = tidy(superv.clm.method.g),
+         #                   global_supervise_method = tidy(superv.clm.method.g),
                             
-                            global_supervise_publish = tidy(superv.clm.publish.g),
+          #                  global_supervise_publish = tidy(superv.clm.publish.g),
                             
-                            .id = "model_domain_aspect"
-  ) %>% 
-    filter(coef.type == "location"),
+           #                 .id = "model_domain_aspect"
+  #) %>% 
+    #filter(coef.type == "location"),
+  
+  
+  ## Prediction 3.2
   
   
   result_Q3.2 = bind_rows(global_use.data = tidy(learn.clm.a.g),
@@ -144,13 +131,15 @@ results_plan = drake_plan(
                             term == "learnt.use.EduToolTRUE" ~ "use open edu tools",
                             term == "learnt.do.ReviewTRUE" ~ "do open review",
                             term == "learnt.do.OutreachTRUE" ~ "do open outreach",
-                            term == "GenderMale"~ "Male",
+                            term == "GenderMale"~ "Men",
                             TRUE ~ term),
            term = case_when(p.value < 0.001 ~ paste(term, "***"),
                             p.value < 0.01 ~ paste(term, "**"),
                             p.value < 0.05 ~ paste(term, "*"),
                             TRUE ~ term)) %>%
     select(Model = model, Action = action, `Fixed effect terms` = term, Estimate = estimate, SE = std.error, `z value` = statistic),
+  
+  ## Prediction 3.3
   
   
   result_Q3.3 = bind_rows(
@@ -168,7 +157,7 @@ results_plan = drake_plan(
                             term == "AspectPublish" ~ "Publish",
                             term == "AspectReproducibility" ~ "Reproducibility",
                             term == "AspectTransparency" ~ "Transparency",
-                            term == "GenderMale"~ "Male",
+                            term == "GenderMale"~ "Men",
                             TRUE ~ term),
            term = case_when(p.value < 0.001 ~ paste(term, "***"),
                             p.value < 0.01 ~ paste(term, "**"),

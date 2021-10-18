@@ -35,72 +35,170 @@ library(tidyverse)
 
 ```
 
-## Supplementary
+## Supporting Information
 
 This section contains all plots and tables of the supplementary material of this manuscript.
 
 
-### Meta data
 
 
-```{r metadata, fig.cap="Number of respondents."}
-readd(metadata_plot)
+
+```{r }
+loadd(program.table)
+
+program.table %>% 
+   mutate(across(where(is.character), linebreak)) %>%
+    kable(booktabs = TRUE,
+        #escape = FALSE,
+        col.names = linebreak(c("Day", "Time", "Activity", "Description", "Collaboration with"), align = "c"),
+        caption = "Program for the Living Norway 2020 Colloquium"
+        ) %>%
+    column_spec(column = 1, width = "20px") %>% 
+    column_spec(column = 2, width = "50px") %>% 
+    column_spec(column = 3, width = "200px") %>%  
+    column_spec(column = 4, width = "100px") %>% 
+    column_spec(column = 5, width = "50px") %>%  
+  kable_styling(font_size = 8, latex_options = "HOLD_position") 
+  
+
+    
+
+```
+
+\newpage
+
+
+
+```{r }
+loadd(survey.table.1)
+
+survey.table.1 %>% 
+   mutate(across(where(is.character), linebreak)) %>%
+    kable(booktabs = TRUE,
+        #escape = FALSE,
+        col.names = linebreak(c("Part", "Question", "Options", "Response"), align = "c"),
+        caption = "Survey questions distributed among attendees at the Living Norway 2020 Colloquium"
+        ) %>%
+    column_spec(column = 1, width = "5px") %>% 
+    column_spec(column = 2, width = "180px") %>% 
+    column_spec(column = 3, width = "180px") %>%  
+    column_spec(column = 4, width = "100px") %>% 
+  kable_styling(font_size = 7, latex_options = "HOLD_position") 
+    
+
+```
+
+\newpage
+
+
+```{r }
+loadd(survey.table.23)
+
+survey.table.23 %>% 
+   mutate(across(where(is.character), linebreak)) %>%
+    kable(booktabs = TRUE,
+        #escape = FALSE,
+        col.names = linebreak(c("Part", "Question", "Options", "Response"), align = "c"),
+        caption = "Survey questions distributed among attendees at the Living Norway 2020 Colloquium"
+        ) %>%
+    column_spec(column = 1, width = "5px") %>% 
+    column_spec(column = 2, width = "180px") %>% 
+    column_spec(column = 3, width = "180px") %>%  
+    column_spec(column = 4, width = "100px") %>% 
+  kable_styling(font_size = 7, latex_options = "HOLD_position") 
+    
+
+```
+
+\newpage
+
+
+\newpage
+
+
+```{r , fig.cap="Number of respondents by affiliation."}
+readd(affiliation_plot)
   
 ```
 
+\newpage
 
-```{r stacked-bar, fig.cap="Add a clever figure caption."}
-readd(stacked_barplots)
+```{r , fig.cap="Number of respondents by contry."}
+readd(country_plot)
   
 ```
 
+\newpage
 
-### Question 1.1
+```{r , fig.cap="Respondents that had used open resources in own education."}
+readd(learning_use_stackplot)
+  
+```
 
-Researchers with academic affiliation have engaged more in open science-related practices compared to other researchers, and more so for early-career researchers.
+\newpage
+
+```{r , fig.cap="Respondents that had shared resources openly in own education."}
+readd(learning_share_stackplot)
+  
+```
+
+\newpage
+
+```{r , fig.cap="Respondents that had learned OS principles in own education."}
+readd(learning_principles_stackplot)
+  
+```
+
+\newpage
+
+```{r , fig.cap="Open engamement among respondents in own learning."}
+readd(learning_other_stackplot)
+  
+```
+
+\newpage
+
+
+
+```{r }
+loadd(define.table)
+
+  define.table %>%
+  mutate(across(where(is.character), linebreak)) %>%
+    kable(booktabs = TRUE,
+        #escape = FALSE,
+        col.names = linebreak(c("Code", "Inclusion criteria and definitions", "Examples"), align = "c"),
+        caption = "Codes assigned to participant responses during qualitative analysis of the “define open science” prompt. Note that many of the examples used could be, and ultimately were, assigned to two or more of the codes."
+        ) %>%
+    kable_styling(font_size = 8, latex_options = "HOLD_position") %>% 
+    column_spec(column = 1, width = "50px") %>% 
+    column_spec(column = 2, width = "200px") %>% 
+    column_spec(column = 3, width = "150px") 
+    
+
+```
+
+\newpage
+
+
+
 
 ```{r results-q1-1}
 loadd(result_Q1.1)
 
 result_Q1.1 %>% 
-  select(-model) %>% 
+  select(-model) %>%    
   kbl(booktabs = TRUE, 
       digits = 2,
-      caption = "Model stats question 1.1") %>% 
+      caption = "Parameter estimates, SE and z-values for covariates in models used to test prediction 1.1") %>% 
   pack_rows("global", 1, 4) %>% 
   pack_rows("final", 5, 6) %>% 
-  kable_styling()
+  kable_styling(latex_options = "HOLD_position")
   
 ```
 
 
 
-### Question 1.2
-
-
-OS practices are perceived to be more important in data-, code-, methods-sharing and publishing than educational tools, depending on activities engaged in.
-
-```{r results-q1-2}
-loadd(result_Q1.2)
-
-result_Q1.2 %>% 
-  select(-aspect) %>% 
-  kbl(booktabs = TRUE, 
-      digits = 2,
-      caption = "Model stats question 1.2") %>% 
-  pack_rows("data sharing", 1, 4) %>% 
-  pack_rows("code sharing", 5, 10) %>% 
-  pack_rows("method", 11, 16) %>% 
-  pack_rows("open publishing", 17, 21) %>% 
-  kable_styling()
-  
-```
-
-
-
-### Question 1.3
-
-BUT Most people have used open data and code, but have not contributed to open data and code.
 
 ```{r results-q1-3}
 loadd(result_Q1.3)
@@ -109,38 +207,61 @@ result_Q1.3 %>%
   select(-model) %>% 
   kbl(booktabs = TRUE, 
       digits = 2,
-      caption = "Model stats question 1.3") %>% 
+      caption = "Parameter estimates, SE and z-values for covariates in models used to test prediction 1.3") %>% 
   pack_rows("global", 1, 3) %>% 
   pack_rows("final", 4, 5) %>% 
-  kable_styling()
+  kable_styling(latex_options = "HOLD_position")
   
 ```
 
+\newpage
 
 
-### Question 1.4
 
-People more likely to use OS in supervision and teaching when they use it more in their own research.
 
-```{r results-q1-4}
-loadd(result_Q1.4)
+```{r }
+loadd(hinder.table)
+  hinder.table %>%
+  mutate(across(where(is.character))) %>%
+  mutate(across(where(is.character), linebreak)) %>%
+    kbl(booktabs = TRUE,
+        escape = FALSE,
+        col.names = linebreak(c("Code or category", "Inclusion criteria and definitions", "Examples"), align = "c"),
+        caption = "Codes assigned to participant responses during qualitative analysis of the “what hinders your engagement in OS?” prompt. Note that many of the examples used could be, and ultimately were, assigned to two or more of the codes."
+        ) %>% 
+    column_spec(column = 1, width = "50px") %>% 
+    column_spec(column = 2, width = "200px") %>% 
+    column_spec(column = 3, width = "150px") %>% 
+    kable_styling(latex_options = "HOLD_position")
 
-result_Q1.4 %>% 
-  select(-Domain) %>% 
-  kbl(booktabs = TRUE, 
-      digits = 2,
-      caption = "Model stats question 1.4") %>% 
-  pack_rows("Teaching", 1, 4) %>% 
-  pack_rows("Supervision", 5, 9) %>% 
-  kable_styling()
-  
 ```
 
+\newpage
+
+```{r }
+loadd(help.table)
+  help.table %>%
+  mutate(across(where(is.character))) %>%
+  mutate(across(where(is.character), linebreak)) %>%
+    kbl(booktabs = TRUE,
+        escape = FALSE,
+        col.names = linebreak(c("Code or category", "Inclusion criteria and definitions", "Examples"), align = "c"),
+        caption = "Codes assigned to participant responses during qualitative analysis of the “what helps you to engage in OS?” prompt. Note that many of the examples used could be, and ultimately were, assigned to two or more of the codes."
+        ) %>% 
+    column_spec(column = 1, width = "50px") %>% 
+    column_spec(column = 2, width = "200px") %>% 
+    column_spec(column = 3, width = "150px") %>% 
+    kable_styling(latex_options = "HOLD_position")
+
+```
+
+\newpage
+
+### Which OS aspects have practitioners encountered in their own formal education?
 
 
-### Question 3.2
 
-Colloquium participants having more experience with being taught open science-related practices are more likely to engage in those practices as researchers, and teachers.
+
 
 ```{r results-q3-2}
 loadd(result_Q3.2)
@@ -149,7 +270,7 @@ result_Q3.2 %>%
   select(-Action) %>% 
   kbl(booktabs = TRUE, 
       digits = 2,
-      caption = "Model stats question 3.2") %>% 
+      caption = "Parameter estimates, SE and z-values for covariates in models used to test prediction 3.2") %>% 
   pack_rows("use data", 1, 3) %>% 
   pack_rows("use code", 4, 6) %>%
   pack_rows("use open publication", 7, 8) %>% 
@@ -159,14 +280,12 @@ result_Q3.2 %>%
   pack_rows("use edu tools", 17, 19) %>%
   pack_rows("do open review", 20, 21) %>%
   pack_rows("do outreach", 22, 23) %>%
-  kable_styling()
+  kable_styling(latex_options = "HOLD_position")
   
 ```
 
+\newpage
 
-### Question 3.3
-
-Colloquium participants "think" OS practices are more important in their research compared to teaching and supervision.
 
 ```{r results-q3-3}
 loadd(result_Q3.3)
@@ -174,9 +293,9 @@ loadd(result_Q3.3)
 result_Q3.3 %>% 
   kbl(booktabs = TRUE, 
       digits = 2,
-      caption = "Model stats question 3.2") %>% 
+      caption = "Parameter estimates, SE and z-values for covariates in models used to test prediction 3.3") %>% 
   pack_rows("global", 1, 9) %>% 
   pack_rows("final", 10, 17) %>%
-  kable_styling()
+  kable_styling(latex_options = "HOLD_position")
   
 ```

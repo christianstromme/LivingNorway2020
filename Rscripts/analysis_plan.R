@@ -45,16 +45,16 @@ analysis_plan = drake_plan(
   
   #checking for violation of proportional odds assumption
   
-  eng.clmm2.f1 = clmm2(Values ~ University + Gender, random = NO, data = ana.data.1.1, Hess = TRUE),
-  eng.clmm2.f2 = clmm2(Values ~ University, nominal = ~Gender, random = NO, data = ana.data.1.1, Hess = TRUE),
-  eng.clmm2.f3 = clmm2(Values ~ Gender, nominal = ~University, random = NO, data = ana.data.1.1, Hess = TRUE),
+  eng.clmm2.1 = clmm2(Values ~ University + Gender, random = NO, data = ana.data.1.1, Hess = TRUE),
+  eng.clmm2.2 = clmm2(Values ~ University, nominal = ~Gender, random = NO, data = ana.data.1.1, Hess = TRUE),
+  eng.clmm2.3 = clmm2(Values ~ Gender, nominal = ~University, random = NO, data = ana.data.1.1, Hess = TRUE),
   
   
-  eng.clmm2.f.test1 = anova(eng.clmm2.f1, eng.clmm2.f2),
-  eng.clmm2.f.test2 = anova(eng.clmm2.f1, eng.clmm2.f3),
+  eng.clmm2.f.test1 = anova(eng.clmm2.1, eng.clmm2.2),
+  eng.clmm2.f.test2 = anova(eng.clmm2.1, eng.clmm2.3),
   
   #assumption ok
-
+  
   
   ## Questions 1.2: OS practices are perceived to be more important in data-, code-, methods-sharing and publishing than educational tools, depending on activities engaged in.
 
@@ -89,12 +89,12 @@ analysis_plan = drake_plan(
   
   #checking for violation of proportional odds assumption
 
-  imp.clmm2.a.f1 = clmm2(Values ~ Domain + Gender, random = NO, data = ana.data.1.2a, Hess = TRUE),
-  imp.clmm2.a.f2 = clmm2(Values ~ Domain, nominal = ~Gender, random = NO, data = ana.data.1.2a, Hess = TRUE),
-  imp.clmm2.a.f3 = clmm2(Values ~ Gender, nominal = ~Domain, random = NO, data = ana.data.1.2a, Hess = TRUE),
+  imp.clmm2.a.1 = clmm2(Values ~ Domain + Gender, random = NO, data = ana.data.1.2a, Hess = TRUE),
+  imp.clmm2.a.2 = clmm2(Values ~ Domain, nominal = ~Gender, random = NO, data = ana.data.1.2a, Hess = TRUE),
+  imp.clmm2.a.3 = clmm2(Values ~ Gender, nominal = ~Domain, random = NO, data = ana.data.1.2a, Hess = TRUE),
 
-  imp.clmm.a.f.test1 = anova(imp.clmm2.a.f1, imp.clmm2.a.f2),
-  imp.clmm.a.f.test2 = anova(imp.clmm2.a.f1, imp.clmm2.a.f3),
+  imp.clmm.a.f.test1 = anova(imp.clmm2.a.1, imp.clmm2.a.2),
+  imp.clmm.a.f.test2 = anova(imp.clmm2.a.1, imp.clmm2.a.3),
 
   #assumption ok
 
@@ -192,7 +192,7 @@ analysis_plan = drake_plan(
 
 
   
-  ## Question 1.3: BUT Most people have used open data and code, but have not contributed to open data and code.
+  ## Question 1.3: Most people have used open data and code, but have not contributed to open data and code.
   
   ana.data.1.3 = ana.data %>%
     mutate(Values = as.numeric(Values)) %>%
@@ -219,69 +219,72 @@ analysis_plan = drake_plan(
   
   #checking for violation of proportional odds assumption
 
-  use.clmm2.f1 = clmm2(Values ~ Action + Gender, random = NO, data = ana.data.1.3, Hess = TRUE),
-  use.clmm2.f2 = clmm2(Values ~ Action + Gender, scale = ~Gender, random = NO, data = ana.data.1.3, Hess = TRUE),
-  use.clmm2.f3 = clmm2(Values ~ Action + Gender, scale = ~Action, random = NO, data = ana.data.1.3, Hess = TRUE),
+  use.clmm2.1 = clmm2(Values ~ Action + Gender, random = NO, data = ana.data.1.3, Hess = TRUE),
+  use.clmm2.2 = clmm2(Values ~ Action, nominal = ~Gender, random = NO, data = ana.data.1.3, Hess = TRUE),
+  use.clmm2.3 = clmm2(Values ~ Gender, nominal = ~Action, random = NO, data = ana.data.1.3, Hess = TRUE),
 
-  use.clmm2.test.1 = anova(use.clmm2.f1, use.clmm2.f2),
-  use.clmm2.test.2 = anova(use.clmm2.f1, use.clmm2.f3),
+  use.clmm2.test.1 = anova(use.clmm2.1, use.clmm2.2),
+  use.clmm2.test.2 = anova(use.clmm2.1, use.clmm2.3),
 
-  #Check ok.
+  #assumption ok
 
 
 
   ## Question 1.4: People more likely to use OS in supervision and teaching when they use it more in their own research.
-
-  ana.data.1.4 = bndata %>%
-    select(NO, Gender, does.R.primary, useinTprior, useinSprior, use.engage.Data:does.engage.Outreach) %>%
-    pivot_longer(cols = c(use.engage.Data:does.engage.Outreach), names_to = c("Action", "Domain", "Aspect"), values_to = "Values", names_sep = "[.]") %>%
-    mutate(Values = as.numeric(Values)) %>%
+  # Edit: This approach is not correct, as it neither makes sense to treat ordinal engagement scores as a continuous variable by calculating averages, nor pile all the different aspects together in such a manner. The alternative approach further below is more correct as models are made separately for each aspect.
+  
+  #ana.data.1.4 = bndata %>%
+   # select(NO, Gender, does.R.primary, useinTprior, useinSprior, use.engage.Data:does.engage.Outreach) %>%
+    #pivot_longer(cols = c(use.engage.Data:does.engage.Outreach), names_to = c("Action", "Domain", "Aspect"), values_to = "Values", names_sep = "[.]") %>%
+    #mutate(Values = as.numeric(Values)) %>%
     #filtering out values = 6 ("I don't know")
-    filter(does.R.primary == "1",
-           Values != 6, 
-           !is.na(useinTprior), 
-           !is.na(useinSprior)) %>%
+    #filter(does.R.primary == "1",
+     #      Values != 6, 
+      #     !is.na(useinTprior), 
+       #    !is.na(useinSprior)) %>%
     
     #make average values for OS activity scores
-    group_by(NO, Gender, useinTprior, useinSprior) %>%
-    summarize(Values = mean(Values, na.rm = TRUE)) %>% 
+    #group_by(NO, Gender, useinTprior, useinSprior) %>%
+    #summarize(Values = mean(Values, na.rm = TRUE)) %>% 
     # replace 2 with 0
-    mutate(useinTprior = if_else(useinTprior == 2, 0, useinTprior),
-           useinSprior = if_else(useinSprior == 2, 0, useinSprior)),
+    #mutate(useinTprior = if_else(useinTprior == 2, 0, useinTprior),
+    #       useinSprior = if_else(useinSprior == 2, 0, useinSprior)),
 
   # Teaching
   # run global model
-  teach.glm.g = glm(useinTprior ~  Values + Gender, family = "binomial", na.action = "na.fail", data = ana.data.1.4),
+  #teach.glm.g = glm(useinTprior ~  Values + Gender, family = "binomial", na.action = "na.fail", data = ana.data.1.4),
 
   # model selection
-  dredge.teach.glm.g = dredge(teach.glm.g),
+  #dredge.teach.glm.g = dredge(teach.glm.g),
 
-  #no significant terms$
+  #no significant terms-> null intercept model is the best
   
   # final model
-  teach.glm.f = glm(useinTprior ~  1, family = "binomial", na.action = "na.fail", data = ana.data.1.4),
+  #teach.glm.f = glm(useinTprior ~  1, family = "binomial", na.action = "na.fail", data = ana.data.1.4),
   
   # sum
-  sum.teach.glm.f = summary(teach.glm.f),
+  #sum.teach.glm.f = summary(teach.glm.f),
 
 
   # Supervision
   # run global model
-  supervise.glm.g = glm(useinSprior ~  Values + Gender, family = "binomial", na.action = "na.fail", data = ana.data.1.4),
+  #supervise.glm.g = glm(useinSprior ~  Values + Gender, family = "binomial", na.action = "na.fail", data = ana.data.1.4),
 
   # model selection
-  dredge.supervise.glm.g = dredge(supervise.glm.g),
+  #dredge.supervise.glm.g = dredge(supervise.glm.g),
 
   # final model
-  supervise.glm.f = glm(useinSprior ~ Gender, family = "binomial", na.action = "na.fail", data = ana.data.1.4),
+  #supervise.glm.f = glm(useinSprior ~ Gender, family = "binomial", na.action = "na.fail", data = ana.data.1.4),
 
   # summary
-  sum.supervise.glm.f = summary(supervise.glm.f),
+  #sum.supervise.glm.f = summary(supervise.glm.f),
 
   
   
   ## Question 1.4: People more likely to use OS in supervision and teaching when they use it more in their own research.
 
+  # Alternative approach (exploratory)
+  
   ana.data.1.4.2 = bndata %>%
     select(NO, Gender:does.R.primary, imp.S.Data:imp.T.Publish, share.engage.Data:useinSprior) %>%
     mutate(useinTprior = if_else(useinTprior == 2, 0, useinTprior),
@@ -332,7 +335,7 @@ analysis_plan = drake_plan(
                              data = ana.data.1.4.teach.publish),
   # model selection
   dredge.teach.clm.publish.g = dredge(teach.clm.publish.g),
-  #no significant terms
+  #no significant terms-> null intercept model is the best
 
   teach.clm.publish.f = clm(imp.T.Publish ~ 1, na.action = "na.fail",
                             data = ana.data.1.4.teach.publish),
@@ -415,8 +418,7 @@ analysis_plan = drake_plan(
   #checking for violation of proportional odds assumption
   test.res.learn.clm.a.f = nominal_test(learn.clm.a.f),
 
-  #check ok
-  #frequency of learning
+  #assumption ok
 
   
   #3.2b Use open code
@@ -445,7 +447,7 @@ analysis_plan = drake_plan(
   #checking for violation of proportional odds assumption
   test.res.learn.clm.b.f = nominal_test(learn.clm.b.f),
 
-  #check ok
+  #assumption ok
 
 
   #3.2c Use open publications
@@ -468,8 +470,11 @@ analysis_plan = drake_plan(
   # final model
   learn.clm.c.f = clm(use.engage.Publish ~ 1, na.action = "na.fail", data = ana.data.3.2c),
   
+  # summary
+  sum.learn.clm.c.f = summary(learn.clm.c.f),
   
 
+  
   #3.2d Share open data
   ana.data.3.2d = bndata %>%
     select(NO, Gender, share.engage.Data, learnt.share.Data) %>%
@@ -494,8 +499,8 @@ analysis_plan = drake_plan(
   #checking for violation of proportional odds assumption
   test.learn.clm.d.f = nominal_test(learn.clm.d.f),
 
-  #check ok
-
+  #assumption ok
+  
 
   #3.2e Share open code
   ana.data.3.2e = bndata %>%
@@ -523,8 +528,8 @@ analysis_plan = drake_plan(
   #checking for violation of proportional odds assumption
   test.learn.clm.e.f = nominal_test(learn.clm.e.f),
 
-  #check ok
-
+  #assumption ok
+  
 
   #3.2f Publish open access
   ana.data.3.2f = bndata %>%
@@ -541,7 +546,7 @@ analysis_plan = drake_plan(
   learn.clm.f.g = clm(share.engage.Publish ~ learnt.share.Publish + Gender, na.action = "na.fail", data = ana.data.3.2f),
 
   dredge.learn.clm.f.g = dredge(learn.clm.f.g),
-  #no significant terms
+  #no significant terms-> null intercept model is the best
   
   # final model
   learn.clm.f.f = clm(share.engage.Publish ~ 1, na.action = "na.fail", data = ana.data.3.2f),
@@ -569,16 +574,10 @@ analysis_plan = drake_plan(
   # summary
   sum.learn.clm.g.f = summary(learn.clm.g.f),
 
-  
   #checking for violation of proportional odds assumption
-  test.1.learn.clm.g.f = nominal_test(learn.clm.g.f),
-  #no lokLik for nominal model
+  test.learn.clm.g.f = nominal_test(learn.clm.g.f),
   
-  # using scale_test instead
-  test.2.learn.clm.g.f = scale_test(learn.clm.g.f),
-
-  #check ok
-
+  #assumption ok
 
   #3.2h Does open review
   ana.data.3.2h = bndata %>%
@@ -595,7 +594,7 @@ analysis_plan = drake_plan(
 
   # model selection
   dredge.learn.clm.h.g = dredge(learn.clm.h.g),
-  #no significant terms
+  #no significant terms-> null intercept model is the best
   
   # final model
   learn.clm.h.f = clm(does.engage.Review ~ 1, na.action = "na.fail", data = ana.data.3.2h),
@@ -616,14 +615,14 @@ analysis_plan = drake_plan(
   learn.clm.i.g = clm(does.engage.Outreach ~ learnt.do.Outreach + Gender, na.action = "na.fail", data = ana.data.3.2i),
 
   dredge.learn.clm.i.g = dredge(learn.clm.i.g),
-  #no significant terms
+  #no significant terms-> null intercept model is the best
 
   # final model
   learn.clm.i.f = clm(does.engage.Outreach ~ 1, na.action = "na.fail", data = ana.data.3.2i),
   
-
+ 
   
-  ## Questiton 3.3: Colloquium participants "think" OS practices are more important in their research compared to teaching and supervision.
+  ## Questiton 3.3: Colloquium participants think OS practices are more important in their research compared to teaching and supervision.
   ana.data.3.3 = ana.data %>%
     mutate(Values = as.numeric(Values)) %>%
     #filtering out Values = 1 ("Not applicable to my work" does not make sense to include in the scaled responses Y)
@@ -649,14 +648,14 @@ analysis_plan = drake_plan(
 
   
   #checking for violation of proportional odds assumption
-  imp.clmm2.f1 = clmm2(Values ~ Domain + Aspect, random = NO, data = ana.data.3.3, Hess = TRUE),
-  imp.clmm2.f2 = clmm2(Values ~ Aspect, nominal = ~Domain, random = NO, data = ana.data.3.3, Hess = TRUE),
-  imp.clmm2.f3 = clmm2(Values ~ Domain, nominal = ~Aspect, random = NO, data = ana.data.3.3, Hess = TRUE),
+  imp.clmm2.1 = clmm2(Values ~ Domain + Aspect, random = NO, data = ana.data.3.3, Hess = TRUE),
+  imp.clmm2.2 = clmm2(Values ~ Aspect, nominal = ~Domain, random = NO, data = ana.data.3.3, Hess = TRUE),
+  imp.clmm2.3 = clmm2(Values ~ Domain, nominal = ~Aspect, random = NO, data = ana.data.3.3, Hess = TRUE),
 
-  test.1.res.imp.clmm.f = anova(imp.clmm2.f1, imp.clmm2.f2),
-  test.2.res.imp.clmm.f = anova(imp.clmm2.f1, imp.clmm2.f3)
+  test.1.res.imp.clmm.f = anova(imp.clmm2.1, imp.clmm2.2),
+  test.2.res.imp.clmm.f = anova(imp.clmm2.1, imp.clmm2.3),
 
+  #assumption ok
 
-  #check ok
-
+  
 )

@@ -91,6 +91,105 @@ table_plan <- drake_plan(
     "Other/Vague", "6", 
     "Prior success with OS", "4",
     "Money", "4"
+  ),
+  
+  program.table = tribble(
+    ~"Day", ~"Time", ~"Activity", ~"Description", ~"Collaboration with",
+    "I", "", "Session 1", "Living Norway & the biodiversity informatics landscape", "",
+    "", "10:00-12:00", "Welcome: Norunn Myklebust, Managing director NINA", "", "",
+    "", "", "Living Norway Ecological Data Network - Status and vision: Erlend B. Nilsen, Senior research scientist, NINA", "", "",
+    "", "", "The why, how and when to use data standards in ecology: Anders G. Finstad, Professor, NTNU University Museum", "", "",
+    "", "", "Improved data management with LivingNorwayR: Matt Grainger, Postdoctoral fellow, NINA", "", "",
+    "", "", "Panel discussion", "", "",
+    "", "12:00-13:00", "Lunch", "", "",
+    "", "", "Session 2", "Open science in basic and applied ecology and beyond", "",
+    "", "13:00-14:15", "Open science in general: Ingrid Heggland, Senior research librarian, NTNU Library","", "",
+    "", "", "The status of the “reproducibility crisis” in the wildlife sciences: Althea Archer, Assistant Professor, St. Cloud State University and John Fieberg, Associate Professor of Quantitative Ecology, University of Minnesota", "", "",
+    "", "", "How can journals support open data in ecology? Emilie Aimé, Managing Editor, British Ecological Society", "", "",
+    "", "", "Panel discussion", "", "",
+    "", "14:15-14:45", "Coffee break", "", "",
+    "", "", "Session 3", "Open science and fair data in the science-policy interface", "",
+    "", "14:45-16:00", "IPBES goes FAIR! Lessons Learned and the Way Forward: Rainer Krug, Lead of data management working group of the IPBES task force on knowledge and data. PhD, University of Zürich","", "",
+    "", "", "Panel discussion", "", "",
+    "II", "", "", "", "",
+    "", "09:00-12:00", "Workshop", "Education and training in open science and FAIR data management.", "SFU bioCEED",
+    "", "12:00-13:00", "Lunch", "", "",
+    "", "13:00-16:00", "Workshop", "Statistical modelling of new open data sources. We will, in particular, discuss models that integrate information from a range of different data sources simultaneously.", "SFF Centre for Biodiversity Dynamics, CBD"
+    
+    
+    
+  ),
+  
+  
+  survey.table.1 = tribble(
+    ~"Part", ~"Question", ~"Options", ~"Response",
+    "I", "People define 'Open Science' in many ways, and it's a multi-faceted concept. We are interested in how you define Open Science, especially as it pertains to your own work. Please take a minute to share these thoughts. The more detailed, the better.", "","Open-ended",
+    "", "What Open Science activities have you engaged in?", "Shared data openly", "Never, Rarely," ,
+    "", "", "Shared code openly", "Several times a year,",
+    "", "", "Used open data", "Several times a month,", 
+    "", "", "Used open code", "Several times a week,",
+    "", "", "Published my papers openly ", "I don't know",
+    "", "", "Used open education tools or practices", "",
+    "", "", "Read open papers", "",
+    "", "", "Engaged in open peer review", "",
+    "", "", "Engaged in outreach/Science communication", "",
+    "", "", "Other (please specify)", "",
+    "", "What has hindered  you from engaging in Open Science?", "", "Open-ended",
+    "", "What has helped you engage in Open Science?", "", "Open-ended",
+    "", "How important are the following aspects of Open Science to your RESEARCH?", "", "",
+    "", "", "Data sharing, Code sharing", "Not applicable to my work,",
+    "", "", "Scientific Publication", "Minimally important, Somewhat important,",
+    "", "", "Outreach", "Very important, Extremely important",
+    "", "", "Research Reproducibility", "",
+    "", "", "Research Transparency", "",
+    "", "How important are the following aspects of Open Science to your TEACHING?", "", "",
+    "", "", "Data sharing, Code sharing", "Not applicable to my work,",
+    "", "", "Scientific Publication", "Minimally important, Somewhat important,",
+    "", "", "Outreach", "Very important, Extremely important",
+    "", "", "Research Reproducibility", "",
+    "", "", "Research Transparency", "",
+    "", "How important are the following aspects of Open Science to your SUPERVISION (of graduate students and postdoc)?", "", "",
+    "", "", "Data sharing, Code sharing", "Not applicable to my work,",
+    "", "", "Scientific Publication", "Minimally important, Somewhat important,",
+    "", "", "Outreach", "Very important, Extremely important",
+    "", "", "Research Reproducibility", "",
+    "", "", "Research Transparency", "",
+     "", "Please feel free to explain your answers to any of the above.", "", "Open-ended",
+    "", "What is your current affiliation type? Please select all that apply.", "University, Research institute, Governmental agency, Private company, Other", "Constrained choice",
+    "", "In which country do you work or study? Please select all that apply.", "Norwegian, EU/EEC, non-EU/EEC", "Constrained choice",
+    "", "What is your current position? ", "Bachelor student, Master student, PhD-student, Researcher (temporary, researcher (permanent), Associate professor/Professor, Other", "Constrained choice",
+    "", "What is your highest degree?", "BSc, MSc, PhD", "Constrained choice",
+    "", "When did you finish your highest degree?", "", "Open ended",
+    "", "Are you involved in any of the following types of teaching? Please select all that apply.", "Undergraduate classes, Doctoral or master classes, Supervising undergraduates, Supervising doctoral or master students, Supervising postdoctoral scholars, Public outreach, Other", "Constrained choice",
+    "", "What is your gender?", "", "Open-ended",
+    "", "What parts of this workshop are you attending", "Day one, Education workshop, Analysis workshop", "Constrained choice",
+    "", "How are you attending the workshop?", "Physical, Virtual, Both", "Constrained choice"
+   
+
+    
+    ),
+  
+  survey.table.23 = tribble(
+    ~"Part", ~"Question", ~"Options", ~"Response",
+    "II", "Do you teach? ", "Yes, No", "Constrained choice",
+    "", "Do you supervise MSc-students, PhD-Students and/or postdoctoral researchers?", "Yes, No", "Constrained choice",
+    "", "Have you encountered open science practices in your personal education experience? ", "Yes, No, Don't know", "Constrained choice",
+    "", "If yes (or don’t know),  which?", "", "Tick-boxes",
+    "", "", "Read open-access literature / material (e.g. papers, textbooks)", "",
+    "", "", "Used open data", "",
+    "", "", "Used open code ", "",
+    "", "", "Shared own data openly", "",
+    "", "", "Shared own code openly", "",
+    "", "", "Published results or papers openly", "",
+    "", "", "Been taught principles of research transparency ", "",
+    "", "", "Been taught principles of research reproducibility", "",
+    "", "", "Open peer review", "",
+    "", "", "Outreach/Science communication", "",
+    "", "", "Other (please specify)", "",
+    "III", "People define 'Open Science' in many ways, and it is a multi-faceted concept. We are interested in how you define Open Science, especially as it pertains to your own work. Please take a minute to share these thoughts. The more detailed, the better.", "", "Open-ended",
+    
+    
   )
   
-  )
+
+)
