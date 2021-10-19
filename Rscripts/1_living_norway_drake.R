@@ -48,7 +48,7 @@ manuscript_plan <- drake_plan(
     file_in("Rmd/elsevier-harvard_rjt.csl")
     file_in("Paperpile_Sep16BibTeXExport.bib")
     rmarkdown::render(
-      input = knitr_in("MS_file.Rmd"), 
+      input = knitr_in("MS/MS.Rmd"), 
       clean = FALSE)
   # },
   # 
