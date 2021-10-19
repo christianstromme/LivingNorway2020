@@ -1,7 +1,8 @@
 ### Make figures
-
+#ggsave("Presentations/os_activity_stackplot.jpg", os_activity_stackplot, dpi = 150, width = 10, height = 8)
 plot_plan <- drake_plan(
 
+  five_col = rev(viridis_pal()(5)),
   
   # Engagement plot
   os_activity_stackplot = ana.data %>%
@@ -17,12 +18,13 @@ plot_plan <- drake_plan(
     mutate(Freq = prop.table(n)) %>%
     ggplot(aes(y = Freq, x = AspAct, fill = Values)) +
     geom_bar(stat = "identity") +
-    scale_fill_viridis_d(direction = -1) +
+    #scale_fill_viridis_d(direction = -1) +
+    scale_fill_manual(values = c("grey", five_col)) +
     labs(y = "Proportion of respondents", x = "") +
     guides(fill = guide_legend(nrow = 2,byrow = TRUE)) +
     coord_flip() +
-    theme_bw() +
-    theme(axis.text.x = element_text(angle = 90, hjust = 1, vjust = .5),
+    theme_bw(base_size = 17) +
+    theme(#axis.text.x = element_text(angle = 90, hjust = 1, vjust = .5),
           axis.ticks.y = element_blank(),
           panel.border = element_blank(),
           panel.grid.major = element_blank(),
@@ -111,14 +113,14 @@ plot_plan <- drake_plan(
     facet_grid(~ Domain) +
     guides(fill = guide_legend(nrow = 2,byrow = TRUE)) +
     coord_flip() +
-    theme_minimal() +
+    theme_minimal(base_size = 18) +
     theme(axis.text.x=element_blank(),
           legend.position = "bottom",
           panel.grid.major = element_blank())
   
 )
 
-
+#ggsave("Presentations/mosaic_all.jpg", mosaic_all, dpi = 150, width = 10, height = 8)
 # #1
 # plotdata3.3.1 = plotdata3.3 %>% 
 #   filter(Aspect=="Data"),
