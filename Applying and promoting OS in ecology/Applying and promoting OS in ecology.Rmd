@@ -117,7 +117,7 @@ references:
   author:
   - family: Ayris
     given: P.
-  - family: López de San Román
+  - family: Lopez de San Roman
     given: A.
   - family: Maes
     given: K.
@@ -150,7 +150,7 @@ references:
 - type: article-journal
   id: Besanconetal2021
   author:
-  - family: Besançon
+  - family: Besancon
     given: L.
   - family: Peiffer-Smadja
     given: N.
@@ -286,7 +286,7 @@ references:
     given: A.
   - family: Kurz
     given: C.
-  - family: Öztürk
+  - family: Ozturk
     given: M. A.
   - family: Solbiati
     given: M.
@@ -386,7 +386,7 @@ references:
     given: D. S.
   - family: Maitner
     given: B. S.
-  - family: Salguero-Gómez
+  - family: Salguero-Gomez
     given: R.
   - family: Vandvik
     given: V.
@@ -529,7 +529,7 @@ references:
     given: J.
   - family: Pierfederici
     given: M. E.
-  - family: Chacón-Labella
+  - family: Chacon-Labella
     given: J.
   - family: Cotner
     given: S.
@@ -684,7 +684,7 @@ references:
 - type: article-journal
   id: Munafoetal2017
   author:
-  - family: Munafò
+  - family: Munafo
     given: M. R.
   - family: Nosek
     given: B. A.
@@ -788,7 +788,7 @@ references:
 - type: article-journal
   id: OReillyetal2017
   author:
-  - family: O'Reilly
+  - family: O Reilly
     given: C. M.
   - family: Gougis
     given: R. D.

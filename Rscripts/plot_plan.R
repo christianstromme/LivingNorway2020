@@ -2,6 +2,8 @@
 
 plot_plan <- drake_plan(
 
+  # viridis colours
+  five_col = rev(viridis_pal()(5)),
   
   # Engagement plot
   os_activity_stackplot = ana.data %>%
@@ -21,15 +23,15 @@ plot_plan <- drake_plan(
     labs(y = "Proportion of respondents", x = "") +
     guides(fill = guide_legend(nrow = 2,byrow = TRUE)) +
     coord_flip() +
-    theme_bw() +
-    theme(axis.text.x = element_text(angle = 90, hjust = 1, vjust = .5),
-          axis.ticks.y = element_blank(),
-          panel.border = element_blank(),
-          panel.grid.major = element_blank(),
-          panel.grid.minor = element_blank(),
-          legend.position = "bottom",
-          legend.title = element_blank(),
-          strip.background = element_blank()),
+    theme_bw(base_size = 17) +
+    theme(#axis.text.x = element_text(angle = 90, hjust = 1, vjust = .5),
+      axis.ticks.y = element_blank(),
+      panel.border = element_blank(),
+      panel.grid.major = element_blank(),
+      panel.grid.minor = element_blank(),
+      legend.position = "bottom",
+      legend.title = element_blank(),
+      strip.background = element_blank()),
   
   
   # Mosaic plots
@@ -112,7 +114,7 @@ plot_plan <- drake_plan(
     facet_grid(~ Domain) +
     guides(fill = guide_legend(nrow = 2,byrow = TRUE)) +
     coord_flip() +
-    theme_minimal() +
+    theme_minimal(base_size = 18) +
     theme(axis.text.x=element_blank(),
           legend.position = "bottom",
           panel.grid.major = element_blank())
