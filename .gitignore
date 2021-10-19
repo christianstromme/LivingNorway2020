@@ -54,3 +54,4 @@ vignettes/*.pdf
 # Markdown
 *.tex
 *.log
+*.html
