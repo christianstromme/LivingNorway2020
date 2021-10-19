@@ -37,7 +37,8 @@ plot_plan <- drake_plan(
   ##1.1
   mosaic_activity = ana.data.1.1 %>% 
   mutate(University = if_else(University == "1", "University", "Other"),
-         University = factor(University, levels = c("University", "Other"))) %>% 
+         University = factor(University, levels = c("University", "Other")),
+         Gender = fct_recode(Gender, "Men" = "Male", "Women" = "Female")) %>% 
     ggplot() +
     geom_mosaic(aes(x = product(Gender, Values, University), fill = Values), offset = 0.02) + 
     scale_fill_viridis_d(direction = 1,
@@ -98,7 +99,7 @@ plot_plan <- drake_plan(
                              "Supervision" = "S",
                              "Teaching" = "T")) %>% 
   mutate(Values = fct_relevel(Values, "5", "4", "3", "2")) %>% 
-  mutate(Domain = fct_relevel(Domain, "Research", "Teaching", "Supervision")) %>% 
+  #mutate(Domain = fct_relevel(Domain, "Research", "Teaching", "Supervision")) %>% 
   mutate(Aspect = fct_recode(Aspect, "Data sharing" = "Data", "Code sharing" = "Code" , "Methods/protocol sharing" = "Method", "Open access publishing" = "Publish", "Science communication \nthrough open channels" = "Communication", "Research reproducibility" = "Reproducibility", "Research transparency" = "Transparency")) %>% 
   mutate(Aspect = fct_relevel(Aspect, "Data sharing", "Code sharing", "Methods/protocol sharing", "Open access publishing", "Science communication \nthrough open channels", "Research reproducibility", "Research transparency")) %>%
     ggplot() +

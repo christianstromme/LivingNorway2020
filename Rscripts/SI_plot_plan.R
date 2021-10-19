@@ -31,16 +31,15 @@ SI_plot_plan <- drake_plan(
       ggplot() +
       geom_bar(aes(Question)) +
       #scale_fill_viridis()+
-      labs(x = "Country of affiliation", y = "") +
+      labs(x = "Country of affiliation", y = "Number of respondents") +
       scale_x_discrete(labels = c("EU", "Non-EU", "Norway"))+
       ylim(0, 50) +
       theme_minimal() +
-      theme(axis.text.y = element_blank(),
-            legend.title = element_blank(),
+      theme(legend.title = element_blank(),
             panel.grid.major = element_blank(),
             panel.grid.minor = element_blank()),
   
-  metadata_plot = affiliation_plot + country_plot,
+  #metadata_plot = affiliation_plot + country_plot,
 
   
   
@@ -68,10 +67,10 @@ SI_plot_plan <- drake_plan(
     filter(Domain == "use") %>% 
     ggplot(aes(fill = Values, y = Freq, x = Aspect)) +
     geom_bar(stat = "identity") +
-    labs(x = "", y = "Proportion of respondents", 
-         title = "Using open resources in own education") +
+        # title = "Using open resources in own education") +
     scale_fill_manual(values = c("#31688EFF", "#FDE725FF")) +
     scale_x_discrete(labels = c("Open \n code", "Open \n data", "Open \n learning \n tools", "Read\n open \n publications")) +
+    labs(x = "", y = "Proportion of respondents") + 
     theme_minimal() +
     theme(legend.title = element_blank(), 
           plot.title = element_text(size = 10),
@@ -80,31 +79,55 @@ SI_plot_plan <- drake_plan(
   
   
   ## sharing
-  learning_share_stackplot = learning_use_stackplot%+% 
-    (plotdata3.2 %>%
-       filter(Domain == "share")) +
+  learning_share_stackplot = plotdata3.2 %>% 
+    filter(Domain == "share") %>% 
+    ggplot(aes(fill = Values, y = Freq, x = Aspect)) +
+    geom_bar(stat = "identity") +
+    scale_fill_manual(values = c("#31688EFF", "#FDE725FF")) +
     scale_x_discrete(labels = c("Own code", "Own data","Publish papers \n or results \n openly")) +
-    labs(y = "", title = "Sharing of resources openly in own education"),
+    labs(x = "", y = "Proportion of respondents") +
+    theme_minimal() +
+    theme(legend.title = element_blank(), 
+            plot.title = element_text(size = 10),
+            panel.grid.major = element_blank(),
+            panel.grid.minor = element_blank()),           
+  
   
   
   ## principles
-  learning_principles_stackplot = learning_use_stackplot %+% 
-    (plotdata3.2 %>%
-       filter(Domain == "principle")) +
-    scale_x_discrete(labels = c("Reproducibility","Transparency")) +
-    labs(title = "Learned principles in own education"),
+  learning_principles_stackplot =  plotdata3.2 %>% 
+   filter(Domain == "principle") %>% 
+   ggplot(aes(fill = Values, y = Freq, x = Aspect)) +
+   geom_bar(stat = "identity") +
+   scale_fill_manual(values = c("#31688EFF", "#FDE725FF")) +
+   scale_x_discrete(labels = c("Reproducibility","Transparency")) +
+   labs(x = "", y = "Proportion of respondents") +
+   theme_minimal() +
+   theme(legend.title = element_blank(), 
+        plot.title = element_text(size = 10),
+        panel.grid.major = element_blank(),
+        panel.grid.minor = element_blank()),      
   
+  
+
   
   ## Review and outreach
   
-  learning_other_stackplot = learning_use_stackplot %+% 
-    (plotdata3.2 %>%
-       filter(Domain == "do")) +
+  learning_other_stackplot = plotdata3.2 %>%
+   filter(Domain == "do") %>%
+   ggplot(aes(fill = Values, y = Freq, x = Aspect)) +
+   geom_bar(stat = "identity") +
+   scale_fill_manual(values = c("#31688EFF", "#FDE725FF")) +
     scale_x_discrete(labels = c("Outreach or \n science communication", "Open peer \n review")) +
-    labs(y = "", title = "Open engamement in own learning"),
-  
-  stacked_barplots = (learning_use_stackplot | learning_share_stackplot) / (learning_principles_stackplot | learning_other_stackplot) +
-    plot_layout(guides = "collect"),
+   labs(x = "", y = "Proportion of respondents") +
+   theme_minimal() +
+   theme(legend.title = element_blank(), 
+        plot.title = element_text(size = 10),
+        panel.grid.major = element_blank(),
+        panel.grid.minor = element_blank()), 
+
+#  stacked_barplots = (learning_use_stackplot | learning_share_stackplot) / (learning_principles_stackplot | learning_other_stackplot) +
+#    plot_layout(guides = "collect"),
   
   
   

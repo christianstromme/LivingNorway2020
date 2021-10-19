@@ -10,12 +10,6 @@ import_plan = drake_plan(
   data_raw12 = full_join(data_raw1, data_raw2, by="NO"),
   data_raw_full = full_join(data_raw12, data_raw3, by="NO"),
 
-  ### I DON'T THINK WE NEED THIS!!!
-  #Load complete questions
-  #questions1 = read_csv2( file = "data/1complete_clean.csv", n_max = 1, col_names = FALSE ),
-  #questions2 = read_csv2( file = "data/2complete_clean.csv", n_max = 1, col_names = FALSE ),
-  #questions3 = read_csv2( file = "data/3complete_clean.csv", n_max = 1, col_names = FALSE ),
-
 
 
   # clean and 
