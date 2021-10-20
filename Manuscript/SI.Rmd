@@ -14,11 +14,12 @@ output:
     latex_engine: lualatex
   fig_caption: yes
   extra_dependencies: ["flafter"]
-  header-includes:
-    - \usepackage{caption}
-    - \usepackage{booktabs}
-    - \usepackage{longtable}
-    - \usepackage{float}
+  
+header-includes:
+  - \usepackage{caption}
+  - \usepackage{booktabs}
+  - \usepackage{longtable}
+  - \usepackage{float}
 classoption: a4paper
 bibliography: bibliography.bib
 csl: plos.csl
@@ -49,7 +50,7 @@ loadd(program.table)
 
 program.table %>% 
    mutate(across(where(is.character), linebreak)) %>%
-    kable(booktabs = TRUE,
+    kbl(booktabs = TRUE,
         #escape = FALSE,
         col.names = linebreak(c("Day", "Time", "Activity", "Description", "Collaboration with"), align = "c"),
         caption = "Program for the Living Norway 2020 Colloquium"
@@ -75,7 +76,7 @@ loadd(survey.table.1)
 
 survey.table.1 %>% 
    mutate(across(where(is.character), linebreak)) %>%
-    kable(booktabs = TRUE,
+    kbl(booktabs = TRUE,
         #escape = FALSE,
         col.names = linebreak(c("Part", "Question", "Options", "Response"), align = "c"),
         caption = "Survey questions distributed among attendees at the Living Norway 2020 Colloquium"
@@ -97,7 +98,7 @@ loadd(survey.table.23)
 
 survey.table.23 %>% 
    mutate(across(where(is.character), linebreak)) %>%
-    kable(booktabs = TRUE,
+    kbl(booktabs = TRUE,
         #escape = FALSE,
         col.names = linebreak(c("Part", "Question", "Options", "Response"), align = "c"),
         caption = "Survey questions distributed among attendees at the Living Norway 2020 Colloquium"
@@ -166,7 +167,7 @@ loadd(define.table)
 
   define.table %>%
   mutate(across(where(is.character), linebreak)) %>%
-    kable(booktabs = TRUE,
+    kbl(booktabs = TRUE,
         #escape = FALSE,
         col.names = linebreak(c("Code", "Inclusion criteria and definitions", "Examples"), align = "c"),
         caption = "Codes assigned to participant responses during qualitative analysis of the “define open science” prompt. Note that many of the examples used could be, and ultimately were, assigned to two or more of the codes."
