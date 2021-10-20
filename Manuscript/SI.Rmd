@@ -18,10 +18,11 @@ output:
     - \usepackage{caption}
     - \usepackage{booktabs}
     - \usepackage{longtable}
+    - \usepackage{float}
 classoption: a4paper
 bibliography: bibliography.bib
-# csl: Rmd/elsevier-harvard_rjt.csl
-
+csl: plos.csl
+always_allow_html: true
 
 ---
 
@@ -43,7 +44,7 @@ This section contains all plots and tables of the supplementary material of this
 
 
 
-```{r }
+```{r program-table}
 loadd(program.table)
 
 program.table %>% 
@@ -69,7 +70,7 @@ program.table %>%
 
 
 
-```{r }
+```{r survey-table-1}
 loadd(survey.table.1)
 
 survey.table.1 %>% 
@@ -91,7 +92,7 @@ survey.table.1 %>%
 \newpage
 
 
-```{r }
+```{r survey-tabl-23}
 loadd(survey.table.23)
 
 survey.table.23 %>% 
@@ -116,42 +117,42 @@ survey.table.23 %>%
 \newpage
 
 
-```{r , fig.cap="Number of respondents by affiliation."}
+```{r affiliation, fig.cap="Number of respondents by affiliation."}
 readd(affiliation_plot)
   
 ```
 
 \newpage
 
-```{r , fig.cap="Number of respondents by contry."}
+```{r country, fig.cap="Number of respondents by contry."}
 readd(country_plot)
   
 ```
 
 \newpage
 
-```{r , fig.cap="Respondents that had used open resources in own education."}
+```{r learning-use, fig.cap="Respondents that had used open resources in own education."}
 readd(learning_use_stackplot)
   
 ```
 
 \newpage
 
-```{r , fig.cap="Respondents that had shared resources openly in own education."}
+```{r learning-share, fig.cap="Respondents that had shared resources openly in own education."}
 readd(learning_share_stackplot)
   
 ```
 
 \newpage
 
-```{r , fig.cap="Respondents that had learned OS principles in own education."}
+```{r learning-principle, fig.cap="Respondents that had learned OS principles in own education."}
 readd(learning_principles_stackplot)
   
 ```
 
 \newpage
 
-```{r , fig.cap="Open engamement among respondents in own learning."}
+```{r learning-other, fig.cap="Open engamement among respondents in own learning."}
 readd(learning_other_stackplot)
   
 ```
@@ -160,7 +161,7 @@ readd(learning_other_stackplot)
 
 
 
-```{r }
+```{r define-table}
 loadd(define.table)
 
   define.table %>%
@@ -219,7 +220,7 @@ result_Q1.3 %>%
 
 
 
-```{r }
+```{r hinder}
 loadd(hinder.table)
   hinder.table %>%
   mutate(across(where(is.character))) %>%
@@ -238,7 +239,7 @@ loadd(hinder.table)
 
 \newpage
 
-```{r }
+```{r help}
 loadd(help.table)
   help.table %>%
   mutate(across(where(is.character))) %>%
