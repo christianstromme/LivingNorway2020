@@ -55,8 +55,7 @@ csl: plos.csl
 
 header-includes:
   \usepackage{booktabs}
-#    - \usepackage{caption}
-#    - \usepackage{longtable}
+  
 bibliography: bibliography.bib
 
 ---
@@ -208,7 +207,7 @@ loadd(hinder.freq.table)
 
 | Of the sixty responses to the “help” item, 20 participants referenced *social support* as something that helped them to engage in OS (Table 3). Twenty people also cited *resource availability*. One respondent covered both of these codes saying:
 
-| “Abundance of open-source software, preprint servers, sci-hub (what a gem this is\!), github, abundance of data repositories, support from colleagues.”
+| “Abundance of open-source software, preprint servers, sci-hub (what a gem this is!), github, abundance of data repositories, support from colleagues.”
 
 
 ```{r help-freq-table}
