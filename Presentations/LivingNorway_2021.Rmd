@@ -178,23 +178,21 @@ tribble(
 ```{r define-freq-table}
 loadd(define.freq.table)
 
-dd <- define.freq.table %>%
-  rename(A = `Code or Category`, B = "Number of occurrences in sample responses (before workshop; n=60)", C = "Number of occurrences in sample responses (after workshop; n=38)")
+out <- define.freq.table %>%
+  rename(A = `Code or Category`, B = "Number of occurrences in sample responses (before workshop; n=60)", C = "Number of occurrences in sample responses (after workshop; n=38)") %>% 
+  mutate(B = as.numeric(B),
+         C = as.numeric(C))
+  # mutate(B = as.numeric(B) / 60 * 100,
+  #        C = as.numeric(C) / 38 * 100)
 
-dd %>% 
-  mutate(B = as.numeric(B) / 60 * 100,
-         C = as.numeric(C) / 38 * 100) %>% 
-  mutate(across(where(is.character))) %>%
-  mutate(across(where(is.character), linebreak)) %>%
-    kbl(booktabs = TRUE,
+out  %>% 
+  kbl(booktabs = TRUE,
         digits = 1,
-        #col.name = c("Code or category", "before (n = 60)", "after (n = 38)"),
+        col.name = c("Code or category", "before (n = 60)", "after (n = 38)"),
         caption = "Percentage with which codes were identified in the survey responses") %>% 
   add_header_above(c(" " = 1, "Percentage" = 2)) %>% 
-  # column_spec(1, color = "white",
-  #             background = spec_color(define.freq.table$B, end = 0.7))
-  row_spec(1:3, color = "white", background = "#440154FF") %>% 
-  row_spec(12, color = "white", background = "#5DC863FF") %>% 
+  column_spec(1, color = "white",
+               background = spec_color(out$B, end = 0.7, option = "inferno" , direction = -1)) %>% 
   kable_styling(font_size = 16)
 
 ```
