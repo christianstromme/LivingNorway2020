@@ -35,9 +35,10 @@ library(kableExtra)
 ---
 
 
-# Open Science (OS) research practice
+# Open Science practices
 
-Open, reproducible and transparent research practice is becoming more common in the scientific community.
+.pull-left[
+Open science (OS), reproducible and transparent research practice is becoming more common in the scientific community.
 
 This demands changes at the individual and institutional level:
 
@@ -47,29 +48,43 @@ This demands changes at the individual and institutional level:
 * data and metadata standards
 * funding schemes
 * research practise
+]
 
+.pull-right[
+
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+
+![an image](assets/OS.png)
+]
 
 
 
 ---
 
 
-# Challenges related to OS
+# Challenges related to OS practices
 
-Practices associated with OS are not widely implemented across research communities, but rather within select groups, networks or events involving OS practitioners, or in a sub-optimal piecemeal manner (Besancon et al., 2021).
+OS practises are not widely implemented across research communities, but rather within select groups, networks or events (Besancon et al., 2021).
 
-* Major cultural and behavioural shift among scientists is required
+OS is perceived differently in terms of values, required skills and pragmatic trade-offs between benefits and costs (Kathawalla et al., 2021)
 
-* Different perception of OS in terms of values, required skills and pragmatic trade-offs between benefits and costs (Kathawalla et al., 2021)
+Major cultural and behavioural shift among scientists is required
+
+--
+
+&nbsp;
+
+*Understanding of how OS practices and principles are learned, understood, and transmitted to other researchers and students can better inform institutions and policymakers how to implementing OS practices*
 
 
-In the light of these challenges, an understanding of how OS practices and principles are learned, understood, and transmitted to other researchers and students can better inform institutions and policymakers invested in implementing OS in full.
 
 
-
-Besancon L, Peiffer-Smadja N, Segalas C, Jiang H, Masuzzo P, Smout C, et al. Open science saves lives: lessons from the COVID-19 pandemic. BMC Research Methodology. 2021;21. doi:10.1186/s12874-021-01304-y 427
-Kathawalla U-K, Silverstein P, Syed M. Easing into open science: A guide for graduate students and their advisors. Collabra Psychology. 7. doi:10.1525/collabra.18684
-
+.footnote[Besancon et al., Open science saves lives: lessons from the COVID-19 pandemic. BMC Research Methodology. 2021;21  
+Kathawalla et al., Easing into open science: A guide for graduate students and their advisors. Collabra Psychology. 7]
 
 ---
 
@@ -93,23 +108,23 @@ How are OS practices and principles are learned, understood, and transmitted to 
 ---
 
 
-# Hypothesis
+<!-- # Hypothesis -->
 
-* Researchers with academic affiliation have engaged more in open science-related practices compared to other researchers, and more so for early-career researchers
+<!-- * Researchers with academic affiliation have engaged more in open science-related practices compared to other researchers, and more so for early-career researchers -->
 
-* Workshop participants use open data more frequently rather than contributing with open data and code.
+<!-- * Workshop participants use open data more frequently rather than contributing with open data and code. -->
 
-* Researchers who teach are more likely to include open science-related practices in their teaching if they also frequently engage in those practices as researchers.
+<!-- * Researchers who teach are more likely to include open science-related practices in their teaching if they also frequently engage in those practices as researchers. -->
 
-* Colloquium participants having more experience with being taught open science-related practices are more likely to engage in those practices.
+<!-- * Colloquium participants having more experience with being taught open science-related practices are more likely to engage in those practices. -->
 
-* Colloquium participants perceive OS practices to be more important in their research compared to teaching and supervision.
-
-
----
+<!-- * Colloquium participants perceive OS practices to be more important in their research compared to teaching and supervision. -->
 
 
-# Method
+<!-- --- -->
+
+
+# Method and analysis
 
 Digital survey in 3 parts (before/during/after event)
 
@@ -148,7 +163,8 @@ tribble(
   pack_rows("Participants", 1, 2) %>% 
   pack_rows("Affiliation", 3, 6) %>% 
   pack_rows("Sex", 7, 8) %>% 
-  column_spec(1:3, width = "10em")
+  column_spec(1:3, width = "10em") %>% 
+  kable_minimal()
 
 ```
 
@@ -162,17 +178,23 @@ tribble(
 ```{r define-freq-table}
 loadd(define.freq.table)
 
-define.freq.table %>%
-  rename(A = `Code or Category`, B = "Number of occurrences in sample responses (before workshop; n=60)", C = "Number of occurrences in sample responses (after workshop; n=38)") %>% 
+dd <- define.freq.table %>%
+  rename(A = `Code or Category`, B = "Number of occurrences in sample responses (before workshop; n=60)", C = "Number of occurrences in sample responses (after workshop; n=38)")
+
+dd %>% 
   mutate(B = as.numeric(B) / 60 * 100,
          C = as.numeric(C) / 38 * 100) %>% 
   mutate(across(where(is.character))) %>%
   mutate(across(where(is.character), linebreak)) %>%
     kbl(booktabs = TRUE,
         digits = 1,
-        col.name = c("Code or category", "before (n = 60)", "after (n = 38)"),
+        #col.name = c("Code or category", "before (n = 60)", "after (n = 38)"),
         caption = "Percentage with which codes were identified in the survey responses") %>% 
   add_header_above(c(" " = 1, "Percentage" = 2)) %>% 
+  # column_spec(1, color = "white",
+  #             background = spec_color(define.freq.table$B, end = 0.7))
+  row_spec(1:3, color = "white", background = "#440154FF") %>% 
+  row_spec(12, color = "white", background = "#5DC863FF") %>% 
   kable_styling(font_size = 16)
 
 ```
@@ -199,7 +221,7 @@ define.freq.table %>%
 
 <center>
 
-<img src="os_activity_stackplot.jpg" height="550px">
+<img src="assets/os_activity_stackplot.jpg" height="550px">
  
 </center>
 
@@ -218,6 +240,7 @@ hinder.freq.table %>%
         escape = FALSE,
         col.names = linebreak(c("Code", "Number of occurrences (n=60)"), align = "c"),
         caption = "What hinders your engagement in OS?") %>% 
+  row_spec(1:3, color = "white", background = "#440154FF") %>% 
   kable_styling(font_size = 16)
 ```
 
@@ -231,7 +254,7 @@ hinder.freq.table %>%
 &nbsp;  
 &nbsp; 
 
-“lack of familiarity with relevant online platforms, software, methods ... perception that the landscape of the above tools changes very quickly, and keeping up is a big time commitment... fear of doing it wrong.”
+“lack of familiarity with relevant **online platforms, software, methods** ... perception that the landscape of the above tools **changes** very quickly, and keeping up is a big time commitment... fear of **doing it wrong**.”
 
 
 ---
@@ -249,6 +272,7 @@ help.freq.table %>%
         col.names = linebreak(c("Code", "Number of occurrences (n=60)"), align = "c"),
         caption = "What helps your engagement in OS?"
        )  %>% 
+  row_spec(1:2, color = "white", background = "#440154FF") %>% 
   kable_styling(font_size = 16)
 ```
 
@@ -262,7 +286,7 @@ help.freq.table %>%
 &nbsp;  
 &nbsp; 
 
-“Abundance of open-source software, preprint servers, sci-hub (what a gem this is!), github, abundance of data repositories, support from colleagues.”
+“Abundance of **open-source software, preprint servers, sci-hub** (what a gem this is!), github, abundance of data repositories, **support from colleagues**.”
 
 
 
@@ -271,8 +295,11 @@ help.freq.table %>%
 
 # OS aspect in own formal education?
 
+<center>
 
-
+<img src="assets/stacked_bar.jpg" height="550px">
+ 
+</center>
 
 
 ---
@@ -283,7 +310,7 @@ help.freq.table %>%
 
 <center>
 
-<img src="mosaic_all.jpg" height="550px">
+<img src="assets/mosaic_all.jpg" height="550px">
  
 </center>
 
@@ -291,7 +318,7 @@ help.freq.table %>%
 ---
 
 
-# Take home message
+# Take home message 
 
 
 1) OS is mainly understood in terms of shared and accessible data, code and publications 
@@ -300,3 +327,29 @@ help.freq.table %>%
 
 Integrating OS principles and practices more formally into higher education, we can naturally address the implementation barriers that depend on individual experience with OS.
 
+
+
+---
+
+
+# Thank you for listening
+
+.pull-left[
+
+## Preprint
+
+![an image](assets/biovrix.png)
+]
+
+
+.pull-right[
+
+## GitHub repo
+
+&nbsp;  
+&nbsp;  
+&nbsp; 
+
+![an image](assets/git.jpeg)
+
+]
