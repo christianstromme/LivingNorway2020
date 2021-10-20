@@ -51,14 +51,14 @@ manuscript_plan <- drake_plan(
     rmarkdown::render(
       input = knitr_in("Manuscript/Applying-promoting-OS-in-ecology.Rmd"), 
       clean = FALSE)
-  # },
-  # 
-  # si = {
-  #   file_in("Manuscript/plos/plos.csl")
-  #   file_in("Manuscript/bibliography.bib")
-  #   rmarkdown::render(
-  #     input = knitr_in("Manuscript/SI.Rmd"),
-  #     clean = FALSE)
+  },
+
+  si = {
+    file_in("Manuscript/plos/plos.csl")
+    file_in("Manuscript/bibliography.bib")
+    rmarkdown::render(
+      input = knitr_in("Manuscript/SI.Rmd"),
+      clean = FALSE)
   }
   
 )
