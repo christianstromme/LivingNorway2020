@@ -40,14 +40,14 @@ library(kableExtra)
 .pull-left[
 Open science (OS), reproducible and transparent research practice is becoming more common in the scientific community.
 
-This demands changes at the individual and institutional level:
+Broad implementation requires cultural and change across multiple levels of society, featuring
 
 * new infrastructure (e.g. databases)
 * re-defining publishing models
 * licensing
 * data and metadata standards
 * funding schemes
-* research practise
+* research practice
 ]
 
 .pull-right[
@@ -68,7 +68,7 @@ This demands changes at the individual and institutional level:
 
 # Challenges related to OS practices
 
-OS practises are not widely implemented across research communities, but rather within select groups, networks or events (Besancon et al., 2021).
+OS practices are not widely implemented across research communities, but rather within select groups, networks or events (Besancon et al., 2021).
 
 OS is perceived differently in terms of values, required skills and pragmatic trade-offs between benefits and costs (Kathawalla et al., 2021)
 
@@ -126,19 +126,31 @@ How are OS practices and principles are learned, understood, and transmitted to 
 
 # Method and analysis
 
-Digital survey in 3 parts (before/during/after event)
+.pull-left[
 
-Combination of questions:
+Digital survey with different question types:
 
-* constrained choice: background information such as degree, affiliation, gender, and experience with OS aspects
+* constrained: background information (e.g. gender, affiliation, and experience with OS aspects)
 
-* Likert-scale: experience with and perceived importance of different OS aspects to research, teaching, and supervision
+* Likert-scale: experience with and perceived importance of different OS aspects in relation to research, teaching, and supervision
 
-* open-ended questions: define OS and describe what has helped and hindered their OS engagement
+* open-ended: definition of OS and description of helpers and hindrances in their OS engagement
 
 
-A combination of qualitative and quantitative analysis.
+Mixed method approach with parallel analyses of quantitative and qualitative data.
 
+]
+
+.pull-right[
+
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+
+![an image](assets/MixedDesign.jpg)
+]
 
 ---
 
@@ -152,11 +164,11 @@ tribble(
   ~"", ~"", ~"",
   "Part 1", "Part 2", "Part 3",
   "60", "51", "39",
-  "Norway", "EU", "None-EU",
+  "Norway", "EU", "Non-EU",
   "45", "8", "13",
   "University", "Research institute", "Other",
   "37", "22", "7",
-  "None binary", "Female", "Male",
+  "None binary", "Women", "Men",
   "1", "27", "32"
 ) %>% 
   kbl() %>% 
@@ -323,7 +335,7 @@ help.freq.table %>%
 
 2) Individual OS engagement can be facilitated through education
 
-Integrating OS principles and practices more formally into higher education, we can naturally address the implementation barriers that depend on individual experience with OS.
+By integrating OS principles and practices more formally into higher education, we can naturally address the implementation barriers that depend on individual experience with OS.
 
 
 
