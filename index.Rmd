@@ -1,6 +1,6 @@
 ---
 title: "index"
-author: "Aud H. Hlabritter"
+author: "Aud H. Halbritter"
 date: "10/22/2021"
 output: ioslides_presentation
 ---
