@@ -67,7 +67,7 @@ table_plan <- drake_plan(
   
   hinder.freq.table = tribble(
     ~"Code", ~"Number of occurrences in sample responses (Part I; n=60)",
-    "Lack of guidlines", "15",
+    "Lack of Guidlines", "15",
     "Time", "15",
     "Insufficient knowledge", "15",
     "Collaborators not using OS", "13",
