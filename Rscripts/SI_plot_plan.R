@@ -71,7 +71,7 @@ SI_plot_plan <- drake_plan(
     scale_fill_manual(values = c("#31688EFF", "#FDE725FF")) +
     scale_x_discrete(labels = c("Open \n code", "Open \n data", "Open \n learning \n tools", "Read\n open \n publications")) +
     labs(x = "", y = "Proportion of respondents") + 
-    theme_minimal(base_size = 20) +
+    theme_minimal(base_size = 18) +
     theme(legend.title = element_blank(), 
           plot.title = element_text(size = 10),
           panel.grid.major = element_blank(),
@@ -86,7 +86,7 @@ SI_plot_plan <- drake_plan(
     scale_fill_manual(values = c("#31688EFF", "#FDE725FF")) +
     scale_x_discrete(labels = c("Own code", "Own data","Publish papers \n or results \n openly")) +
     labs(x = "", y = "Proportion of respondents") +
-    theme_minimal() +
+    theme_minimal(base_size = 18) +
     theme(legend.title = element_blank(), 
             plot.title = element_text(size = 10),
             panel.grid.major = element_blank(),
@@ -102,7 +102,7 @@ SI_plot_plan <- drake_plan(
    scale_fill_manual(values = c("#31688EFF", "#FDE725FF")) +
    scale_x_discrete(labels = c("Reproducibility","Transparency")) +
    labs(x = "", y = "Proportion of respondents") +
-   theme_minimal() +
+   theme_minimal(base_size = 18) +
    theme(legend.title = element_blank(), 
         plot.title = element_text(size = 10),
         panel.grid.major = element_blank(),
@@ -120,7 +120,7 @@ SI_plot_plan <- drake_plan(
    scale_fill_manual(values = c("#31688EFF", "#FDE725FF")) +
     scale_x_discrete(labels = c("Outreach or \n science communication", "Open peer \n review")) +
    labs(x = "", y = "Proportion of respondents") +
-   theme_minimal() +
+   theme_minimal(base_size = 18) +
    theme(legend.title = element_blank(), 
         plot.title = element_text(size = 10),
         panel.grid.major = element_blank(),

@@ -4,7 +4,7 @@ author: "CB Strømme, SH Cotner, AK Lane, DD Egelkraut, **AH Halbritter**, E Law
 date: "25/10/2021"
 output:
   xaringan::moon_reader:
-    css: [default, metropolis, assets/css/footer.css, metropolis-fonts, assets/css/metropolis-ak_dc.css]
+    css: [default, metropolis, assets/css/footer.css, metropolis-fonts, assets/css/metropolis-ak_dc.css, assets/css/my-theme.css]
     lib_dir: libs
     nature:
       beforeInit: "https://platform.twitter.com/widgets.js"
@@ -192,10 +192,10 @@ loadd(define.freq.table)
 
 out <- define.freq.table %>%
   rename(A = `Code or Category`, B = "Number of occurrences in sample responses (before workshop; n=60)", C = "Number of occurrences in sample responses (after workshop; n=38)") %>% 
-  mutate(B = as.numeric(B),
-         C = as.numeric(C))
-  # mutate(B = as.numeric(B) / 60 * 100,
-  #        C = as.numeric(C) / 38 * 100)
+  # mutate(B = as.numeric(B),
+  #        C = as.numeric(C)) %>% 
+  mutate(B = as.numeric(B) / 60 * 100,
+         C = as.numeric(C) / 38 * 100)
 
 out  %>% 
   kbl(booktabs = TRUE,
@@ -307,7 +307,7 @@ help.freq.table %>%
 
 <center>
 
-<img src="assets/stacked_bar.jpg" height="550px">
+<img src="assets/stacked_barplots.jpg" height="550px">
  
 </center>
 
@@ -333,7 +333,7 @@ help.freq.table %>%
 
 1) OS is mainly understood in terms of shared and accessible data, code and publications 
 
-2) Individual OS engagement can be facilitated through education
+2) OS is valued differently in teaching compared to research and supervision
 
 By integrating OS principles and practices more formally into higher education, we can naturally address the implementation barriers that depend on individual experience with OS.
 
