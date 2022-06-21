@@ -1,0 +1,1310 @@
+---
+title: CLOSE TO OPEN - FACTORS THAT HINDER AND PROMOTE OPEN SCIENCE IN ECOLOGY RESEARCH AND EDUCATION
+author:
+  - name: Christian B. Strømme
+    email: christian.stromme@uib.no
+    affiliation: UiB
+    corresponding: christian.stromme@uib.no
+  - name: A. Kelly Lane
+    email: aklane@umn.edu
+    affiliation: UMN
+  - name: Aud H. Halbritter
+    email: Aud.halbritter@uib.no
+    affiliation: UiB
+  - name: Elizabeth Law
+    email: workingconservation@gmail.com
+    affiliation: 
+     - NINA
+     - WC
+  - name: Chloe R. Nater
+    email: chloe.nater@nina.no
+    affiliation: NINA
+  - name: Erlend B. Nilsen
+    email: erlend.nilsen@nina.no
+    affiliation: NINA
+  - name: Grace D. Boutouli
+    email: bouto012@umn.edu
+    affiliation: UMN
+  - name: Dagmar D. Egelkraut
+    email: Dagmar.Egelkraut@uib.no
+    affiliation: UiB
+  - name: Richard J. Telford
+    email: Richard.Telford@uib.no
+    affiliation: UiB
+  - name: Vigdis Vandvik
+    email: Vigdis.Vandvik@uib.no
+    affiliation: UiB
+  - name: Sehoya H. Cotner
+    email: Sehoya.Cotner@uib.no
+    affiliation: UiB
+address:
+  - code: UiB
+    address: Department of Biological Sciences, University of Bergen, Thormøhlensgate 53A, Bergen, 5006, Norway
+  - code: NINA
+    address: Norwegian Institute for Nature Research, Høgskoleringen 9, Trondheim, 7034, Norway 
+  - code: UMN
+    address: Department of Biology Teaching and Learning, University of Minnesota, Minneapolis, Minnesota, 55108, USA
+  - code: WC
+    address: Working Conservation Consulting, Fernie, BC, Canada
+    
+abstract: |
+  The Open Science (OS) movement is rapidly gaining traction among policy-makers, research funders, scientific journals and individual scientists. Despite these tendencies, the pace of implementing OS throughout the scientific process and across the scientific community remains slow. Thus, a better understanding of the conditions that affect OS engagement, and in particular, of how practitioners learn, use, conduct and share research openly can guide those seeking to implement OS more broadly. We surveyed participants at an OS workshop hosted by the Living Norway Ecological Data Network in 2020 to learn how they perceived OS and its importance in their research,  supervision and teaching . Further, we wanted to know what OS practices they had encountered in their education and what they saw as hindering or helping their engagement with OS. The survey contained scaled-response and open-ended questions, allowing for a mixed-methods approach. We obtained survey responses from 60 out of 128 workshop participants (47%). Responses indicated that usage and sharing of open data and code, as well as open access publication, were the most frequent OS practices. Only a minority of respondents reported having encountered OS in their formal education. A majority also viewed OS as less important in their teaching than in their research and supervisory roles. The respondents’ suggestions for what would facilitate greater OS engagement in the future included knowledge, guidelines, and resources, but also social and structural support. These are aspects that could be strengthened by promoting explicit implementation of OS practices in higher education and by nurturing a more inclusive and equitable OS culture. We argue that incorporating OS in teaching and learning of science can yield substantial benefits to the research community, student learning, and ultimately, to the wider societal objectives of science and higher education.
+  
+output: rticles::plos_article
+csl: plos.csl
+
+references:
+
+- type: article-journal
+  id: AllenMehler2019
+  author:
+  - family: Allen
+    given: C.
+  - family: Mehler
+    given: D. M. A.
+  issued:
+    date-parts:
+    - - 2019
+  title: 'Open science challenges, benefits and tips in early career and 	beyond'
+  container-title: PLOS Biology
+  volume: 17
+  issue: 5
+  page: e3000246
+  DOI: 10.1371/journal.pbio.3000246
+  language: en-GB 
+
+  
+- type: article-journal
+  id: Ayrisetal2018
+  author:
+  - family: Ayris
+    given: P.
+  - family: Lopez de San Roman
+    given: A.
+  - family: Maes
+    given: K.
+  - family: Labastida
+    given: I.
+    issued:
+    date-parts:
+    - - 2018
+  title: 'Open Science and its role in 	universities: a roadmap for cultural change'
+  container-title: Leagues of European Universities advice 	paper
+  volume: no. 24
+  language: en-GB  
+
+ 
+- type: article-journal
+  id: Barton2009
+  author:
+  - family: Barton
+    given: K.
+  issued:
+    date-parts:
+    - - 2018
+  title: 'Mu-MIn: Multi-model inference. R package version 0.12.2/r18'
+  container-title: R package
+  volume: version 0.12.2/r18
+  URL: http://R-Forge.R-project.org/projects/mumin/
+  language: en-GB 
+  
+  
+- type: article-journal
+  id: Besanconetal2021
+  author:
+  - family: Besancon
+    given: L.
+  - family: Peiffer-Smadja
+    given: N.
+  - family: Segalas
+    given: C.
+  - family: Jiang
+    given: H.
+  - family: Masuzzo
+    given: P.
+  - family: Smout
+    given: C.
+  - family: Billy
+    given: E.
+  - family: Deforet
+    given: M.
+  - family: Leyrat
+    given: C.
+  issued:
+    date-parts:
+    - - 2021
+  title: 'Open science saves lives: lessons from the COVID-19 pandemic'
+  container-title: BMC Research Methodology
+  volume: 21
+  issue: 117
+  DOI: 10.1186/s12874-021-01304-y
+  language: en-GB
+  
+- type: article-journal
+  id: Bosman2021
+  author:
+  - family: Bosman
+    given: J.
+  - family: de Jonge
+    given: H.
+  - family: Kramer
+    given: B.
+  - family: Sondervan
+    given: J.    
+  issued:
+    date-parts:
+    - - 2021
+  title: 'Advancing open access in the Netherlands after 2020: from quantity to quality'
+  container-title: Insights
+  volume: 34
+  issue: 1
+  DOI: 10.1629/uksg.545
+  language: en-GB  
+  
+- type: article-journal
+  id: BossuHeck2020
+  author:
+  - family: Bossu
+    given: C.
+  - family: Heck
+    given: T.
+  issued:
+    date-parts:
+    - - 2020
+  title: 'Special issue: Engaging with Open Science in learning and teaching 	(editorial).'
+  container-title: Education for Information
+  volume: 36
+  issue: 3
+  page: 221-225
+  DOI: 10.3233/EFI-200386
+  language: en-GB
+  
+  
+- type: article-journal
+  id: Christensen2019
+  author:
+  - family: Christensen
+    given: RHB
+  issued:
+    date-parts:
+    - - 2019
+  title: 'Regression models for Ordinal data'
+  container-title: R package
+  volume: version 2019.12-10
+  URL: https://CRAN.R-project.org/package=ordinal
+  language: en-GB
+
+  
+- type: article-journal
+  id: EuropeanCommission2015
+  author:
+  - family: European Commission
+  issued:
+    date-parts:
+    - - 2015
+  title: 'Open Science at the Competitiveness Council'
+  URL: http://ec.europa.eu/digital-agenda/en/news/open-science-competitiveness-council-28-29-may-2015
+  language: en-GB
+
+
+- type: article-journal
+  id: Farnametal2017
+  author:
+  - family: Farnam
+    given: A.
+  - family: Kurz
+    given: C.
+  - family: Ozturk
+    given: M. A.
+  - family: Solbiati
+    given: M.
+  - family: Myllyntaus
+    given: O.
+  - family: Meekes
+    given: J.    
+  - family: Pham
+    given: T. M.
+  - family: Paz
+    given: C.
+  - family: Langiewicz
+    given: M.    
+  - family: Andrews
+    given: S.
+  - family: Kanninen
+    given: L.
+  - family: Agbemabiese
+    given: C.
+  - family: Guler
+    given: A. T.
+  - family: Durieux
+    given: J.
+  - family: Jasim
+    given: S.
+  - family: Viessmann
+    given: O.
+  - family: Frattini
+    given: S.
+  - family: Yembergenova
+    given: D.
+  - family: Benito
+    given: C. M.
+  - family: Porte
+    given: M.
+  - family: Grangeray-Vilmint
+    given: A.
+  - family: Curiel
+    given: R. P.
+  - family: Rehncrona
+    given: C.
+  - family: Malas
+    given: T.
+  - family: Esposito
+    given: F.
+  - family: Hettne
+    given: K.
+  issued:
+    date-parts:
+    - - 2017
+  title: 'Early career researchers want Open Science'
+  container-title: Genome Biology
+  volume: 18
+  issue: 221
+  DOI: 10.1186/s13059-017-1351-7
+  language: en-GB
+  
+- type: article-journal
+  id: FecherFriesike2014
+  author:
+  - family: Fecher
+    given: B.
+  - family: Friesike
+    given: S.
+  issued:
+    date-parts:
+    - - 2014
+  title: 'Open science: One term, five schools of thought. In: Bartling S, 	Friesike S (eds.) Opening Science. Springer'
+  
+  DOI: 10.1007/978-3-319
+  language: en-GB
+  
+  
+- type: article-journal
+  id: Ferrarietal2018
+  author:
+  - family: Ferrari
+    given: T.
+  - family: Scardaci
+    given: D.
+  - family: Andreozzi
+    given: S.
+  issued:
+    date-parts:
+    - - 2018
+  title: 'The Open Science Commons for the European Research Area. In: Earth Observation Open Science and Innovation'
+  
+  DOI: 10.1007/978-3-319-65633-5_3
+  language: en-GB
+    
+- type: article-journal
+  id: Gallagheretal2020
+  author:
+  - family: Gallagher
+    given: R. V.
+  - family: Falster
+    given: D. S.
+  - family: Maitner
+    given: B. S.
+  - family: Salguero-Gomez
+    given: R.
+  - family: Vandvik
+    given: V.
+  - family: Pearse
+    given: W. D.    
+  - family: Schneider
+    given: F. D.
+  - family: Kattge
+    given: J.
+  - family: Poelen
+    given: J. H.    
+  - family: Madin
+    given: J. S.
+  - family: Ankenbrand
+    given: M. J.
+  - family: Penone
+    given: C.
+  - family: Feng
+    given: X.
+  - family: Adams
+    given: V. M.
+  - family: Alroy
+    given: J.
+  - family: Andrew
+    given: S. C.
+  - family: Balk
+    given: M. A.
+  - family: Bland
+    given: L. M.
+  - family: Boyle
+    given: B. L.
+  - family: Bravo-Avila
+    given: C. H.
+  - family: Brennan
+    given: I.
+  - family: Carthey
+    given: A. J. R.
+  - family: Catullo
+    given: R.
+  - family: Cavazos
+    given: B. R.
+  - family: Conde
+    given: D. A.
+  - family: Chown
+    given: S. L.
+  - family: Fadrique
+    given: B.
+  - family: Gibb
+    given: H.
+  - family: Halbritter
+    given: A. H.
+  - family: Hammock
+    given: J.
+  - family: Hogan
+    given: J. A.
+  - family: Holewa
+    given: H.    
+  - family: Hope
+    given: M.
+  - family: Iversen
+    given: C. M.
+  - family: Jochum
+    given: M.    
+  - family: Kearney
+    given: M.
+  - family: Keller
+    given: A.
+  - family: Mabee
+    given: P.
+  - family: Manning
+    given: P.
+  - family: McCormack
+    given: L.
+  - family: Michaletz
+    given: S. T.
+  - family: Park
+    given: D. S.
+  - family: Perez
+    given: T. M.
+  - family: Pineda-Munoz
+    given: S.
+  - family: Ray
+    given: C. A.
+  - family: Rossetto
+    given: M.
+  - family: Sauquet
+    given: H.
+  - family: Sparrow
+    given: B.
+  - family: Spasojevic
+    given: M. J.
+  - family: Telford
+    given: R. J.
+  - family: Tobias
+    given: J. A.
+  - family: Violle
+    given: C.
+  - family: Walls
+    given: R.
+  - family: Weiss
+    given: K. C. B.
+  - family: Westoby
+    given: M.
+  - family: Wright
+    given: I. J.
+  - family: Enquist
+    given: B. J.
+  issued:
+    date-parts:
+    - - 2020
+  title: 'Open Science principles for accelerating trait-based science across the Tree of Life'
+  container-title: Nature Ecology & Evolution
+  volume: 4
+  page: 294-303
+  DOI: 10.1038/s41559-020-1109-6
+  language: en-GB
+
+- type: article-journal
+  id: Geangeetal2021
+  author:
+  - family: Geange
+    given: S. R.
+  - family: von Oppen
+    given: J.
+  - family: Strydom
+    given: T.
+  - family: Boakye
+    given: M.
+  - family: Gauthier
+    given: T-L. J.
+  - family: Gya
+    given: R.    
+  - family: Halbritter
+    given: A. H.
+  - family: Jessup
+    given: L. H.
+  - family: Middleton
+    given: S. J.    
+  - family: Navarro
+    given: J.
+  - family: Pierfederici
+    given: M. E.
+  - family: Chacon-Labella
+    given: J.
+  - family: Cotner
+    given: S.
+  - family: Farfan-Rios
+    given: W.
+  - family: Maitner
+    given: B. S.
+  - family: Michaletz
+    given: S. T.
+  - family: Telford
+    given: R. J.
+  - family: Enquist
+    given: B. J.
+  - family: Vandvik
+    given: V.
+  - family: Porte
+    given: M.
+  - family: Grangeray-Vilmint
+    given: A.
+  - family: Curiel
+    given: R. P.
+  - family: Rehncrona
+    given: C.
+  - family: Malas
+    given: T.
+  - family: Esposito
+    given: F.
+  - family: Hettne
+    given: K.
+  issued:
+    date-parts:
+    - - 2021
+  title: 'Next-generation field courses: Integrating Open Science and online learning'
+  container-title: Evology and Evolution
+  volume: 11
+  page: 3577-3587-303
+  DOI: 10.1002/ece3.7009
+  language: en-GB
+
+
+- type: article-journal
+  id: Kathawallaetal2021
+  author:
+  - family: Kathawalla
+    given: U-K.
+  - family: Silverstein
+    given: P.
+  - family: Syed
+    given: M.
+    issued:
+    date-parts:
+    - - 2021
+  title: 'Easing into open science: A guide for graduate 	students and their advisors'
+  container-title: Collabra Psychology
+  volume: 7
+  issue: 1
+  DOI: 10.1525/collabra.18684
+  language: en-GB
+
+- type: article-journal
+  id: LongoDrazen2016
+  author:
+  - family: Longo
+    given: D. L.
+  - family: Drazen
+    given: J. M.
+  issued:
+    date-parts:
+    - - 2016
+  title: 'Data sharing'
+  container-title: New England Journal of Medicine
+  volume: 374
+  page: 276-277
+  DOI: 10.1056/NEJMe1516564
+  language: en-GB
+  
+- type: article-journal
+  id: Mirowski2018
+  author:
+  - family: Mirowski
+    given: P.
+  issued:
+    date-parts:
+    - - 2018
+  title: 'The future(s) of open science'
+  container-title: Social Studies of Science
+  volume: 48
+  issue: 2
+  page: 171-203
+  DOI: 10.1177/0306312718772086
+  language: en-GB
+  
+- type: article-journal
+  id: Moraisetal2021
+  author:
+  - family: Morais
+    given: R.
+  - family: Saenen
+    given: B.
+  - family: Garbuglia
+    given: F.
+  - family: Berghmans
+    given: F.
+  - family: Gaillard
+    given: V.        
+  issued:
+    date-parts:
+    - - 2021
+  title: 'From principles to 	practices: Open Science at Europe’s universities'
+  container-title: 2020-2021 EUA Open Science 	Survey results.
+  URL: https://www.eua.eu/resources/publications/976:from-principles-to-practices-open-	science-at-europe%E2%80%99s-universities-2020-2021-eua-open-science-survey-	results.html
+  language: en-GB
+
+- type: article-journal
+  id: Munafoetal2017
+  author:
+  - family: Munafo
+    given: M. R.
+  - family: Nosek
+    given: B. A.
+  - family: Bishop
+    given: D. V. M.
+  - family: Button
+    given: K. S.
+  - family: Chambers
+    given: C. D.
+  - family: du Sert
+    given: N. P.
+  - family: Simonsohn
+    given: U.
+  - family: Wagenmakers
+    given: E-J.
+  - family: Ware
+    given: J. J.
+  - family: Ioannidis
+    given: J. P. A.
+  issued:
+    date-parts:
+    - - 2017
+  title: 'A manifesto for reproducible 	science'
+  container-title: Nature Human Behaviour
+  volume: 1
+  issue: 0021
+  page: 737-738
+  DOI: 10.1038/s41562-016-0021
+  language: en-GB
+  
+- type: article-journal
+  id: Murphyetal2020
+  author:
+  - family: Murphy
+    given: M. J.
+  - family: Mejia
+    given: A. F.
+  - family: Mejia
+    given: J.
+  - family: Yan
+    given: X.
+  - family: Cheryan
+    given: S.
+  - family: Dasgupta
+    given: N.    
+  - family: Destin
+    given: M.
+  - family: Fryberg
+    given: S. A.
+  - family: Garcia
+    given: J. A.    
+  - family: Haines
+    given: E. L.
+  - family: Harackiewicz
+    given: J. M.
+  - family: Ledgerwood
+    given: A.
+  - family: Moss-Racusin
+    given: C. A.
+  - family: Park
+    given: L. E.
+  - family: Perry
+    given: S. P.
+  - family: Ratliff
+    given: K. A.
+  - family: Rattan
+    given: A.
+  - family: Sanchez
+    given: D. T.
+  - family: Savani
+    given: K.
+  - family: Sekaquaptewa
+    given: D.
+  - family: Smith
+    given: J. L.
+  - family: Taylor
+    given: V. J.
+  - family: Thoman
+    given: D. B.
+  - family: Wout
+    given: D. A.
+  - family: Mabry
+    given: P. L.
+  - family: Ressi
+    given: S.
+  - family: Diekman
+    given: A. B.
+  - family: Pestilli
+    given: F.    
+  issued:
+    date-parts:
+    - - 2020
+  title: 'Open science, communal culture, and women’s participation in the movement to improve science'
+  container-title: Proceedings of the National Academy of Sciences
+  volume: 117
+  issue: 39
+  page: 241547-24164
+  DOI: 10.1073/pnas.1921320117
+  language: en-GB
+  
+- type: article-journal
+  id: NSTC2021
+  author:
+  - family: United States National Science and Technology Council
+  issued:
+    date-parts:
+    - - 2021
+  title: 'Best practices for diversity and inclusion in STEM education and research: A guide by and for federal agencies'
+  URL: https://www.whitehouse.gov/wp-content/uploads/2021/09/091621-Best-Practices-for-Diversity-Inclusion-in-STEM.pdf
+  language: en-GB
+
+- type: article-journal
+  id: OReillyetal2017
+  author:
+  - family: O Reilly
+    given: C. M.
+  - family: Gougis
+    given: R. D.
+  - family: Klug
+    given: J. L
+  - family: Carey
+    given: C. C.
+  - family: Richardson
+    given: D. C.
+  - family: Bader
+    given: N. E.
+  - family: Soule
+    given: D. C.
+  - family: Castendyk
+    given: D.
+  - family: Meixner
+    given: T.
+  - family: Stomberg
+    given: J.
+  - family: Weathers
+    given: K. C.
+  - family: Hunter
+    given: W.     
+  issued:
+    date-parts:
+    - - 2017
+  title: 'Using large datasets for open-ended inquiry 	in undergraduate science classrooms'
+  container-title: BioScience
+  volume: 67
+  issue: 12
+  page: 1052-1061
+  DOI: 10.1093/biosci/bix118
+  language: en-GB
+
+
+- type: article-journal
+  id: R2020
+  author:
+  - family: R Core Team
+  issued:
+    date-parts:
+    - - 2020
+  title: 'R: A language and environment for statistical computing'
+  container-title: R Foundation 	for Statistical Computing, Vienna, Austria
+  URL: https://www.R-project.org/
+  language: en-GB
+
+- type: article-journal
+  id: Reichman2011
+  author:
+  - family: Reichman
+    given: O. J.
+  - family: Jones
+    given: M. B.
+  - family: Schildhauer
+    given: M. P.    
+  issued:
+    date-parts:
+    - - 2011
+  title: 'Challenges and opportunities of open data in ecology'
+  container-title: Science
+  volume: 331
+  issue: 6018
+  page: pp. 703-705
+  DOI: 10.1126/science.1197962
+  language: en-GB
+  
+      
+- type: article-journal
+  id: TheRoyalSociety2012 
+  author:
+  - family: The Royal Society
+  issued:
+    date-parts:
+    - - 2012
+  title: 'Science as an open enterprise'
+  container-title: The Royal Society, London, UK
+  language: en-GB
+  
+- type: article-journal
+  id: Saldana2021
+  author:
+  - family: Saldaña
+    given: J.
+  issued:
+    date-parts:
+    - - 2021
+  title: 'The Coding Manual for Qualitative Researchers'
+  container-title: SAGE Publications, London, UK
+  page: pp. 137-143
+  language: en-GB
+
+- type: article-journal
+  id: SoeharjonoRoche2021
+  author:
+  - family: Soeharjono
+    given: S.
+  - family: Roche
+    given: D. G.
+  issued:
+    date-parts:
+    - - 2021
+  title: 'Reported individual costs and benefits of sharing open data 	among Canadian academic faculty in ecology and evolution'
+  container-title: BioScience
+  volume: 71
+  issue: 7
+  page: 750-756
+  DOI: 10.1093/biosci/biab024
+
+- type: article-journal
+  id: Spronken-SmithWalker2010
+  author:
+  - family: Spronken-Smith
+    given: R.
+  - family: Walker
+    given: R.
+  issued:
+    date-parts:
+    - - 2010
+  title: 'Can inquiry-based learning strengthen the links 	between teaching and disciplinary research?'
+  container-title: Studies in Higher Education
+  volume: 35
+  issue: 6
+  page: 723-740
+  DOI: 10.1080/03075070903315502
+  language: en-GB
+
+
+- type: article-journal
+  id: Toribio-Florez2021
+  author:
+  - family: Toribio-Flórez
+    given: D.
+  - family: Anneser
+    given: L.
+  - family: deOliveira-Lopes
+    given: F. N.
+  - family: Pallandt
+    given: M.
+  - family: Tunn
+    given: I.
+  - family: Windel
+    given: H.        
+  issued:
+    date-parts:
+    - - 2021
+  title: 'Where do early career researchers stand on Open Science practices? A survey within the Max Planck Society'
+  container-title: Frontiers in Research Metrics and Analytics
+  volume: 5
+  DOI: 10.3389/frma.2020.586992
+  language: en-GB
+
+
+- type: article-journal
+  id: UNESCO2021
+  author:
+  - family: UNESCO
+  issued:
+    date-parts:
+    - - 2021
+  title: 'UNESCO Recommendation on Open Science (draft)'
+  URL: https://unesdoc.unesco.org/ark:/48223/pf0000378381.locale=en
+  language: en-GB
+
+- type: article-journal
+  id: Vandviketal2020
+  author:
+  - family: Vandvik
+    given: V.
+  - family: Halbritter
+    given: A. H.
+  - family: Yang
+    given: Y.
+  - family: He
+    given: H.
+  - family: Zhang
+    given: L.
+  - family: Brummer
+    given: A. B.
+  - family: Klanderud
+    given: K.
+  - family: Maitner
+    given: B. S.
+  - family: Michaletz
+    given: S. T.
+  - family: Sun
+    given: X.
+  - family: Telford
+    given: R. J.
+  - family: Wang
+    given: G.
+  - family: Althuizen
+    given: I. H. J.
+  - family: Henn
+    given: J. J.
+  - family: Garcia
+    given: W. F. E.
+  - family: Gya
+    given: R.
+  - family: Jaroszynska
+    given: F.
+  - family: Joyce
+    given: B. L.
+  - family: Lehman
+    given: R.
+  - family: Moerland
+    given: M. S.
+  - family: Nesheim-Hauge
+    given: E.
+  - family: Nordås
+    given: L. H.
+  - family: Peng
+    given: A.
+  - family: Ponsac
+    given: C.
+  - family: Seltzer
+    given: L.
+  - family: Steyn
+    given: C.
+  - family: Sullivan
+    given: M. K.
+  - family: Tjendra
+    given: J.
+  - family: Xiao
+    given: Y.
+  - family: Zhao
+    given: X.
+  - family: Enquist
+    given: B. J.   
+  issued:
+    date-parts:
+    - - 2020
+  title: 'Plant traits and vegetation data from climate warming experiments along a 1100m elevation gradient in Gongga Mountains, China'
+  container-title: Scientific Data
+  volume: 7
+  issue: 189
+  page: 14055-14061
+  DOI: 10.1038/s41597-020-0529-0
+  language: en-GB  
+
+  
+- type: article-journal
+  id: Watson2015
+  author:
+  - family: Watson
+    given: M.
+  issued:
+    date-parts:
+    - - 2015
+  title: 'When will ‘open science’ become simply ‘science’?'
+  title-short: Molecular structure of nucleic acids
+  container-title: Genome Biology
+  volume: 16
+  issue: 101
+  DOI: 10.1186/s13059-015-0669-2
+  language: en-GB
+
+- type: article-journal
+  id: Wilkinsonetal2016
+  author:
+  - family: Wilkinson
+    given: M. D. 
+  - family: Dumontier
+    given: M.
+  - family: Aalbersberg
+    given: I. J. J.
+  - family: Appleton
+    given: G.
+  - family: Axton
+    given: M.
+  - family: Baak
+    given: A. 
+  - family: Blomberg
+    given: N. 
+  - family: Boiten
+    given: J-W 
+  - family: da Silva Santos
+    given: L. B.
+  - family: Bourne
+    given: P. E. 
+  - family: Bouwman
+    given: J. 
+  - family: Brookes
+    given: A. J. 
+  - family: Clark
+    given: T. 
+  - family: Crosas
+    given: M. 
+  - family: Dillo
+    given: I.
+  - family: Dumon
+    given: O.
+  - family: Edmunds
+    given: S.
+  - family: Evelo
+    given: C. T.
+  - family: Finkers
+    given: R.
+  - family: Gonzalez-Beltran
+    given: A.
+  - family: Gray
+    given: A. J. G.  
+  - family: Groth
+    given: P. 
+  - family: Goble
+    given: C. 
+  - family: Grethe
+    given: J. S. 
+  - family: Heringa
+    given: J. 
+  - family: Hoen 
+    given: P. A. C.
+  - family: Hooft
+    given: R. 
+  - family: Kuhn
+    given: T. 
+  - family: Kok
+    given: R. 
+  - family: Kok
+    given: J. 
+  - family: Lusher, 
+    given: S. J.
+  - family: Martone
+    given: M. E.
+  - family: Mons
+    given: A. 
+  - family: Packer
+    given: A. L. 
+  - family: Persson
+    given: B. 
+  - family: Rocca-Serra
+    given: P.
+  - family: Roos
+    given: M. 
+  - family: van Schaik 
+    given: R.
+  - family: Sansone 
+    given: S-A
+  - family: Schultes 
+    given: E. 
+  - family: Sengstag
+    given: T.
+  - family: Slater
+    given: T.
+  - family: Strawn
+    given: G. 
+  - family: Swertz
+    given: M. A. 
+  - family: Thompson 
+    given: M.
+  - family: van der Lei
+    given: J.
+  - family: van Mulligen
+    given: E. 
+  - family: Velterop
+    given: J. 
+  - family: Waagmeester
+    given: A. 
+  - family: Wittenburg
+    given: P. 
+  - family: Wolstencroft
+    given: K.
+  - family: Zhao
+    given: J.  
+  - family: Mons
+    given: B.
+  issued:
+    date-parts:
+    - - 2016
+  title: 'The FAIR Guiding Principles for scientific data management and stewardship'
+  container-title: Scientific Data
+  volume: 3
+  issue: 160018
+  page: 737-738
+  DOI:  10.1038/sdata.2016.18
+  language: en-GB
+
+
+- type: article-journal
+  id: Wolkovich2012
+  author:
+  - family: Wolkovich
+    given: E. M.
+  - family: Regetz
+    given: J. R.
+  - family: O'Connor
+    given: M. I.
+  issued:
+    date-parts:
+    - - 2012
+  title: 'Advances in global change research require open science by individual researchers'
+  container-title: Global Change Biology
+  volume: 18
+  DOI: 10.1111/j.1365-2486.2012.02693.x
+  language: en-GB   
+        
+- type: article-journal
+  id: Woolston2021
+  author:
+  - family: Woolston
+    given: C.
+  issued:
+    date-parts:
+    - - 2021
+  title: 'Impact factor abandoned by Dutch university in hiring and promotion decisions'
+  container-title: Nature
+  volume: 595
+  issue: 7867
+  DOI: 10.1038/d41586-021-01759-5
+  language: en-GB     
+              
+                
+---
+
+```{r, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, 
+                      error = TRUE, 
+                      eval = TRUE)
+library(drake)
+library(kableExtra)
+# library(patchwork)
+library(tidyverse)
+library(ggmosaic)
+```
+
+
+# Introduction
+
+| Open Science (OS) covers a broad set of principles and practices aimed at improving the quality, reproducibility, efficiency, accessibility and, ultimately,  the societal impact of science [@Munafoetal2017]. OS is currently gaining traction across the sciences, a trend that is driven by networks of OS practitioners as well as by research funders and policymakers [@TheRoyalSociety2012; @FecherFriesike2014]. Generally, the OS movement aims to make research methods, data, results, and products freely available to everyone. These objectives are formulated on the basis of numerous ideals, namely increasing the diverse and equitable access and contribution to knowledge; research innovation and efficiency through collaboration; quality and credibility through transparency; access to research platforms; new and efficient tools and services; and alternative metrics for assessing research contribution and impact [@FecherFriesike2014;@Murphyetal2020]. Together, the rapidly evolving OS principles and practices are expected to revolutionise how research is done and shared in the future [@Watson2015].
+
+| The transition towards OS has required the development of necessary infrastructure, including platforms for collaboration and large-scale interactive databases, and is currently re-defining the landscape of funding opportunities and publishing models (e.g. Plan S, https://www.coalition-s.org; Peer Community in https://peercommunityin.org ). This transition is supported by developments in licensing, data and metadata standards, and by requirements for open publishing and data sharing set by research funding bodies. While many practitioners adopt a subset of OS principles and practices for idealistic or pragmatic purposes, institutional support is crucial for developing OS infrastructure and mainstreaming OS [@Reichman2011; @Wolkovich2012]. Moreover, OS principles conceptualised by practitioners can be adopted and implemented by institutions, as exemplified by the inclusion of the FAIR guiding principles [@Wilkinsonetal2016] by the European Open Science Cloud [@EuropeanCommission2015] and the newly adopted UNESCO Recommendation on Open Science [@UNESCO2021]. Through such efforts, many of the key institutional, economic and infrastructure-related challenges in the transition to Open Science have been addressed.
+
+| Despite these developments, OS is not widely implemented across research communities, instead remaining largely confined to groups, networks or events involving committed OS practitioners, as well as separate grassroots efforts that emphasise few or singular OS aspects [@Besanconetal2021; @Moraisetal2021]. Thus, a major challenge for realising the potential of OS is to achieve a more widespread uptake across the scientific community, requiring a major cultural and behavioural shift among scientists. Such a transition is not straightforward since individual researchers vary in how they perceive OS in relation to their beliefs, skills and ability to reap benefits and bear costs [@Kathawallaetal2021]. For example, some practitioners may be motivated to adopt OS practices as a means to increase reproducibility and replicability in science, while others may be driven by ideals of free societal access to publicly funded knowledge. Further, individuals adopt OS differently based on personal background such as gender, nationality, and career stage  [@Murphyetal2020]. Hence, there may be considerable variability in how OS is perceived, practised and promoted among individual researchers and between groups or networks.
+  
+These challenges call for more knowledge of how OS practices and principles are learned, understood, and transmitted in different parts of the scientific community. Such information can aid institutions and policymakers in mainstreaming OS across the sciences. We addressed these knowledge needs by surveying OS-related experiences and perceptions among attendees at an two-day international workshop dedicated to openness and transparency in applied ecology. This event was organised by the Living Norway Ecological Data Network (https://livingnorway.no/), a peer-driven collaborative initiative originally established in 2019 to build better infrastructures for managing ecological data from Norwegian research institutions. Since then, this network has gradually grown to a more general-interest OS community for ecology in Norway and beyond. Living Norway is closely associated with the Norwegian participant node in the Global Biodiversity Information Facility (GBIF, https://www.gbif.org). The OS movement is still relatively young, and we saw the event as an opportunity for learning more about dedicated OS practitioners' thoughts on the role of OS in research, supervision, and teaching. For this purpose, we developed a digital survey for a mixed-methods approach, integrating quantitative and qualitative analyses, to specifically address the following research questions:
+
+
+- How do OS practitioners in ecology perceive and define OS?
+- Which OS aspects do practitioners in ecology interact with, and how frequently?
+- What are the perceived benefits and risks for individual engagement in OS?
+- Which OS aspects have practitioners in ecology encountered in their own formal education?
+- How do ecologists engaged in OS as part of their research value OS in their teaching and supervision?
+
+
+# Methods
+
+## Colloquium
+| The 2nd International Living Norway Colloquium was a hybrid event held in October 2021. Participants could attend either in person or via a digital meeting platform. Across two days, participants could attend thematic sessions consisting of plenary talks, plenary and group discussions, and group assignments both in person and online (see Supporting information S1 Table for the full program). 
+
+
+## Survey development and administration
+| Our investigative team included individuals involved in organising the colloquium itself and associated collaborators. We met twice before the colloquium to clarify research questions, develop survey items and subject the items to talk-aloud refinement. This resulted in a questionnaire that we structured into three parts distributed to colloquium participants as follows: Part I three days before the event started, Part II at the end of the first day, and Part III after the second and final day of the event. We split the survey to distribute the effort of respondents taking the survey, to enable a focus on different themes, and to possibly infer whether participants' perceptions of OS evolved during the event.
+
+
+## Survey structure and content
+| The questionnaire consisted of a combination of constrained choice, Likert-scale, and open-ended questions. Constrained choice questions were used to obtain background information such as degree, affiliation, gender, and familiarity with key OS aspects. Likert-scale response questions were related to experience with and perceived importance of different OS aspects to research, teaching, and supervision of students’ thesis work. Open-ended questions asked colloquium participants to define OS and describe what had helped and hindered their OS engagement. Thus, the combination of question types allowed both qualitative and quantitative lines of inquiry. To link the submitted responses across the three parts, survey participants were asked to provide their email as an identifier with the assurance that this identifier would be removed within two weeks after the event. All three parts of the survey began with an information page where respondents were asked for consent, while also informing respondents of the study, handling of personal information and their options for withdrawing consent (see Supplementary Information for details). The complete survey questionnaire is provided in Supporting Information S2&3 Tables.
+
+## Data management
+| We uploaded and distributed the electronic survey using SurveyXact (Ramboll, Denmark) and this service provider collected the survey responses. Email addresses submitted by respondents were deleted and replaced with anonymous individual identifiers within two weeks, and remaining data were uploaded to a GitHub repository together with our R code for data cleaning and analyses. We clarified management procedures for handling personal information with a Data Protection Officer at NSD (Norwegian centre for research data) and registered the project in the System for Risk and Compliance (RETTE) at the University of Bergen. 
+
+## Qualitative analysis
+| We established a team (GDB, SHC, and AKL) that coded the open-ended responses to the following three survey items: definitions of OS, what hinders-, and what helps individual OS engagement (see Supporting Information S2&3 Tables for the full questions). Specifically, the team subjected item responses to iterative rounds of inductive coding, beginning with a meeting to establish an initial codebook by reading all responses to a particular question and identifying common ideas  [@Saldana2021]. Because the open-ended questions served as opportunities to elicit new ideas from this novel participant group, we did not begin with *a priori* categories but rather remained open to all ideas that were present in the data. For each question, after describing initial categories, at least two of the three coders independently coded all responses. The coders then met and discussed differences along with any additional ideas that did not fit into the original categories. The coders repeated this process until no new categories were needed to capture all relevant ideas. Final codebooks can be found in Supporting Information (S4;S7-8 Tables). For the final coding step, at least two coders coded all responses an additional time using the final codebook and then met and came to consensus on the coding for all responses. All coding was done before any coders were aware of the results of the quantitative analyses (see below), and vice versa, to protect the integrity of the coding process and the quantitative analyses. We then discussed overarching themes that resulted from the coding analysis during writing of the manuscript. We have lightly edited some of the quotes reported for grammar and clarity.
+
+## Quantitative analysis
+| In parallel to the qualitative analyses described above, we investigated whether engagement and perceptions of OS, as captured by scaled responses, could be related to experiences, affiliations and backgrounds of colloquium participants. A team (AH, EL and CBS) formulated a set of specific predictions related to our general research questions prior to accessing the data. These predictions were pre-registered to avoid post-hoc hypothesising (see file containing preregistered predictions on the GitHub project repository (https://github.com/christianstromme/LivingNorway2020/blob/main/Research%20hypotheses/aimsandhypotheses.Rmd). We tested the following pre-registered predictions:
+
+A.	Researchers from academic institutions have engaged more in open science-related practices compared to other researchers, and more so for early-career researchers.
+The rationale behind this prediction is that we expect researchers with a university affiliation to have stronger incentives and weaker disincentives for OS engagement compared to non-academic research institutions who tend to be more involved in generating and managing proprietary data. Further, we expect higher  familiarity with OS among early-career researchers as the associated practices and principles have been gaining traction in academia over the past few years.
+B.	Colloquium participants use open data more frequently than they contribute open data and code.
+ We base this prediction on the observation that using data from existing repositories requires less effort than generating and sharing your own data. Further, there are stronger incentives in the sciences for publishing research papers than for sharing data. 
+C.	Colloquium participants are more likely to use OS in supervision and teaching when they use it in their own research.
+ Research-based education is a strong ideal and stated goal within universities, and we therefore expect practices and principles that scholars adopt in their research to also be included in their teaching and supervision. 
+D.	Colloquium participants that have been taught open science-related practices as part of their education are more likely to engage in those practices.
+We expect that adopting a practice is more likely if it has been part of one’s formal research training than if  one had to learn it independently later. 
+E.	Colloquium participants engaged in both research and education perceive OS practices to be more important in their research than in their teaching and supervision.
+Our rationale here is that open science ideals and practices are explicitly promoted and incentivised in relation to research, but less so in relation to teaching or supervision.
+
+| The statistical models tested in the quantitative analyses were based on these predictions, as described below. For each prediction, we also explored whether the outcomes varied with gender. We performed all quantitative analyses using R software (version 4.1.1 [@R2020]) and the code is available in the GitHub project repository.
+
+| We conducted analyses of quantitative data as follows. We treated the scaled responses as ordinal data by using cumulative link models (clms, function *clm*) or cumulative link mixed models (clmms, function *clmm*) that includes random terms, both from the R package Ordinal [@Christensen2019]. Each global model, defined at the start of the model selection process, was based on the pre-registered predictions (see above) by including fixed terms, including interactions, that reflected the prediction. Some of the pre-registered predictions (numbered in the file on GitHub) yielded overlapping model structures (predictions referred to as 1.2 and 3.1 on GitHub), while some predictions could not be tested due to insufficient data (prediction 1.4). This information is reported in the code for quantitative analyses, accessible in the project repository on GitHub.  
+
+| For analyses that included multiple responses from each survey participant, we included a random intercept term (individual, a numeric labelling variable) in each global model and used clmms. For each prediction, we used the function *dredge* in the MuMIn R package for selecting the final model [@Barton2009]. For each model we determined the inclusion of fixed- and random terms based on the lowest AICc estimate. If multiple models had a difference of AIC ≤ 2, we selected the model having the simpler structure as the final model. For global- and final model structure, see Supporting Information S5-6 & S9-10 Tables.
+
+| For both clms and clmms, final models were checked for violation of the proportional odds assumption, namely if any of the fixed term estimates varied with the response categories. As these fixed terms were nominal factors, nominal tests were conducted by using the function *nominal_test* for clms. As the same function does not apply to clmms, we performed nominal tests for these models through likelihood ratio tests, comparing the most parsimonious model and a model with the same structure except having the fixed factor in question specified as nominal in the formula, thus relaxing the proportional odds assumption. If these tests revealed violations of the proportional odds assumption, we relaxed this assumption in the final model using the term nominal for the fixed term in question. This setting allowed the regression parameters to vary between different levels of a given covariate for which the proportional odds assumption was violated.
+
+
+# Results
+
+## Surveyed respondents
+
+| Among 128 registered colloquium participants, 60 completed Part I, 51 completed Part II and 38 completed Part III. Four colloquium participants that responded to Parts II and III did not respond to Part I. The majority of respondents reported to be affiliated with universities (N=37), followed by research institutes (N=22), other affiliations (N=5) and governmental agencies (N=2). Among these, six respondents stated multiple affiliations. Further, the majority stated Norway as their country of work or study (N=45), followed by countries outside the EU (N=13) and within the EU (N=8) (Supporting information S1-2 Figures). Among these, four respondents stated multiple countries of affiliation. 27 participants identified as women, 32 as men, and 1 as non-binary. In statistical analyses where Gender was used as a fixed term, the latter category was omitted as a factor level as it was represented only by a single participant.
+
+
+## How is OS perceived among practitioners in ecology?
+
+| We asked colloquium participants to respond to the following open-ended survey item:
+*People define 'Open Science' in many ways, and it is a multi-faceted concept. We are interested in how you define Open Science, especially as it pertains to your own work.*
+
+| Several codes emerged from the participant responses (Supporting Information S4 Table). Quantifying the occurrence of these codes allows us to infer shared as well as less common and less salient perceptions of the meaning of OS (Table 1). In the pre-event responses, *shared data* was the most frequently identified code in these definitions of OS, with the vast majority (50 out of 60 respondents) indicating that in OS, data are available for anyone to use (e.g., “Sharing published data and/or raw data in open repositories”). The other most frequent statements included *data availability/accessibility* (38), *sharing codes/methods* (36), *transparency* (28) or *open access publications* (24) (Table 1). For example, one respondent commented, “open science means open access to scientific publications and open sharing of data and code for analysis for scientific publications” (coded as *sharing codes/methods*, *sharing data*, and *open access publications*). Another shared that “Open science is transparent and repeatable. In ecology there is a particular need for data sharing, i.e. giving colleagues access to raw data for repeating analyses and/or applying alternative methods to extract information from the empirical data” (*transparency*, *sharing data*, *replication/reproducibility*).
+
+
+
+
+```{r $define freq table$}
+loadd(define.freq.table)
+
+  define.freq.table %>%
+  mutate(across(where(is.character))) %>%
+  mutate(across(where(is.character), linebreak)) %>%
+    kbl(booktabs = TRUE,
+        #escape = FALSE,
+        col.names = linebreak(c("Code or category", "Number of occurrences in sample responses (before workshop; n=60)", "Number of occurrences in sample responses (after workshop; n=38)"), align = "c"),
+        caption = "Frequency with which emergent codes were identified in the survey responses in Parts I and II. Codes are organized from most frequent (“sharing data”) to least frequent (“relationship between OS and education”), in Part I."
+        ) %>% 
+    kable_styling(font_size = 8,
+                  latex_options = 'hold_position') %>%
+    column_spec(column = 1, width = "150px") %>% 
+    column_spec(column = 2, width = "100px") %>% 
+    column_spec(column = 3, width = "100px")
+```
+
+| Very few (3 of 60 respondents) defined OS in a way that specifically referenced education, or a relationship between OS and education, suggesting that it was not a common idea in this population. In all three mentions, education was listed as one of many facets of OS. For example:
+
+
+| “Open science is the ideal of free and accessible availability for everyone to all components of the scientific cycle. Open science entails open education, open research protocols, open methodologies, open data, open code, open data management and analysis, open research publication opportunities, open research readership opportunities, open data synthesis, open science-policy interface, and an open research funding and open science system, science policy and science management.”
+
+| Similarly, few responses referenced inclusivity in their definitions. Those that did mention inclusivity described it as an important reason for OS. For example, one respondent shared:
+
+| “I would define Open Science, in the immediate sense, as a way of conducting research in a manner that is transparent (i.e. showcasing/sharing how you are doing your research), however this should extend past just sharing your research and it should also include creating and cultivating a research environment that is open and inclusive to all. Within my work the aspect of reproducibility (particularly code-sharing) is something that I place particular value on.”
+
+
+## Which OS aspects do practitioners interact with, and how frequently?
+
+| Among the 60 respondents to Part I of the survey, 49 were engaged in primary research. For prediction A, we found strong evidence that respondents with an academic affiliation had interacted with OS practices more frequently than those with other affiliations (*P* = 0.003) (Fig. 2, Supporting Information S5 Table). The frequency of interaction with OS practices was also higher among men than women (*P* = 0.004) (Supporting Information S5 Table). However, we did not find evidence for higher OS engagement among early-career researchers, as the term was discarded in the model selection process (Supporting Information S5 Table).
+
+
+| Respondents stated "Read open access publications" as the OS aspect that was most frequently engaged with, followed by "Used open code" and "Used open data" (Fig. 1). For prediction B, we found strong evidence that respondents used open data and code more frequently than they shared data and code (*P* < 0.001), and men did so more frequently than women (*P* = 0.002) (Supporting information S5 table).
+
+
+Figure 1. Colloquium participants’ stated frequency of engagement with different OS practices.
+
+Figure 2. Frequency of engagement with Open Science aspects according to the subset of colloquium participants engaged in research and responding to survey Part I (N=36) by affiliation and gender. Height of tiles corresponds to the number of participants for the respective categories of participants, width of tiles corresponds to frequency for each scale category.
+
+
+
+
+## What are the perceived benefits and risks for individual engagement in OS?
+| Colloquium participants were asked, via open-ended questions, to share what had hindered and helped them to engage in OS. We developed separate codebooks for the “hinders” (Supporting information S7 Table) and “helps” (Supporting information S8 Table) responses. Of the 60 responses to the “hinders” item, many reported *lack of guidelines* (n=15), *lack of time* (15), or *insufficient knowledge* (15) as barriers for engaging in OS (Table 2). One respondent exemplifies these sentiments (along with fear of critique) with the following:
+
+| “lack of familiarity with relevant online platforms, software, methods...perception that the landscape of the above tools changes very quickly, and keeping up is a big time commitment...fear of doing it wrong.”
+
+Seven colloquium participants wrote either *nothing* or *N/A*.
+
+```{r $hinder freq.table$}
+loadd(hinder.freq.table)
+  hinder.freq.table %>%
+  mutate(across(where(is.character))) %>%
+  mutate(across(where(is.character), linebreak)) %>%
+    kbl(booktabs = TRUE,
+        escape = FALSE,
+        col.names = linebreak(c("Code", "Number of occurrences in sample responses (Part I; n=60)"), align = "c"),
+        caption = "Frequency with which emergent codes were identified for the responses to “what hinders your engagement in OS?“ prompt. Codes are organized from most frequent (“Lack of guidelines”) to least frequent (“Fear of critique”)"
+        ) %>%
+    kable_styling(font_size = 8,
+                  latex_options = 'hold_position') %>%
+    column_spec(column = 1, width = "200px") %>% 
+    column_spec(column = 2, width = "150px")
+
+```
+
+| Of the 60 responses to the “help” item, 20 indicated *social support* as something that helped them to engage in OS (Table 3). Twenty also cited *resource availability*. One respondent covered both of these codes saying:
+
+| “Abundance of open-source software, preprint servers, sci-hub (what a gem this is!), github, abundance of data repositories, support from colleagues.”
+
+Many of the perceived hindrances thus reflect the opposite of what is perceived to help, and vice versa.  
+
+```{r $help freq table$}
+loadd(help.freq.table)
+  help.freq.table %>%
+  mutate(across(where(is.character))) %>%
+  mutate(across(where(is.character), linebreak)) %>%
+    kbl(booktabs = TRUE,
+        escape = FALSE,
+        col.names = linebreak(c("Code", "Number of occurrences in sample responses (Part I; n=60)"), align = "c"),
+        caption = "Frequency with which emergent codes were identified for the responses to “what helps your engagement in OS?“ prompt. Codes are organized from most frequent (“Social support”) to least frequent (“Money”)"
+       ) %>%
+    kable_styling(font_size = 8,
+                  latex_options = 'hold_position') %>%
+    column_spec(column = 1, width = "200px") %>% 
+    column_spec(column = 2, width = "150px")
+```
+
+## Which OS aspects have practitioners encountered in their own formal education?
+| About half of the surveyed colloquium participants (N=29) stated that they had not encountered OS principles or practices in their own formal education (Supporting Information S3-6 Figures). Those participants that had encountered OS in their formal education reported the following: *read open access literature* (N=21), followed by *used open code* (N=19), *used open data* (N=17), *shared open data* (N=15), *published results or papers openly* (N=15), *shared own code openly* (N=13), *outreach/science communication* (N=13), *been taught principles of research reproducibility* (N=12), *used open-access online interactive learning resources* (N=11), *been taught principles of research transparency* (N=7), and *open peer review* (N=4).
+
+| We predicted that colloquium participants that had encountered OS in their own education were more likely to engage with it in their research (Prediction D) . We found evidence for participants that had encountered OS as part of their education used (*P* = 0.027) and shared open code (*P* = 0.023),  and used open educational tools (*P* = 0.012) more often than participants who had not encountered OS in their education. For these respondents, we found evidence that men shared (*P* = 0.017) and had used (*P* =0.028) open data more frequently than women (Supporting Information S6 table).
+
+## How do OS practitioners involved in higher education value OS in teaching and supervision of their students?
+| We found strong evidence that participants viewed OS as less important in teaching than in research ( *P* <0.001), but our data did not reveal any differences in perceived importance of OS between supervision and research (Fig. 3; Supporting Information S9 Table).
+
+Figure 3. Perceived importance of  Open Science for research, teaching and supervision according to the subset of colloquium participants engaged in research and responding to survey Parts I and III (N = 26). Width of tiles corresponds to the number of participants involved in the respective activities.
+
+# Discussion
+| The data we received from surveyed participants at the Living Norway Ecological Data Network Colloquium 2020 illustrate how OS can be understood, applied and promoted in a network of dedicated OS practitioners. By combining qualitative and quantitative analyses to survey data, we identified two salient ideas, namely 1) that OS was mainly understood and practised in terms of shared and accessible data, code, transparency and publications, and 2) that the extent of OS engagement among respondents was linked to experience and perceptions of support. First, the respondents’ own definitions of OS and the stated frequencies of engagement in related practices revealed that they commonly associated OS with *sharing data and code openly* and *open access publishing*. Second, an OS supportive community, knowledge, and resources were consistently seen as effective in promoting and broadening OS engagement, whereas the lack of these aspects were stated as hindrances. Third, respondents that had encountered these practices in their education reported more frequent engagement. Taken together, these results suggest that building an OS supportive community spanning both research and education can aid wider-scale implementation of OS. However, it is also clear from our data that this potential may not be evident to educators currently engaging in OS, considering that such practices were deemed less relevant in their context of teaching than in their research and supervision. 
+
+| Since the main themes of the colloquium were Open Science and transparent data management, we asked the surveyed participants what they thought hindered and helped their individual engagement in OS. For the perceived hindrances, respondents most frequently identified *knowledge*, *time* and *lack of guidelines*. On the question of what had helped them engage with OS, they reported , *social support* and *resource availability*. Respondents also indicated that they used open code more frequently if they had experience with that activity in their own education. Taken together, these findings suggest that resources, a supportive community, and arenas for gaining experience and training are all necessary and helpful to enhance OS uptake.
+
+| A variety of existing examples and recommendations from available literature can guide the enhancement of OS via teaching and learning. Project EDDIE (Environmental Data-Driven Inquiry and Explorations) is a collaboration between disciplinary and educational researchers that has produced learning resources for students in a variety of natural science disciplines [@OReillyetal2017]. These are applications of active learning methods where students engage in inquiry and quantitative reasoning using large datasets. Other examples are the International Plant Functional Traits Courses that offer training in trait-based ecology through field campaigns focusing explicitly on data collection and data management grounded in FAIR open science practices. There, students plan and conduct reproducible fieldwork, manage data and publish data papers [@Geangeetal2021; @Vandviketal2020]. Educators seeking to develop courses or learning resources where students engage with OS can get support for implementing OS in teaching and learning from workshops, courses and online tutorials (i.e. FOSTER Open Science, https://www.fosteropenscience.eu/; the Open Science School, http://openscienceschool.org/). In particular, Bossu & Heck have surveyed available literature on OS in teaching and learning while also providing advice on this topic [@BossuHeck2020]. We suggest that such adoptions of OS in undergraduate teaching can significantly leverage student engagement and learning [@Spronken-SmithWalker2010], and thus speed up the implementation of OS in the wider community. Moreover, early engagement in OS can benefit students who consider research as a possible career option [@Farnametal2017; @AllenMehler2019; @Geangeetal2021].
+
+| Increased uptake of  OS in research and education can be promoted at different organisational levels: at grassroots level by practitioners, at the institutional level, or through research or higher education policy. We argue that a successful cultural transition towards OS depends on an interplay across these levels. Considering the lower emphasis of OS in the context of teaching and learning among our respondents, it would be unrealistic to expect that grassroots practitioners alone can promote widespread implementation of OS across higher education. Rather, this transition is more likely to occur if aided by initiatives at the institutional and policy levels. While policies and sector-wide incentives are needed, mechanisms for structural and community support should be enacted at the institutional level and adapted to different academic cultures. Ultimately, scholars experienced with OS can offer the necessary know-how for the contexts in which learning happens.
+
+| While grassroots promotion of OS occurs both locally and  globally (i.e. [@Gallagheretal2020]), there have also been numerous institutional and political efforts, for example within the EU. The League of European Research Universities (LERU) has recommended universities to “integrate Open Science concepts, thinking, and its practical applications in educational and skills development programmes” [@Ayrisetal2018]. In addition, the European Open Science Cloud, stemming from the European Commission Single Market strategy [@EuropeanCommission2015], aims at developing a “Web of FAIR Data and services” [@Ferrarietal2018]. Despite these initiatives, implementations at the institutional level within the EU are still limited [@Moraisetal2021]. Even so, Utrecht University provides examples of how academic institutions can implement OS across the range of academic activities. The Utrecht University Open Science Platform was formulated by the institution itself and includes experienced practitioners in related formal processes. Further, the university has abandoned the impact factor when hiring and promoting staff while instead favouring OS-related activity and achievements [@Woolston2021]. It is likely that the state-level political context favours these efforts, considering that the Netherlands has a political commitment from 2013 to achieve 100% open access for publicly funded research publications [@Bosman2021]. Although publishing open access represents a limited aspect of OS, such policies constitute external pressures that may elicit change in affected institutions.
+
+| Despite clear  benefits, implementing OS in research and higher education can also be accompanied by caveats. As OS is promoted by a variety of agents, the lack of a unifying definition gives room for diverse interpretations or even scepticism towards OS [@LongoDrazen2016; @Mirowski2018]. Further, our data are in accordance with literature suggesting both practical, ethical and social barriers to OS engagement, such as lacking the required skills or support, or concerns with trade-offs pertaining to data sharing [@SoeharjonoRoche2021]. Our data further indicate that women engage less with OS than men, particularly in terms of using and sharing data and code, possibly reflecting lower confidence in their OS-related skills (@Toribio-Florez2021). These results suggest a strong case for complementing practical support and incentives with mechanisms for social support around OS, as such mechanisms are generally known to disproportionately benefit women and marginalised groups [@NSTC2021]. Our data further suggests that those that are most involved already have access to social support networks, as our respondents pointed most frequently towards social support (alongside resource availability) when asked about what had helped their OS engagement. This may suggest that not only the existence of social support networks, but also equitable access to participate needs to be explicitly targeted to further enhance the implementation of OS across research and education. 
+
+| In conclusion, our study provides insights into how OS is being and could be understood, applied and promoted within a community of practitioners. Respondents seemed to understand and practice OS mainly in terms of providing and/or re-using data and code in addition to open access publishing, but were less aware of how OS can support and promote quality science and education more broadly. Further, statements pertaining to what helps and hinders individual engagement in OS revealed aspects that can be addressed effectively through building a collaborative and inclusive OS science culture, including through higher education and post-graduate training. Even though we can expect variation across the broader scientific communities, our results point at issues that deserve consideration. In particular, the differential emphasis of OS in research vs. teaching reflects a prolonged schism in academia where these two scholarly activities are typically regulated by dissimilar mechanisms. Therefore, implementing OS holistically in both research and higher education offers a unique opportunity to bring teaching and research closer together, ultimately advancing knowledge and its applications to the most pressing challenges of our time.
+
+# References {#references .unnumbered}
