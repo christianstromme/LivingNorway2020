@@ -299,3 +299,43 @@ result_Q3.3 %>%
   kable_styling(latex_options = "HOLD_position")
   
 ```
+
+\newpage
+
+
+
+## FIRST PAGE: CONSENT
+
+### About the study
+
+| This is the first step of a three-part survey of the participants of the Living Norway 2020 Colloquium. The aim of the survey is to investigate perceptions of open science, open science applications, as well as conditions that either promote or limit open science practices. Further, we are interested in understanding how perceptions of and attitudes towards open science develop during the colloquium, as well as the participants’ feedback on the Living Norway Colloquium itself.
+
+| This will be done through three linked surveys sent out before, during, and just after the colloquium.
+
+| To link the three survey parts together at the end of the workshop, we ask you to provide your email address as a temporary identifier for this purpose only. Once the surveys are linked, the email addresses will be immediately and permanently removed from the survey dataset and survey participants will be unidentifiable.
+
+| The University of Bergen (UiB) is responsible for conducting the survey and will ensure that all submissions are handled confidentially. Data will be stored on a safe server and will only be accessible to researchers responsible for summarizing the survey data on behalf of Living Norway. None of the respondents will be identifiable in the final data or in any communication of the results from the study.
+
+| The surveys are important to us in developing Living Norway Colloquia and in better understanding the research community’s views and opinions of open science issues. As this study requires the full consent of participants, you are free to withdraw at any time without the need to justify.
+
+| The study is registered in the UiB data and privacy framework RETTE. 
+
+### Your rights
+| As long as you are identifiable in the collected data, you have the right to the following:
+
+- View of your registered personal data.
+- Correction of your registered personal data.
+- Deletion of your registered personal data.
+- Access to a copy of your registered personal data.
+- File a complaint for the UiB privacy agent (persornvernombud) or the Norwegian Data Protection Authority (Datatilsynet) regarding the handling of your registered personal data.
+
+| If you have any questions about the study, please contact
+
+- Professor Vigdis Vandvik, bioCEED/UiB, vigdis.vandvik@uib.no
+- Christian Bianchi Strømme, bioCEED/UiB, christian.stromme@uib.no
+
+###Consent
+
+**By answering the following survey questions, I confirm that I have received information about the study and that my participation is voluntary.**
+
+**In order to link your answers, we kindly ask you to provide your email address in the field below. Please use the same address on all parts of the survey:**
