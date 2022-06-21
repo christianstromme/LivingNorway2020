@@ -46,19 +46,19 @@ manuscript_plan <- drake_plan(
   
   #knit manuscript
   manuscript = {
-    file_in("Rmd/elsevier-harvard_rjt.csl")
-    file_in("Paperpile_Sep16BibTeXExport.bib")
+    file_in("Manuscript/plos/plos.csl")
+    file_in("Manuscript/bibliography.bib")
     rmarkdown::render(
-      input = knitr_in("MS_file.Rmd"), 
+      input = knitr_in("Manuscript/Applying-promoting-OS-in-ecology.Rmd"), 
       clean = FALSE)
-  # },
-  # 
-  # si = {
-  #   file_in("Rmd/elsevier-harvard_rjt.csl")
-  #   file_in("Paperpile_Sep16BibTeXExport.bib")
-  #   rmarkdown::render(
-  #     input = knitr_in("SI.Rmd"), 
-  #     clean = FALSE)
+  },
+
+  si = {
+    file_in("Manuscript/plos/plos.csl")
+    file_in("Manuscript/bibliography.bib")
+    rmarkdown::render(
+      input = knitr_in("Manuscript/SI.Rmd"),
+      clean = FALSE)
   }
   
 )
